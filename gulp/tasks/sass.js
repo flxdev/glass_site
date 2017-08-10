@@ -8,12 +8,16 @@ var mqpacker = require("css-mqpacker");
 var config = require('../config');
 var cssnano = require('cssnano');
 var rename = require('gulp-rename');
+var cssvariables = require('postcss-css-variables');
 
 
 gulp.task('sass', function() {
 
     var processors = [
         autoprefixer({browsers: ['last 10 versions', 'IE 11'], cascade: false}),
+        cssvariables({
+            preserve: true
+        }),
         mqpacker({
             sort: function (a, b) {
                 a = a.replace(/\D/g,'');
@@ -25,6 +29,9 @@ gulp.task('sass', function() {
     ];
     var processorsNano = [
         autoprefixer({browsers: ['last 10 versions', 'IE 11'], cascade: false}),
+        cssvariables({
+            preserve: true
+        }),
         mqpacker({
             sort: function (a, b) {
                 a = a.replace(/\D/g,'');

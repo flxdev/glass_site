@@ -1,5 +1,16 @@
 extends _layout
 
 block title
-	title Blog
+	title Index
+	- var _name = "index"
+	- var currentPage = "index"
 block content
+	.site__loader
+	.root__wrapper
+		.site__overlay
+		.root__frame
+			include includes/_header
+			#barba-wrapper
+				.barba-container(data-namespace="index")
+					.wrapper-frame
+			.footer

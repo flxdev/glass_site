@@ -1,0 +1,20 @@
+mixin navi(name, link)
+    li.navi__item(class={active: name === currentPage})
+        a(href=link) #{name}
+.header
+    .row.align-middle
+        .columns.large-4
+            if(_name == "index")
+                .logo
+            else
+                a(class="logo" href="/")
+        .columns.large-4
+            nav.navigation      
+                ul         
+                    +navi("Company", "company.html")
+                    +navi("Projects", "projects.html")
+                    +navi("Services", "services.html")
+        .columns.large-4
+            nav.navigation      
+                ul         
+                    +navi("Contact us", "contacts.html")

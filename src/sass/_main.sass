@@ -5,3 +5,44 @@ a
 img
 	display: block
 
+html
+	height: 100%
+	font-size: 16px
+body
+	height: 100%
+	font-family: "Roboto"
+	color: #000
+.root
+.root__wrapper
+.root__frame
+.wrapper-frame
+	height: 2500px
+.header
+	position: fixed
+	width: 100%
+	background-color: color(white)
+	.row
+		height: 80px
+.row
+	& >	.columns
+		&:first-child
+			padding-left: 40px
+		&:last-child
+			padding-right: 40px
+.logo
+	display: block
+	max-width: 316px
+	height: 30px
+	background-image: url(../img/icons/logo.jpg)
+	background-size: cover
+	background-repeat: no-repeat
+.navigation 
+	ul
+		display: flex
+	.navi__item
+		&:not(:last-child)
+			margin-right: 7.3%
+		a
+			// letter-spacing: 1.1px
+			color: color(black)
+			+rem(font-size, 18px)
