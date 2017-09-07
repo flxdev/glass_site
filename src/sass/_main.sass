@@ -21,6 +21,10 @@ body
 	position: fixed
 	width: 100%
 	background-color: color(white)
+	top: 0
+	left: 0
+	z-index: 50
+	width: 100%
 	.row
 		height: 80px
 .row
@@ -29,14 +33,21 @@ body
 			padding-left: 40px
 		&:last-child
 			padding-right: 40px
+.root__frame
+	+rem(padding-top,80px)
 .logo
 	display: block
 	max-width: 316px
+	width: 100%
 	height: 30px
 	background-image: url(../img/icons/logo.jpg)
-	background-size: cover
+	background-size: contain
 	background-repeat: no-repeat
+	background-position: left center
+	+r(1140)
+		+rem(max-width,260px)
 .navigation 
+
 	ul
 		display: flex
 	.navi__item
@@ -46,3 +57,699 @@ body
 			// letter-spacing: 1.1px
 			color: color(black)
 			+rem(font-size, 18px)
+			+tr(color .3s)
+			&:hover
+				color: color(menuh)
+.title
+	text-transform: uppercase;
+	line-height: 0.857;
+	font-family: $t
+	color: color(brand)
+	+tr(color .3s)
+	font-weight: 900
+
+	&.h1 
+		line-height: 0.717;
+		+rem(font-size,120px)
+		+rem(letter-spacing,-3.5px)
+	&.h2 
+		+rem(font-size,70px)
+		+rem(letter-spacing,-1.5px)
+	&.h3 
+		+rem(font-size,42px)
+		font-weight: 700
+.text 
+	+rem(font-size,18px)
+	line-height: 1.444;
+	color: color(textblk)
+	&.primary
+		+rem(font-size,28px)
+		color: rgb(0, 0, 0);
+		line-height: 1.429;
+		color: color(black)
+		&.white
+			color: color(white)
+.white
+	color: color(white)
+.menu-burger
+	height: 100%
+	+vertical
+	position: relative
+	z-index: 110
+	cursor: pointer
+	&:hover
+		i,.menu-burger-inner:before,.menu-burger-inner:after
+			background-color: color(brand)
+	&.active
+		i
+			transform: scaleX(0)
+			&:last-child
+				transition-delay: .15s
+		.menu-burger-inner
+			&:before
+				transition-delay: .45s
+				transform: rotate(45deg) scaleX(1)
+			&:after
+				transition-delay: .55s
+				transform: rotate(-45deg) scaleX(1)
+	&:not(.active)
+		.menu-burger-inner
+			&:after
+				transition-delay: .15s
+		i
+			transition-delay: .45s
+			&:last-child
+				transition-delay: .55s
+	&-inner
+		+rem(width,44px)
+		display: inline-block
+		vertical-align: middle
+		position: relative
+
+		z-index: 0
+		&:before,&:after
+			content: ''
+			display: inline-block
+			+rem(width,38px)
+			height: 3px
+			position: absolute
+			background-color: color(black)
+			transition: transform .3s ease-in-out, color .3s
+			backface-visibility: hidden
+		&:before
+			+rem(top,5px)
+			+rem(left,8px)
+			transform-origin: left center
+			transform: rotate(45deg) scaleX(0)
+		&:after
+			+rem(top,5px)
+			+rem(right,8px)
+			transform-origin: right center
+			transform: rotate(-45deg) scaleX(0)
+		i
+			display: block
+			+rem(width,44px)
+			height: 4px
+			background-color: color(black)
+			+rem(margin,8px 0)
+			transition: color .3s , transform .3s ease-in-out
+			&:first-child
+				transform-origin: left center
+			&:last-child
+				transform-origin: right center
+
+
+.btn 
+	display: inline-block
+	vertical-align: top
+	font-size: 0
+	outline: none
+	overflow: hidden
+	background: color(white)
+	line-height: 1
+	border-radius: 2px;
+	+nosel
+	span
+		display: inline-block
+		text-align: center
+		+rem(font-size,18px)
+		font-family: $r
+		position: relative
+		z-index: 0
+		+rem(padding,16px 28px)
+		color: color(brand)
+		+tr(color .2s)
+		&:before
+			display: inline-block
+			content: ''
+			+coverdiv
+			z-index: -1
+			background-color: color(brand)
+			+tr(transform .2s ease-in-out)
+			transform: translateY(100%)
+	&:hover
+		+notouch
+			span 
+				color: color(white)
+				transition-delay: .1s
+				&:before
+					transform: none
+.link-arr
+	display: inline-block
+	vertical-align: top
+	outline: none
+	line-height: 1
+	font-size: 0
+	white-space: nowrap
+	+nosel
+	&-text,&-icon
+		display: inline-block
+		vertical-align: middle
+		.text,svg
+			color: color(brand)
+			+tr(color .3s)
+	&-text
+		+rem(padding-right,35px)
+	&-icon 
+		+rem(width,27px)
+		+rem(padding-top,1px)
+		+tr(transform .25s ease-in-out)
+		svg
+			width: 100%
+			+rem(max-height,30px)
+	&:hover
+		&:not(.down)
+			+notouch
+				.text,svg
+					color: color(black)
+				.link-arr-icon
+					transform: translateX(5px)
+	&.down
+		.link-arr-text
+			padding-right: 0
+			+rem(padding-left,19px)
+		svg 
+			color: #7f7f7f
+		.link-arr-icon
+			+rem(width,21px)
+			padding-top: 0
+			+rem(padding-bottom,3px)
+			.down-arr
+				transition: transform .3s
+		&:hover
+			+notouch
+				.text,svg
+					color: color(black)
+					.down-arr
+						transform: translateY(3px)
+
+
+
+
+.mob-menu
+	position: fixed
+	top: 0
+	right: 0
+	width: 100%
+	height: 100vh
+	background-color: transparent
+	text-align: right
+	z-index: 50
+	transition: opacity .5s .1s, visibility .5s .1s, background-color .5s .1s
+	opacity: 0
+	visibility: hidden
+	&.active
+		opacity: 1
+		visibility: visible
+		background-color: rgba(14, 59, 133, 0.902)
+		transition-delay: 0s!important
+		.mob-menu-inner
+			.mob-menu-content
+				opacity: 1
+				transition-delay: .1s
+			&:before
+				transform: none
+				opacity: 1
+		.mob-menu-nav,.mob-menu-search,.mob-menu-footer
+			opacity: 1
+			transform: none
+		.mob-menu-search
+			transition-delay: .1s
+		.mob-menu-nav
+			transition-delay: .25s
+		.mob-menu-footer
+			transition-delay: .4s
+	&-search
+		position: absolute
+		left: 0
+		top: 0
+		transition: transform .5s ease-in-out, opacity .5s
+		opacity: 0
+		transform: translateY(70px)
+	&-inner
+		width: 100%
+		+rem(min-width,720px)
+		max-width: 55vw
+		display: inline-block
+		height: 100%
+		// overflow-x: hidden
+		transition-delay: 0s
+		position: relative
+		z-index: 0
+		text-align: left
+
+		&:before
+			content: ''
+			display: inline-block
+			+coverdiv
+			z-index: -1
+			background-color: color(white)
+			transition: transform .5s ease-in-out, opacity .5s
+			transform: translateX(100%)
+			opacity: 0
+	&-content
+		height: 100%
+		text-align: center
+		+rem(padding-top,16px)
+		+tr(opacity .3s)
+		transition-delay: 0s
+		opacity: 0
+		&-inner
+			display: inline-block
+			height: 100%
+			+vertical
+			text-align: left
+			+rem(margin-right,-40px)
+			position: relative
+			+rem(padding-top,70px)
+			+rem(padding-bottom,100px)
+			.mob-menu-nav
+				display: inline-block
+				vertical-align: middle
+				+rem(height,300px)
+				transition: transform .5s ease-in-out, opacity .5s
+				opacity: 0
+				transform: translateY(70px)
+	&-footer
+		position: absolute
+		+rem(bottom,35px)
+		transition: transform .5s ease-in-out, opacity .5s
+		opacity: 0
+		transform: translateY(70px)
+		.nav-sublink
+			+rem(font-size,27px)
+			+rem(padding-right,29px)
+			+rem(letter-spacing,.3px)
+			opacity: 1
+			transform: none
+.nav
+	&-item
+		&-sublinks
+			+rem(width,521.6px)
+			overflow: hidden
+			+tr(max-height)
+			backface-visibility: hidden
+			max-height: 0
+			will-change: max-height
+			transition-duration: .4s
+		&:hover
+			.title
+				color: color(brandh)
+			.nav-item-sublinks
+				+rem(max-height,70px)
+				transition-delay: .15s
+				transition-duration: .9s
+			.nav-sublink
+				opacity: 1
+				transform: none
+				&:nth-child(1)
+					transition-delay:  0s, .2s
+				&:nth-child(2)
+					transition-delay:  0s, .4s
+				&:nth-child(3)
+					transition-delay:  0s, .6s
+				&:nth-child(4)
+					transition-delay:  0s, .8s
+				&:nth-child(5)
+					transition-delay:  0s, .9s
+	&-link
+		display: block
+		+nosel
+		.title
+			line-height: 0.835;
+
+
+			+rem(letter-spacing,.2px)
+			+r(1500)
+				+rem(font-size,60px)
+
+
+
+		&.active
+			pointer-events: none
+			.title
+				color: #dcdcdd
+
+	&-sublink
+		+rem(font-size,18px)
+		line-height: 1.667;
+		color: color(black)
+		display: inline-block
+		+rem(padding-right,20px)
+		transition: color .3s, opacity .3s, transform .3s
+		+rem(margin-top,4px)
+		+rem(margin-bottom,7px)
+		transform: translateY(-10px)
+		opacity: 0
+		&:hover
+			color: color(brand)
+
+
+
+
+.mob-menu-search
+	+rem(width, 300px)
+	display: inline-block
+	vertical-align: top
+	text-align: left
+	button
+		background: 0 0
+	.search-form
+		// +rem(margin-bottom, 13px)
+		.not-empty
+			.field-row
+				+rem(padding-left, 30px)
+		.field-row
+			position: relative
+			// +rem(padding-left, 45px)
+			transition: padding 0.3s ease
+			.field
+				+rem(width, 128px)
+				display: inline-block
+				transition: width 0.3s ease
+				position: relative
+				.search-input
+					width: 100%
+					+rem(height, 50px)
+					font-family: $r
+					+rem(font-size, 18px)
+					+rem(padding, 0 45px 0 0)
+					background-color: transparent
+					text-overflow: ellipsis
+					overflow: hidden
+					cursor: pointer
+					&::before
+						content: ""
+					&::placeholder
+						color: #9e9898
+						transition: all 0.1s ease
+					&:focus
+						cursor: text
+						&::placeholder
+							color: color(brand)
+						& + .search-submit
+							i
+								svg
+									width: 100%
+									height: 100%
+									fill: color(brand)
+					&:not(:valid)
+						&~ .search-submit
+							pointer-events: none
+				&:hover
+					.search-input
+						&::placeholder
+							// color: $darkGreen
+					&:not(.open)
+						.search-submit
+							i
+								svg
+									color: color(brand)
+					.search-submit
+						i
+							svg
+								width: 100%
+								height: 100%
+
+					.search-input
+						&:focus
+							& + .placeholder
+								color: #9e9898
+				&.open
+					width: 100%
+					.search-input
+						+rem(padding-right, 58px)
+						&::placeholder
+							// color: $search
+						& + .search-submit
+							i
+								svg
+									color: #9e9898 !important
+					.search-submit
+						&:hover
+							i
+								svg
+									color: color(brand) !important
+				.placeholder
+					position: absolute
+					color: #9e9898					
+					transition: all 0.3s ease
+					z-index: -1
+					top: 0
+					left: 0
+					font-family: $r
+					+rem(line-height,50px)
+					+rem(height,50px)
+					+rem(font-size, 18px)
+				&:hover
+					.placeholder
+						color: color(brand)
+			.search-submit, .search-reset
+				position: absolute
+			.search-submit
+				+rem(width, 40px)
+				height: 100%
+				top: 0
+				right: 0
+				text-align: right
+				+rem(padding-right,5px)
+				&[type="submit"]
+					background-color: transparent
+				i
+					+rem(width, 20px)
+					+rem(height, 20px)
+					display: inline-block
+					+rem(margin-bottom,8px)
+					svg
+						width: 100%
+						height: 100%
+						color: #9e9898
+						transition: color 0.3s ease
+			.search-reset
+				+rem(width, 45px)
+				height: 100%
+				top: 0
+				+rem(left, -45px)
+				opacity: 0
+				visibility: hidden
+				transition: opacity 0.3s ease, visibility 0.3s ease
+				i
+					+rem(width, 15px)
+					+rem(height, 15px)
+					display: inline-block
+					svg
+						width: 100%
+						height: 100%
+						fill: #9e9898
+						transition: fill 0.3s ease
+				&:hover
+					i
+						svg
+							fill: color(brand)
+
+				&.show
+					opacity: 1
+					visibility: visible
+.soc 
+	&-wrapper
+		font-size: 0
+		&-inner
+			white-space: nowrap
+			&:hover
+				.soc-item
+					&:not(:hover)
+						opacity: .7
+	&-item
+		display: inline-block
+		vertical-align: middle
+		+rem(width,31px)
+		+rem(height,31px)
+		+contain
+		+tr(opacity .25s)
+		&:not(:last-child)
+			+rem(margin-right,32px)
+		&.fb
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAAkFBMVEVHcEw8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZY8WZb///88WZaBlLvm6vKkss7x8/i1wNfFzuCLnMFIY5xedqj6+vx6jrdyh7OYp8fS2eehr8z2OpSWAAAAH3RSTlMAYoFCzfwkyPL++QTUVQkPTQPk3Fp7OJQoo5PhN6KrKAW+zwAAAcdJREFUeAGl19lyozoQxvEPGRACh8VgTJyFjg9enDPL+7/djEqVysRRWwL9rnLzT6naULTAqOrti9xkRNlGvmzrCjOkQib0RSJFCi9NJxVZKNk17jhqidVGjn/wHNNd8TN45V6Rg9qX7MTW5GHNzHCVkZdsBYuHnDzlD5Y6IW/Jt36V0wz5zfnTjGbJvsyvXNNM6xKfdjTb7rNeKWJczqfDOE7T4RfdUP1HXbBH/zGNH+hW3MCIiPGmOy6nyNRFy9TX97t5W0DriHEc7+bUQZPEmBy51PVAjKvp3s8XYgwABDH+N/mRWAKAdMz9TCwJVIkjfyNWUqGm5TnV2IbkWzyG5I/2yR20yeTTQTsys9uQxfiNPd8g88t/kk0G8suZCfjmV7LJfQ9/YQ5vHd1/2smEJ/33b7JqIUN+dxn62AQ+tIGvTOALC7k8lwDE8lwASNXSXKX4Sy7NJbRuad4xHyk+t3ykEC3LIxhN7JHzH2j0an6uen458cj3/Grkkccl/jEELWaha2HoUhq6Eocs5Mbgdx0YwCh37svIrgSvd12FetxVRE/EeooKODRFJBXZSBO7pSK+vYTGIsUMVS1eY3MFjl8FewX+A4Dmc6XWOJChAAAAAElFTkSuQmCC);
+		&.you
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAApVBMVEVHcEzkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKibkKib////+8vLzm5n72tn61NPsaGX85ub//v785OT4xsT3w8LoSkb86urxjoz5zs3++Pj0p6Xyl5XqWFX97e3rX1zmOjb3vbzQmXokAAAAH3RSTlMAQvAJ04H5y/0DVZRaSE0PN/Qm5CPcYsV7o+FmoiqrTGTGIgAAAdFJREFUeNq1l2lzgjAQQBGBBHXAE7yXiIwU72P6/39aW7VWFsKRnb6PO/Mg2Vy7mgTXGc/ZoAfQG7D52HG1GgxNxiEFZ+awmmt3fA4cMnC/Y5fL3gikjLySD3QZFMK6BXKzzaEE3m7K7L4BFTD6+XZDh0rojTy7ZUFFrFaOzaEyPOM3LKiB1UBZ06EWeip/TQNqYryvXxtq036bOK+v89f+sw1QgNlP3QMlvOfPR2r66PH7DijSuetMVWc/9gKUWXzrJiCiU7IOYyGOwYOjEHG4Tk4RYMycsZ8DGauc0btoy2w3Un2zRTp3NQeF9oGcPSAcbYwiHwV6gvWxNkGRMHhxxfNYY32SydzuLVWXJK3vsrkboIhIZfqSmovA+kDroQheqNvhLfVY72lQogNEfwMCTLkehYFUt8oGH62DgsHrhalLy9nU8WnRwiWHYFO2cNltgyjcNsRNSzwy1AObvS6k/hkQLO+yuqw+D2Eci+d1tRHiGoeH5HTLvayGHBTh91LPV9V94jNBfKRoTyTpgTbsVymqVB7QihNSacSapMJsSCsLaUUprSQmFuT0doDejNBbIYw9m8rl6axKJ+fnT8H37P9rQnELbC5/W+ClKW2BvwCFfW2a7K4CggAAAABJRU5ErkJggg==);
+		&.in 
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAApVBMVEVHcEwMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrMMdrP///+Gu9nx9/vS5vHh7vakzONnqtAggbq62OoPeLQ0jMDI4O6ax+Cv0uZ+ttdTnsro8vjX6PJFl8X3+/1co8zc7PRvrtKKvdq/PfuWAAAAHnRSTlMAgflC0wNiy/0l8FWUTQ839Ank3MV7o+EGWzNanqtzKWn4AAAB2ElEQVR4AaXX63KiMBjG8QcVEqhgPYB2nD5sreJB66Ht7v1f2hJ3u9YoG0J+nzLM/DuZ+iHviwpJnGZi8Eg+DkSWxgkshJ6QvCKFF6IWfzriXaOpb46DISsNA8Mf6An+l+ihWr8raSC7fVQIO6yhE+KudsRaojbueGixptbDnVqyNnnTt1u00NLuH0a0EoX4pt+hpU4fF11a6+KfNu3JHv7yO2xA+PgjYCMBzvwhNT+Ph3lBk6EP5emmzkuzFU2mUAQ1x1w50USgFFJ3yJU9jUIAHnVzVb8XNPLu3Z3FrKw/aCaARPLG6vRRsAaZIKaDGCl1q/WipC6/V4c1i7flZrnd81aKjDd+5KVXkjN1WCze87NlQV0GYcp3+ZcddQIDQ/7dmpoBIov8FzWPoDE/nlbFPFeW1Jnz85VXn+r0SU3LfPkNla06HqiJzP+63eXbC6/JsfmHm1fnFMhc8gypS54idsljJLJ5LhNANM8FAK957gEIm+chSiNq3l5KM5Ibddhevr3yykh7Jiw9aY+UnaHv/EQqvnB6oNGTjccDh+HEYTQSE/fBzH0sdB9K3Udi94HcdR1wXUYcVyHFD8asNA58mEyCqjUwmDgtoRaS2Hv+WoGfvcoV+Df8XmI1IbHkUAAAAABJRU5ErkJggg==);
+		&.tw 
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAAnFBMVEVHcExzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOFzyOH////5/f6Ez+X+//99zOTK6/TS7vbC5/K95fHx+vym3Ox4yuLr9/u14u/a8feO0+fl9frf8/mv4O6Y1+md2evegkSYAAAAHnRSTlMAQvDkzWL5/cgDCZRV1E0Pf/QmNyN7o9vdW1oqgauVcTk7AAACIklEQVR4AaXX636iMBAF8CmgQa3QVrSX0hMQ8H5B+/7vtuzqbkmYrEL+348Mw89khgzCYDrz3Wfg2fVn0yCkFqInX0Ah/KeI7jL48MHyPwa3w71XCLAEXns3fmDi4b+8CZkNRwI3iNGQDF7GuMP4hVgPDu7iPBDjsY879R+ZtMDdRCP/0EcLfa3+FwetOEr/hmO0NK5/vxFaG9VeHO2JCV0NxujAG9BFD530rg9/Qyevl8e/o6MP+s1HRz5VPnHLZlcmyXaRonJAzWcVj6HZLKE4rOQfyTo9lTlqYq72tVTyaSJ/bDOt+lBAk0uZb/DPvp5eL0/4IUIKoCuklMcDrlKpKFAX0BS6pazMF9nfV6lRyqpMaQbd+dqp/IzKSdaUUM24r17Kq1WxXC9lzb7x5V3osnQlDQqoXHKgy/f5XPKWUD0TGnbSaA0NE0/n0iSFqk9Oi8cfoXHIRdNC8nbQvPF/1++Se4Ekg8anGZoO+zLh+66Z0RSMUjJWGXRTCsBIt7JhfkZDQKEAIyvmXN80IjQedenpKOsWhsMuNsQLvm36YRVx2bVa/OobnIg5qM/FcaU1Lc/A8dlrItsp8SRPwXs3XVKHU1VCMk+2+8X35sYlZXlF0sCzuqBpImzGA9vhpMNo5A2tBrPIfiy0H0rtR2L7gdx+HbBaRixWIW0Rc2HkNhcxPV79gGkN5MNNUezpS6gXR9RCGMRf3mUF9r5i4wr8Cyf/ZBVuw2W/AAAAAElFTkSuQmCC);
+.footer
+	background-color: #1e232a
+	+rem(padding,80px 0 90px)
+
+	.row 
+		// +rem(max-width,1280px)
+		.columns
+			&:first-child
+				padding-left: 8%
+				.text
+					+rem(font-size,12px)
+					.copy
+						+rem(font-size,24px)
+						display: inline-block
+						vertical-align: top
+						+rem(padding-right,20px)
+					.copytext
+						display: inline-block
+						vertical-align: top
+						+rem(padding-top,10px)
+				.copywrap
+					+rem(margin-top,-10px)
+					white-space: nowrap
+			&:last-child
+				.block-contact
+					padding-left: 8%
+						
+	.text
+		color: color(footertext)
+		&.to-top
+			transition: color .3s, opacity .3s
+			cursor: pointer
+			text-transform: uppercase
+			&:hover
+				color: color(white)
+				opacity: 1
+		&.gray 
+			opacity: .3
+		a
+			transition: color .3s, opacity .3s
+			&[href^="tel:"]
+				color: color(footertext)
+				&:hover
+					color: color(white)
+			&[href^="mailto:"],&[href^="skype:"]
+				color: color(white)
+				&:hover
+					color: color(footertext)
+.col 
+	display: flex 
+	flex-flow: column nowrap
+	justify-content: space-between
+	height: 100%
+.footer-nav 
+	+rem(margin-top,-10px)
+	+rem(margin-bottom,-10px)
+	&-link 
+		display: block
+		+rem(padding,9.5px 0)
+		+tr(color .3s)
+		// +rem(padding-left,20px)
+		+r(1024)
+			+rem(padding-left,30px)
+		&:hover,&.active
+			color: color(white)
+		&.active
+			pointer-events: none
+.block-contact
+	.text
+		line-height: 1.444;
+		&.gray 
+			+rem(margin-bottom,10px)
+			+rem(max-width,250px)
+.promo-slider
+	position: relative
+	padding-bottom: 54%
+	background-color: red
+	width: 100%
+	.btn
+		position: absolute
+		+rem(left,200px)
+		+rem(bottom,61px)
+		z-index: 3
+	&-wrap
+		+coverdiv
+	&-inner
+		width: 100%
+		height: 100%
+		position: relative
+		.slick-arrow
+			position: absolute
+			width: 50%
+			height: 100%
+			top: 0
+			bottom: 0
+			opacity: 0
+			z-index: 2
+			cursor: pointer
+			&.slick-prev
+				left: 0
+			&.slick-next
+				right: 0
+		.slick-list,.slick-track
+			width: 100%
+			height: 100%
+	&-item
+		// &:nth-child(2)
+		// 	background-color: green
+		height: 100%
+		&-inner
+			width: 100%
+			height: 100%
+			position: relative
+			z-index: 0
+			// +vertical
+			&:after
+				content: ''
+				display: inline-block
+				position: absolute
+				display: block
+				bottom: 0
+				left: 0
+				right: 0
+				z-index: 1
+				height: 40%
+				background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0) 100%);
+		&-bg 
+			+coverdiv
+			z-index: -1
+			+cover
+		&-content
+			padding-left: 14.2%
+			padding-right: 13.5%
+			display: inline-block
+			width: 100%
+			height: 100%
+			text-align: left
+			&-inner
+				height: 100%
+				position: relative
+		&-img
+			position: absolute
+			left: 0
+			right: 0
+			bottom: 0
+			z-index: 2
+			.img-wrap
+				display: block
+				img 
+					display: block
+					max-width: 100%
+.item1
+	.promo-slider-item-img
+		bottom: -23%
+	.cont-left
+		margin-top: auto
+		padding-bottom: 31%
+		
+.item2
+	.promo-slider-item-img
+		bottom: -23%
+	.cont-left
+		margin-top: auto
+		padding-bottom: 44.5%
+.cont 
+	&-inner
+		display: flex 
+		flex-flow: row nowrap
+		justify-content: space-between
+		height: 100%
+	&-right
+		position: absolute
+		right: 0
+		+rem(top,70px)
+		+rem(max-width,260px)
+			
+		

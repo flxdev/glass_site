@@ -14,13 +14,21 @@
 =rh($height)
 	@media only screen and (max-height: $height + "px")
 		@content
-
+=ie11
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+		@content 
+=notouch
+	@media not all and (-moz-touch-enabled:1) , not all and (pointer:coarse) , not all and (-ms-high-contrast:none) and (max-width:600px)
+		@content 
 =clr
 	&:after
 		content: " "
 		display: table
 		clear: both
 	*zoom: 1
+=padlr($val)
+	+rem(padding-left,$val)
+	+rem(padding-right,$val)
 
 =g($color1, $color2)
 	background-color: $color1
@@ -113,7 +121,10 @@
 	background-repeat: no-repeat
 	background-size: cover
 	background-position: 50% 50%
-
+=contain
+	background-repeat: no-repeat
+	background-size: contain
+	background-position: 50% 50%
 =bg-size($width: 100%, $height: 100%)
 	background-size: $width $height
 

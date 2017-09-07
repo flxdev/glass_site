@@ -15,6 +15,62 @@ mixin navi(name, link)
                     +navi("Projects", "projects.html")
                     +navi("Services", "services.html")
         .columns.large-4
-            nav.navigation      
-                ul         
-                    +navi("Contact us", "contacts.html")
+            .row.align-justify.align-middle
+                nav.navigation      
+                    ul         
+                        +navi("Contact us", "contacts.html")
+                .menu-burger.js-menu
+                    .menu-burger-inner
+                        i
+                        i
+    .mob-menu
+        .mob-menu-inner
+             .mob-menu-content
+                 .mob-menu-content-inner
+                    .mob-menu-search
+                        .search-form
+                            form
+                                .field-row
+                                    .field.field-slide
+                                        input(type="text" class="search-input js-input" data-placeholder="Search" value="",required="required")
+                                        button(class="search-submit" type="button")
+                                            i
+                                                svg(class="icon icon-search")
+                                                    use(xlink:href="#search" xmlns:xlink="http://www.w3.org/1999/xlink")
+                                        button(type="reset" class="search-reset")
+                                            i
+                                                svg(class="icon icon-close")
+                                                    use(xlink:href="#icon-close" xmlns:xlink="http://www.w3.org/1999/xlink")
+                    .mob-menu-nav
+                        .nav-item(onclick='')
+                            a(href="#").nav-link.js-nav.active
+                                .title.h2 Home
+                        .nav-item(onclick='')
+                            a(href="#").nav-link.js-nav
+                                .title.h2 Company
+                            .nav-item-sublinks
+                                a(href="#").nav-sublink About us 
+                                a(href="#").nav-sublink Production
+                                a(href="#").nav-sublink R&D
+                                a(href="#").nav-sublink Accreditations
+                        .nav-item(onclick='')
+                            a(href="#").nav-link.js-nav
+                                .title.h2 Projects
+                            .nav-item-sublinks
+                                a(href="#").nav-sublink Brand products 
+                                a(href="#").nav-sublink Laminated glass
+                                a(href="#").nav-sublink Insulated glass 
+                                a(href="#").nav-sublink Bonding
+                        .nav-item(onclick='')
+                            a(href="#").nav-link.js-nav
+                                .title.h2 Products
+                            .nav-item-sublinks
+                                a(href="#").nav-sublink Brand products 
+                                a(href="#").nav-sublink Laminated glass
+                                a(href="#").nav-sublink Insulated glass 
+                                a(href="#").nav-sublink Bonding
+                    .mob-menu-footer
+                        .mob-menu-footer-nav
+                            a(href="#").nav-sublink.js-nav Service 
+                            a(href="#").nav-sublink.js-nav News
+                            a(href="#").nav-sublink.js-nav Contacts

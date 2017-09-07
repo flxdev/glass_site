@@ -1,6 +1,22 @@
 mixin icon(name)
   svg(class="icon icon-" + name)
-    use(xlink:href="#icon-" + name)
+    use(xlink:href="#"+ name)
+mixin next(text)
+  a(href="#").link-arr
+    .link-arr-text
+      .text #{text}
+    .link-arr-icon
+      +icon('arr')
+mixin down(text,val)
+  a(href="#").link-arr.down
+    .link-arr-icon
+      svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 42 41.9')
+        path(d='M40 24.9v14c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1v-14H0v14c0 1.7 1.3 3 3 3h36c1.7 0 3-1.3 3-3v-14h-2z', fill='currentcolor')
+        path.down-arr(d='M30.9 20.3L22 29.2V0h-2v29.2l-8.9-8.9-1.4 1.4L21 33l11.3-11.3z', fill='currentcolor')
+    .link-arr-text
+      .text #{text}
+        span  (#{val})
+
 doctype html
 html
   head
@@ -19,3 +35,4 @@ html
       block content
     //END out
     script(src="js/bundle.js")
+    script(src="js/common.js")
