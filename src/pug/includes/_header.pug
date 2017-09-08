@@ -2,7 +2,7 @@ mixin navi(name, link)
     li.navi__item(class={active: name === currentPage})
         a(href=link) #{name}
 .header
-    .row.align-middle
+    .row.align-stretch
         .columns.large-4
             if(_name == "index")
                 .logo

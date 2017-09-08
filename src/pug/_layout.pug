@@ -16,7 +16,11 @@ mixin down(text,val)
     .link-arr-text
       .text #{text}
         span  (#{val})
-
+mixin content(title,text,linktext)
+  a(href="#").title.h3 #{title}
+  .block-text-content
+    .text.primary #{text}
+    +next(linktext)
 doctype html
 html
   head

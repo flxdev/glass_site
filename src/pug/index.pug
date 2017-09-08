@@ -19,11 +19,11 @@ block content
 									.promo-slider-wrap
 										.promo-slider-inner.js-promoslider
 											.promo-slider-item.item1(data-href='/podect/1.html')
-												.promo-slider-item-inner
-													.promo-slider-item-bg(style='background-image: url(img/promoslider/slide1/item1-bg.jpg)')
+												.promo-slider-item-inner(style='background-image: url(img/promoslider/slide1/item1-bg.jpg)')
+													//- .promo-slider-item-bg
 													.promo-slider-item-content
-														.promo-slider-item-content-inner
-															.cont-inner
+														//- .promo-slider-item-content-inner
+														.cont-inner.js-parallax(data-direction='-1')
 																.cont-left
 																	.text Helsinger, Denmark
 																	.title.h1.white Danish
@@ -39,11 +39,11 @@ block content
 														.img-wrap
 															img(data-lazy="img/promoslider/slide1/item1-1.png", alt="")
 											.promo-slider-item.item2(data-href='/podect/2.html')
-												.promo-slider-item-inner
-													.promo-slider-item-bg(style='background-image: url(img/promoslider/slide2/item2-bg.png)')
+												.promo-slider-item-inner(style='background-image: url(img/promoslider/slide2/item2-bg.jpg)')
+													//- .promo-slider-item-bg
 													.promo-slider-item-content
-														.promo-slider-item-content-inner
-															.cont-inner
+														//- .promo-slider-item-content-inner
+														.cont-inner.js-parallax(data-direction='-1')
 																.cont-left
 																	.text Minsk, Belarus
 																	.title.h1.white RRB
@@ -74,6 +74,47 @@ block content
 						//- 	span Show project
 						//- +next('Company')
 						//- +down('Broschure','21mb')
+						.block.margin
+							.row.gray.align-stretch
+								.columns.large-6
+									.block-image
+										img(src="img/index/index1.jpg", alt="")
+										//.video-container
+											.video-container-inner
+												video.fillWidth(autoplay='', loop='')
+													source(src='img/index/video/clouds.mp4', type='video/mp4')
+													source(src='img/index/video/clouds.webm', type='video/webm')
+								.columns.large-6
+									.block-text
+										.col
+											+content('About company','Since 2001, GLASSBEL is a leading glass processing company focusing on architectural and interior glass markets','Company')
+						.block.margin
+							.row.align-stretch
+								.columns.large-5
+									.block-text
+										.col
+											+content('Production','All flat glass processing methods. JUMBO size and over','Production')
+								.columns.large-7
+									.block-image.block-image-parallax
+										img.js-parallax(src="img/index/index2.jpg", alt="")
+						.block.margin
+							.row.align-stretch
+								.columns.large-7
+									.block-image.block-image-parallax
+										img.js-parallax(src="img/index/index3.jpg", alt="")
+								.columns.large-5
+									.block-text
+										.col
+											+content('Service','24/7 Operations. Customer Service Company','Service')
+						.block.margin
+							.row.align-stretch
+								.columns.large-5
+									.block-text
+										.col
+											+content('Packing & logistics','By sea, by air, by land. Customized packing and logistics solutions','Logistics')
+								.columns.large-7
+									.block-image.block-image-parallax
+										img.js-parallax(src="img/index/index4.jpg", alt="")
 						
 			.footer
 				.row
