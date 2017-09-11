@@ -61,29 +61,17 @@ block content
 									a(href="#").btn.js-promo-link
 										span Show project
 
-
-
-						//- .title.h1 museum
-						//- .title.h2 news
-						//- .title.h3 About company
-						//- .text Heat Treatment Of Magnetron, Pyrolytic, And Double Sided Coatings
-						//- .text.primary Since 2001, GLASSBEL is a leading glass processing company focusing on architectural and interior glass markets
-						//- a(href="#").btn
-						//- 	span Show project
-						//- button.btn
-						//- 	span Show project
-						//- +next('Company')
-						//- +down('Broschure','21mb')
 						.block.margin
 							.row.gray.align-stretch
 								.columns.large-6
-									.block-image
-										img(src="img/index/index1.jpg", alt="")
-										//.video-container
-											.video-container-inner
-												video.fillWidth(autoplay='', loop='')
-													source(src='img/index/video/clouds.mp4', type='video/mp4')
-													source(src='img/index/video/clouds.webm', type='video/webm')
+									a(href="#").block-image
+										.block-image-inner
+											img(src="img/index/index1.jpg", alt="")
+											//.video-container
+												.video-container-inner
+													video.fillWidth(autoplay='', loop='')
+														source(src='img/index/video/clouds.mp4', type='video/mp4')
+														source(src='img/index/video/clouds.webm', type='video/webm')
 								.columns.large-6
 									.block-text
 										.col
@@ -95,13 +83,15 @@ block content
 										.col
 											+content('Production','All flat glass processing methods. JUMBO size and over','Production')
 								.columns.large-7
-									.block-image.block-image-parallax
-										img.js-parallax(src="img/index/index2.jpg", alt="")
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index2.jpg", alt="")
 						.block.margin
 							.row.align-stretch
 								.columns.large-7
-									.block-image.block-image-parallax
-										img.js-parallax(src="img/index/index3.jpg", alt="")
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index3.jpg", alt="")
 								.columns.large-5
 									.block-text
 										.col
@@ -113,8 +103,9 @@ block content
 										.col
 											+content('Packing & logistics','By sea, by air, by land. Customized packing and logistics solutions','Logistics')
 								.columns.large-7
-									.block-image.block-image-parallax
-										img.js-parallax(src="img/index/index4.jpg", alt="")
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index4.jpg", alt="")
 						
 			.footer
 				.row

@@ -857,6 +857,12 @@ a.title
 			+rem(margin-bottom,50px)
 	&-image
 		height: 100%
+		display: block
+		overflow: hidden
+
+		&:hover
+			img 
+				transform: scale(1.07)
 		.video-container
 			width: 100%
 			position: relative
@@ -873,8 +879,9 @@ a.title
 						width: 100%
 		img
 			width: 100%
+			+tr(transform .25s ease-in-out)
 		&-parallax
 			+rem(max-height,461px)
-			overflow: hidden
-			img
+			// overflow: hidden
+			.block-image-inner
 				margin-top: -10%
