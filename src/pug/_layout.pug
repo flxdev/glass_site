@@ -21,6 +21,25 @@ mixin content(title,text,linktext)
   .block-text-content
     .text.primary #{text}
     +next(linktext)
+mixin nextl(text, img,url)
+  a(href=""+url+"").block.next
+    .block-bg
+      .block-bg-inner
+       .block-bg-img.js-parallax(data-direction="-1" data-speed="30" style="background-image: url(img/next/"+img+".jpg)", alt="")
+    .block-link
+      .row.align-middle
+        .columns.large-6.large-offset-4
+          .text What's next?
+          .block-link-arrow
+            .block-link-arrow-text
+              .title.h3.white #{text}
+            .block-link-arrow-arrow
+               +icon('arr')
+
+
+
+
+
 doctype html
 html
   head

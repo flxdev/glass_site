@@ -77,6 +77,60 @@ block content
 										.col
 											+content('About company','Since 2001, GLASSBEL is a leading glass processing company focusing on architectural and interior glass markets','Company')
 						.block.margin
+							.row
+								.columns
+									.projects-wrap
+										.projects-bgwrap
+											.projects-bgwrap-inner
+												.projects-bgitem.active
+													img.js-parallax(src="img/next/l1.jpg", alt="")
+												.projects-bgitem
+													img.js-parallax(src="img/next/l1.jpg", alt="")
+												.projects-bgitem
+													img.js-parallax(src="img/next/l1.jpg", alt="")
+												.projects-bgitem
+													img.js-parallax(src="img/next/l1.jpg", alt="")
+												.projects-bgitem
+													img.js-parallax(src="img/next/l1.jpg", alt="")
+										.projects-content
+											.row.align-justify
+												.columns
+													.col
+														.title.h3.white 10 000+ 
+															br
+															|projects
+														.text.primary.white In 29 countries around the world our glass decorates buildings of the most famous companies
+												.columns
+
+
+
+							.row
+								.columns
+									.comp-wrap
+										.comp-wrap-inner
+											//все логотипы дублируются во стором контейнере
+											.comp-wrap-element
+												mixin comp(img)
+													.comp-item
+														.comp-item-inner
+															img.js-image(data-src="img/companys/"+img+".png", alt="")
+												+comp('1')
+												+comp('2')
+												+comp('3')
+												+comp('4')
+												+comp('5')
+												+comp('6')
+												+comp('7')
+											.comp-wrap-element
+												+comp('1')
+												+comp('2')
+												+comp('3')
+												+comp('4')
+												+comp('5')
+												+comp('6')
+												+comp('7')
+
+						.block.margin
 							.row.align-stretch
 								.columns.large-5
 									.block-text
@@ -106,7 +160,61 @@ block content
 									a(href="#").block-image.block-image-parallax
 										.block-image-inner.js-parallax
 											img(src="img/index/index4.jpg", alt="")
-						
+					.block.margin.gray.team
+						.row.align-justify
+							.columns.large-5
+								.title.h3 Meet the team
+							.columns.large-6
+								.text.primary Highly experienced specialists in flat glass innovations and process
+						.row
+							.columns
+								.team-wrap
+									.team-inner
+										.slider-nav
+										.team-slider.js-team-slider
+											//а вот тут красиво без обертки никак, надо будет фасовать карточки в блоки по 4 штуки
+											mixin team(img,name,who)
+												.team-item
+													.team-item-inner
+														.team-item-img
+															img(data-lazy="img/team/"+img+".jpg", alt="")
+														.team-item-text
+															.team-item-nam.text #{name}
+															.team-item-who.text #{who}
+											.team-slide
+												+team('1','Dmitri Sobolevski','CEO')
+												+team('2','Valdas Virbalas','Director')
+												+team('3','Loreta Latakiene','Executive Director')
+												+team('4','Tomas Lenkimas','Head of R&D dept')
+											.team-slide
+												+team('4','Tomas Lenkimas','Head of R&D dept')
+												+team('1','Dmitri Sobolevski','CEO')
+												+team('2','Valdas Virbalas','Director')
+												+team('3','Loreta Latakiene','Executive Director')
+											//- .team-slide
+											//- 	+team('4','Tomas Lenkimas','Head of R&D dept')
+
+					.block.margin
+						.row
+							.columns
+								.quality-wrap
+									.quality-title
+										.title.h3 quality control
+									.quality-text
+										.text.primary Sertifyed by more than 20 professional agen
+									mixin partner(icon)
+										.quality-item
+											.quality-item-outer
+												.quality-item-inner
+													img.js-image(data-src="img/partners/"+icon+".png", alt="")
+									+partner('1')
+									+partner('2')
+									+partner('3')
+									+partner('4')
+									+partner('5')
+									+partner('3')
+	
+			+nextl('About company','l1','/about.html')
 			.footer
 				.row
 					.columns.large-4.small-3

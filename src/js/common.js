@@ -32,14 +32,19 @@ document.addEventListener("DOMContentLoaded", function() {
 	if($('.js-parallax').length) {
 		Parallax($('.js-parallax'));
 	}
+	teamslider();
 });
-	var conf = {
-		body: $('body'),
-		html: $('html'),
-		hidden: 'is-hidden',
-		wrpr: $('.block'),
-		footer: $('.footer')
-	};
+
+var conf = {
+	body: $('body'),
+	html: $('html'),
+	hidden: 'is-hidden',
+	wrpr: $('.block'),
+	footer: $('.footer'),
+	arnextcontent: '<button type="button" class="slick-next slick-arrow"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.5 40.1"><style>.starrs0{fill:#1E3E7C;}</style><path d="M4.6 20.4c-.1-.1-.1-.2-.1-.3 0-.1 0-.2.1-.3L19.3 2.6l-.2-.2.2.2c.2-.2.2-.4.2-.6 0-.3-.1-.6-.3-.7L18 .3c-.2-.2-.4-.3-.6-.3-.3 0-.6.1-.7.3L.2 19.4c-.1.2-.2.4-.2.7 0 .2.1.5.2.6l16.4 19.1c.2.2.5.3.7.3.2 0 .5-.1.6-.2l1.2-1c.2-.2.3-.5.3-.7 0-.2-.1-.5-.2-.6L4.6 20.4z" class="starrs0"/></svg></div></button>',
+	arnprevcontent: '<button type="button" class="slick-prev slick-arrow"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.5 40.1"><style>.starrs0{fill:#1E3E7C;}</style><path d="M4.6 20.4c-.1-.1-.1-.2-.1-.3 0-.1 0-.2.1-.3L19.3 2.6l-.2-.2.2.2c.2-.2.2-.4.2-.6 0-.3-.1-.6-.3-.7L18 .3c-.2-.2-.4-.3-.6-.3-.3 0-.6.1-.7.3L.2 19.4c-.1.2-.2.4-.2.7 0 .2.1.5.2.6l16.4 19.1c.2.2.5.3.7.3.2 0 .5-.1.6-.2l1.2-1c.2-.2.3-.5.3-.7 0-.2-.1-.5-.2-.6L4.6 20.4z" class="starrs0"/></svg></div></button>',
+};
+
 function Menu() {
 	var trigger = $('.js-menu'),
 		target = $('.mob-menu'),
@@ -290,7 +295,7 @@ function Parallax($parallaxes) {
 			$wrapper = $prlx.parent();
 
 			wrapperRect = $wrapper[0].getBoundingClientRect();
-			speed = parseInt($prlx.data('speed'), 10) / 109 || 0.15;
+			speed = parseInt($prlx.data('speed'), 10) / 109 || 0.10;
 			direction = parseInt($prlx.data('direction'), 10) || 1;
 			wrapperOffset = $wrapper.offset().top;
 
@@ -319,3 +324,24 @@ function Parallax($parallaxes) {
 		});
 	});
 };
+function teamslider(){
+	$(".js-team-slider").each(function() {
+		var _this = $(this),
+				parent = _this.parent();
+		_this.slick({
+			accessibility: false,
+			lazyLoad: 'ondemand',
+			arrows: true,
+			dots: false,
+			fade: true,
+			touchMove: false,
+			dragable: false,
+			infinite: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			appendArrows: parent.find('.slider-nav'),
+			prevArrow: conf.arnprevcontent,
+			nextArrow: conf.arnextcontent,
+		})
+	});
+}
