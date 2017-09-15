@@ -1,9 +1,5 @@
 $(window).on('load',function(){
-new Lozad({
-    selector: '.js-image', 
-    rootMargin: '0px 0px', 
-    threshold: 0.1 
-})
+	lazyImage();
 
 });
 document.addEventListener("DOMContentLoaded", function() {
@@ -33,12 +29,15 @@ document.addEventListener("DOMContentLoaded", function() {
 		Parallax($('.js-parallax'));
 	}
 	teamslider();
-});
 
+	scrollAnimations();
+});
+// $(window).on('resize',debounce(footerH))
 var conf = {
 	body: $('body'),
 	html: $('html'),
 	hidden: 'is-hidden',
+	main: $('#barba-wrapper'),
 	wrpr: $('.block'),
 	footer: $('.footer'),
 	arnextcontent: '<button type="button" class="slick-next slick-arrow"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.5 40.1"><style>.starrs0{fill:#1E3E7C;}</style><path d="M4.6 20.4c-.1-.1-.1-.2-.1-.3 0-.1 0-.2.1-.3L19.3 2.6l-.2-.2.2.2c.2-.2.2-.4.2-.6 0-.3-.1-.6-.3-.7L18 .3c-.2-.2-.4-.3-.6-.3-.3 0-.6.1-.7.3L.2 19.4c-.1.2-.2.4-.2.7 0 .2.1.5.2.6l16.4 19.1c.2.2.5.3.7.3.2 0 .5-.1.6-.2l1.2-1c.2-.2.3-.5.3-.7 0-.2-.1-.5-.2-.6L4.6 20.4z" class="starrs0"/></svg></div></button>',
@@ -150,7 +149,6 @@ function SearchForm(el) {
 				_this.trigger("change click");
 				// _this.removeAttr('readonly');
 				_this.focus();
-				console.log(_this);
 			},500);
 		});
 	};
@@ -276,10 +274,153 @@ function promoslider(){
 	});
 }
 
+if (!window.Promise) {
+  window.Promise = Promise;
+}
+
+
+function lazyImage(){
+	// Get all of the images that are marked up to lazy load
+	
+	var arr = document.querySelectorAll('.js-image');
+	var images = [];
+	for(var i = 0; i < arr.length; i++){
+		images.push(arr[i]);
+	}
+
+	var config = {
+		rootMargin: '0px 0px',
+		threshold: 0.01
+	};
+
+	var imageCount = images.length;
+	var observer = void 0;
+	// If we don't have support for intersection observer, loads the images immediately
+	if (!('IntersectionObserver' in window)) {
+		for(var i = 0; i < imageCount; i++){
+			preloadImage(images[i]);
+		}
+
+	} else {
+		// It is supported, load the images
+		observer = new IntersectionObserver(onIntersection, config);
+
+		for(var i = 0; i< imageCount; i++){
+			if (images[i].classList.contains('js-image-handled')) {
+				return;
+			}
+
+			observer.observe(images[i]);
+		}
+	}
+
+	/**
+	 * Fetchs the image for the given URL
+	 * @param {string} url 
+	 */
+	function fetchImage(url) {
+
+		return new Promise(function (resolve, reject) {
+			var image = new Image();
+			image.src = url;
+			image.onload = resolve;
+			image.onerror = reject;
+		});
+	}
+
+	/**
+	 * Preloads the image
+	 * @param {object} image 
+	 */
+	function preloadImage(image) {
+		
+		var src = image.dataset.src;
+
+		if (!src) {
+
+			return;
+		}
+
+		return fetchImage(src).then(function () {
+
+			applyImage(image, src);
+		});
+	}
+
+	/**
+	 * Load all of the images immediately
+	 * @param {array} images 
+	 */
+	function loadImagesImmediately(images) {
+		for(var i = 0; i< images.length; i++){
+			return preloadImage(images[i]);
+		}
+		// Array.from(images).forEach(function (image) {
+		// 	return preloadImage(image);
+		// });
+	}
+
+	/**
+	 * Disconnect the observer
+	 */
+	function disconnect() {
+		if (!observer) {
+			return;
+		}
+
+		observer.disconnect();
+	}
+
+	/**
+	 * On intersection
+	 * @param {array} entries 
+	 */
+	function onIntersection(entries) {
+		// Disconnect if we've already loaded all of the images
+		if (imageCount === 0) {
+			observer.disconnect();
+		}
+
+		// Loop through the entries
+
+		entries.forEach(function (entry) {
+			// Are we in viewport?
+			if (entry.intersectionRatio > 0) {
+				imageCount--;
+
+				// Stop watching and load the image
+				observer.unobserve(entry.target);
+				preloadImage(entry.target);
+			}
+		});
+	}
+
+	/**
+	 * Apply the image
+	 * @param {object} img 
+	 * @param {string} src 
+	 */
+	function applyImage(img, src) {
+		// Prevent this from being lazy loaded a second time.
+		img.classList.add('js-image-handled');
+		if(img.classList.contains('bg')){
+
+			img.style.backgroundImage = "url("+src+")";
+		}else{
+			img.src = src;
+
+		}
+		img.classList.add('fade-in');
+	}	
+}
+(function () {
+	if ( typeof NodeList.prototype.forEach === "function" ) return false;
+	NodeList.prototype.forEach = Array.prototype.forEach;
+})();
 function Parallax($parallaxes) {
 	$(window).on('scroll', function(){
 		var scrollTop = $(window).scrollTop(),
-				bSH = conf.body.scrollHeight,
+				bSH = conf.body[0].scrollHeight,
 				$prlx, $wrapper, wrapperRect, wrapperOffset, wrapperMargin,
 				speed, direction, y, scrollHeight, scrollPosition, axis,
 				data = {}, topBorder;
@@ -295,25 +436,30 @@ function Parallax($parallaxes) {
 			$wrapper = $prlx.parent();
 
 			wrapperRect = $wrapper[0].getBoundingClientRect();
-			speed = parseInt($prlx.data('speed'), 10) / 109 || 0.10;
+			speed = parseInt($prlx.data('speed'), 10) / 109 || 0.08;
 			direction = parseInt($prlx.data('direction'), 10) || 1;
 			wrapperOffset = $wrapper.offset().top;
-
 			wrapperMargin = ($(window).height() - wrapperRect.height) / 2;
 
-			if (0 > wrapperMargin && (scrollTop + wrapperRect.top) <= topBorder.innerHeight()) {
+			if (0 > wrapperMargin && (scrollTop + wrapperRect.top) <= topBorder.outerHeight()) {
 				wrapperMargin = 0;
 			}
 
-			y = Math.round((wrapperRect.top - wrapperMargin) * speed) * direction;
-
+			var realDirection = direction;
+			if(direction == 2){
+				realDirection = -1;
+			}
+			y = Math.round((wrapperRect.top - wrapperMargin) * speed) * realDirection;
+			// console.log(realDirection)
 			if (scrollTop === 0) {
-				y = 0;
+				if(direction == 2){
+					y = 0;
+				}
 			} else {
 				scrollHeight = bSH;
 				scrollPosition = $(window).height() + scrollTop;
 				if (
-					scrollHeight - wrapperOffset - $wrapper.innerHeight() <= 2 &&
+					scrollHeight - wrapperOffset - $wrapper.outerHeight() <= 2 &&
 					(scrollHeight - scrollPosition) / scrollHeight === 0
 					) {
 					y = 0;
@@ -345,3 +491,333 @@ function teamslider(){
 		})
 	});
 }
+function scrollAnimations(){
+	console.log('scrollAnimations init')
+	inView.offset({
+		top: 0,
+		bottom: 100,
+	});
+	inView.threshold(0.25);
+	var inimcont = document.querySelectorAll('.anim-cont');
+	inView('.anim-cont')
+		.on('enter', function(el){
+			if(!el.done) {
+				el.classList.add('active');
+			}
+		}).on('exit', function(el){
+			el.done = true;
+		});
+	inView('.projects-wrap')
+		.on('enter', function(el){
+			if(!el.done) {
+				el.classList.add('active');
+				setTimeout(function(){
+					tabs.init();
+				},300)
+			}
+		}).on('exit', function(el){
+			el.done = true;
+		});
+}
+
+function tabsanim(elem){
+	this.wrap = elem;
+	this.opts ={
+		act: 'active',
+		off: 'off',
+		timer: 4500,
+	};
+	this.current;
+	this.interval;
+	this.findElems();
+
+}
+tabsanim.prototype = {
+	findElems: function(){
+		this.triggers = this.wrap.querySelectorAll('.js-tabs-trigger');
+		this.conts = this.wrap.querySelectorAll('.js-tabs-item');
+		this.lines =  this.wrap.querySelectorAll('.tabs-item-line');
+		$(this.lines).css('transition-duration',this.opts.timer + 'ms')
+		this.iLen = this.triggers.length;
+		// if(this.triggers.length && this.conts.length) this.init()
+	},
+	init: function(){
+		var first = this.triggers[0];
+		this.current = first;
+		this.toggleTab(first);
+		this.initNext();
+		this.initClick();
+		this.wrap.classList.add('inited')
+	},
+	toggleTab: function(item){
+		var self = this;
+		$(this.triggers).removeClass(self.opts.act)
+		var id = parseInt(item.getAttribute('data-id'));
+		item.classList.add(self.opts.act);
+		$(this.conts).removeClass(self.opts.act)
+		self.conts.forEach(function(index,i){
+			if(self.conts[i].getAttribute('data-id')== id){
+				self.conts[i].classList.add(self.opts.act);
+			}
+		});	
+		// console.log(self.interval)
+		clearInterval(self.interval);
+		this.moveInterval();
+	},
+	initClick: function(){
+		var self = this;
+		self.triggers.forEach(function(i,index){
+			self.triggers[index].addEventListener('click',function(){
+				var _ = this;
+				if(!_.classList.contains(self.opts.act) && !_.classList.contains(self.opts.off)) {
+					self.toggleTab(_);
+					self.preventClick();
+					self.current = _;
+				}
+			});
+		})
+	},
+	preventClick: function(){
+		var self = this;
+		self.triggers.forEach(function(index,i){
+			self.triggers[i].classList.add('off');
+			setTimeout(function(){
+				self.triggers[i].classList.remove('off');
+			},800);
+		})
+	},
+	initNext: function(){
+		var self = this;
+		this.triggersArray = Array.prototype.slice.apply(this.triggers);
+		// var curInd = this.triggersArray.indexOf(this.current);
+		// setTimeout(function(){
+		// console.log(curInd)
+			self.moveInterval();
+		// },self.opts.timer)
+
+	},
+	moveInterval: function(){
+		var self = this;
+		clearTimeout(self.interval)
+		self.interval = setTimeout(function(){
+			curInd = self.triggersArray.indexOf(self.current);
+			if(curInd < self.iLen -1){
+				self.current = self.triggers[curInd + 1];
+				self.toggleTab(self.current);
+				
+			}else{
+				self.current = self.triggers[0];
+				self.toggleTab(self.current);
+			}
+		},self.opts.timer)
+	},
+};
+function slided(elem){
+	this.wrap = $(elem);
+
+	this.opts = {
+		act: 'active',
+		slide: '.carousel_layout-item',
+		vsisibliSlides: ':nth-child(-n+3)',
+		layout: '.carousel_layout',
+		btn: '.carousel_navi',
+		btnspin: 'spin',
+	};
+
+	this.findElems();
+}
+slided.prototype = {
+	findElems: function(){
+		var self = this;
+
+		this.wrap.each(function(){
+			var _ = $(this);
+				_.slides = _.find(self.opts.slide);
+				_.btn = 	_.find(self.opts.btn);
+				if(_.slides.length === 1) _.btn.hide();
+			self.initialize(_,_.slides,_.btn)
+		});
+	},
+	initialize: function(wrap,slides,button){
+
+		TweenLite.set(slides.not(this.opts.vsisibliSlides), {
+			autoAlpha: 0
+		});
+		var active = slides.filter('.active');
+		var tl = new TimelineLite();
+			tl
+				.set(active, {x: '0', transformOrigin:"left 50%"})
+				.set(active.next(), {x: '-3%', scaleX:0.92, scaleY:0.92, transformOrigin:"left 50%"})
+				.set(active.next().next(), {x: '-5%', scaleX:0.85, scaleY:0.85, transformOrigin:"left 50%"})
+				.set(active.next().next().next(), {x: '-5%', scaleX:0.85, scaleY:0.85,  transformOrigin:"left 50%"})
+		this.initclick(wrap,button);
+	},
+	initclick: function(wrap,button){
+		var self = this;
+		button.on('click',function(){
+			var _ = $(this);
+			if(_.hasClass('animate')) return false;
+			_.addClass('animate');
+			_.addClass('spin');
+			setTimeout(function(){
+				 _.removeClass('spin');
+			}, 600);
+			var active = wrap.find('.active'),
+				slides = wrap.find(self.opts.slide),
+				next = active.next(),
+				next2 = next.next(),
+				next3 = next2.next();
+			self.refreshSlide(wrap,button,active, next, next2, next3);
+
+		});
+	},
+	refreshSlide: function(wrap,button,active, next, next2, next3){
+		var self = this;
+		var tl = new TimelineLite({
+			onComplete: function(){
+				var act = wrap.find('.active');
+				self.circleSlide(wrap,act,button, next, next2, next3);
+				}
+			});
+		tl
+			.set(active, {x: '0', autoAlpha: 1, scaleX: 1, scaleY: 1, className: '-=active', zIndex: 3})
+			.set(next, {x: '-3%', scaleX: 0.92, scaleY: 0.92, className: '+=active', zIndex: 2})
+			.set(next2, {x: '-5%', scaleX: 0.85, scaleY: 0.85, zIndex: 1})
+			.set(next3, {autoAlpha: 0, x: '-5%', scaleX:0.85, scaleY:0.85, transformOrigin:"left 50%", zIndex: 0})
+
+			.to(active, 1, {x: '0', autoAlpha: 0, scaleX: 1.1, scaleY: 1.1, ease:Power3.easeInOut}, 0)
+			.to(next, 1, {x: '+=3%', scaleX: 1, scaleY: 1, ease:Power3.easeInOut}, 0)
+			.to(next2, 1, {x: '+=2%', scaleX: 0.92, scaleY: 0.92, ease:Power3.easeInOut}, 0)
+			.to(next3, 1, {autoAlpha: 1, ease:Power3.easeInOut}, 0)		
+	},
+	circleSlide: function(wrap,active,button, next, next2, next3){
+		var self = this;
+		var slides = wrap.find(self.opts.slide);
+		var act = active,
+			buff,
+			parent = act.parent(),
+			tl = new TimelineLite();
+		act.prev().detach().appendTo(parent);
+		if( slides.length === 2 ) {
+			tl
+				.set(slides, {x: '0', transformOrigin:"left 50%",zIndex: 3})
+				.set(slides.next(), {x: '-3%', scaleX:0.92, scaleY:0.92, transformOrigin:"left 50%", zIndex: 1})
+				.to(slides.next(), 0.2, {autoAlpha: 1, ease:Power3.easeInOut}, 0)
+
+		} else if( slides.length === 3 ) {
+			tl
+				.set(slides, {x: '0', transformOrigin:"left 50%", zIndex: 3})
+				.set(slides.next(), {x: '-3%', scaleX:0.92, scaleY:0.92, transformOrigin:"left 50%", zIndex: 2})
+				.set(slides.next().next(), {x: '-5%', scaleX: 0.85, scaleY: 0.85, zIndex: 1})
+				.to(slides.next(), 0.2, {autoAlpha: 1, ease:Power3.easeInOut}, 0)
+		} else {
+			tl
+				.set(slides.last(), {x: '-5%', scaleX:0.85, scaleY:0.85, transformOrigin:"left 50%", zIndex: 0})
+		}
+		button.removeClass('animate');
+	},
+};
+
+var debounce = function(t, e, n) {
+	var o;
+	return function() {
+		var i = this
+		  , a = arguments
+		  , s = function() {
+			o = null,
+			n || t.apply(i, a)
+		}
+		  , r = n && !o;
+		clearTimeout(o),
+		o = setTimeout(s, e),
+		r && t.apply(i, a)
+	}
+};
+
+var BarbaWitget = {
+	init: function(){
+		var scope = this;
+
+		Barba.Pjax.start();
+
+		Barba.Pjax.getTransition = function(){
+			return scope.MovePage;
+		};
+		Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container) {
+			scrollAnimations();
+			if($('.js-parallax').length) {
+				Parallax($('.js-parallax'));
+			}
+		}); 
+		Barba.Dispatcher.on('transitionCompleted', function(currentStatus, prevStatus) {
+			lazyImage();
+		});        
+	},
+	MovePage: Barba.BaseTransition.extend({
+		start: function(){
+			Promise
+				.all([this.newContainerLoading, this.fadeOut()])
+				.then(this.fadeIn.bind(this));
+		},
+		fadeOut: function(){
+			var deferred = Barba.Utils.deferred();
+
+			return $(this.oldContainer).animate({
+				opacity: 0
+			}, 500).promise();
+		},
+		fadeIn: function(){
+			var _this = this;
+			var $el = $(this.newContainer);
+			$(window).scrollTop(0,0)
+			$(this.oldContainer).hide();
+			$(this.newContainer).hide();
+			this.newContainer.style.visibility = 'visible';
+
+			$el.fadeIn({
+				duration: 500,
+				complete: function(){
+					 _this.done();
+				}
+			});
+		}
+	})
+};
+// Barba.Dispatcher.on('transitionCompleted', function(currentStatus, oldStatus, container) {
+
+// });
+var IndexPage = Barba.BaseView.extend({
+	namespace: "index",
+	onEnter: function(){
+		promoslider();
+		var tab = document.querySelector('.js-tabs-cont');
+		tabs = new tabsanim(tab);
+		teamslider();
+		
+	},
+	onEnterCompleted: function(){
+	},
+	onLeaveComplete: function(){
+		delete tabs
+	}
+});
+
+var Production = Barba.BaseView.extend({
+	namespace: "Production",
+	onEnter: function(){
+		var sliders = document.querySelectorAll('.carousel_layout-container');
+		sliders = new slided(sliders);
+	},
+	onEnterCompleted: function(){
+		console.log("onEnterCompleted");
+	},
+	onLeaveComplete: function(){
+		console.log("onLeaveComplete");
+	}
+});
+
+
+IndexPage.init();
+Production.init();
+BarbaWitget.init();
+

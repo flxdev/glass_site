@@ -23,7 +23,7 @@ block content
 													//- .promo-slider-item-bg
 													.promo-slider-item-content
 														//- .promo-slider-item-content-inner
-														.cont-inner.js-parallax(data-direction='-1')
+														.cont-inner.js-parallax(data-direction='2')
 																.cont-left
 																	.text Helsinger, Denmark
 																	.title.h1.white Danish
@@ -43,7 +43,7 @@ block content
 													//- .promo-slider-item-bg
 													.promo-slider-item-content
 														//- .promo-slider-item-content-inner
-														.cont-inner.js-parallax(data-direction='-1')
+														.cont-inner.js-parallax(data-direction='2')
 																.cont-left
 																	.text Minsk, Belarus
 																	.title.h1.white RRB
@@ -61,7 +61,7 @@ block content
 									a(href="#").btn.js-promo-link
 										span Show project
 
-						.block.margin
+						.block.margin.anim-cont
 							.row.gray.align-stretch
 								.columns.large-6
 									a(href="#").block-image
@@ -75,22 +75,32 @@ block content
 								.columns.large-6
 									.block-text
 										.col
-											+content('About company','Since 2001, GLASSBEL is a leading glass processing company focusing on architectural and interior glass markets','Company')
-						.block.margin
+											+content('About company','Since 2001, GLASSBEL is a leading glass processing company focusing on architectural and interior glass markets','Company','/production.html')
+						.block.margin.anim-cont
 							.row
 								.columns
-									.projects-wrap
+									.projects-wrap.js-tabs-cont
 										.projects-bgwrap
 											.projects-bgwrap-inner
-												.projects-bgitem.active
+												.projects-bgitem.js-tabs-item(data-id='1')
 													img.js-parallax(src="img/next/l1.jpg", alt="")
-												.projects-bgitem
+												.projects-bgitem.js-tabs-item(data-id='2')
+													img.js-parallax(src="img/index/index2.jpg", alt="")
+												.projects-bgitem.js-tabs-item(data-id='3')
+													img.js-parallax(src="img/index/index3.jpg", alt="")
+												.projects-bgitem.js-tabs-item(data-id='4')
 													img.js-parallax(src="img/next/l1.jpg", alt="")
-												.projects-bgitem
+												.projects-bgitem.js-tabs-item(data-id='5')
+													img.js-parallax(src="img/index/index2.jpg", alt="")
+												.projects-bgitem.js-tabs-item(data-id='6')
 													img.js-parallax(src="img/next/l1.jpg", alt="")
-												.projects-bgitem
+												.projects-bgitem.js-tabs-item(data-id='7')
 													img.js-parallax(src="img/next/l1.jpg", alt="")
-												.projects-bgitem
+												.projects-bgitem.js-tabs-item(data-id='8')
+													img.js-parallax(src="img/next/l1.jpg", alt="")
+												.projects-bgitem.js-tabs-item(data-id='9')
+													img.js-parallax(src="img/next/l1.jpg", alt="")
+												.projects-bgitem.js-tabs-item(data-id='10')
 													img.js-parallax(src="img/next/l1.jpg", alt="")
 										.projects-content
 											.row.align-justify
@@ -101,6 +111,33 @@ block content
 															|projects
 														.text.primary.white In 29 countries around the world our glass decorates buildings of the most famous companies
 												.columns
+													.tabs-wrap
+														.tabs-inner
+															mixin tabsItem(text,id)
+																.tabs-item(data-id=id).js-tabs-trigger
+																	.tabs-item-container
+																		.tabs-item-line
+																		.tabs-item-inner.text.white
+																			.tabs-item-block(data-text=text) #{text}
+															.tabs-col
+																+tabsItem('Opera House','1')
+																+tabsItem('Norman Fostere','2')
+																+tabsItem('Z-towers','3')
+																+tabsItem('Skywalks','4')
+																+tabsItem('Norman Foster Office','5')
+															.tabs-col
+																+tabsItem('Tate Modern','6')
+																+tabsItem('Skywalks','7')
+																+tabsItem('Swan','8')
+																+tabsItem('Tate Modern','9')
+																+tabsItem('Opera House','10')
+															+nextw('Projects')
+												script.
+													//- document.addEventListener("DOMContentLoaded", function() {
+														//- var tab = document.querySelector('.js-tabs-cont');
+														//- tabs = new tabsanim(tab);
+													//- });
+
 
 
 
@@ -130,17 +167,17 @@ block content
 												+comp('6')
 												+comp('7')
 
-						.block.margin
+						.block.margin.anim-cont
 							.row.align-stretch
 								.columns.large-5
 									.block-text
 										.col
-											+content('Production','All flat glass processing methods. JUMBO size and over','Production')
+											+content('Production','All flat glass processing methods. JUMBO size and over','Production','/production.html')
 								.columns.large-7
 									a(href="#").block-image.block-image-parallax
 										.block-image-inner.js-parallax
 											img(src="img/index/index2.jpg", alt="")
-						.block.margin
+						.block.margin.anim-cont
 							.row.align-stretch
 								.columns.large-7
 									a(href="#").block-image.block-image-parallax
@@ -149,18 +186,18 @@ block content
 								.columns.large-5
 									.block-text
 										.col
-											+content('Service','24/7 Operations. Customer Service Company','Service')
-						.block.margin
+											+content('Service','24/7 Operations. Customer Service Company','Service','/production.html')
+						.block.margin.anim-cont
 							.row.align-stretch
 								.columns.large-5
 									.block-text
 										.col
-											+content('Packing & logistics','By sea, by air, by land. Customized packing and logistics solutions','Logistics')
+											+content('Packing & logistics','By sea, by air, by land. Customized packing and logistics solutions','Logistics','/production.html')
 								.columns.large-7
 									a(href="#").block-image.block-image-parallax
 										.block-image-inner.js-parallax
 											img(src="img/index/index4.jpg", alt="")
-					.block.margin.gray.team
+					.block.margin.gray.team.anim-cont
 						.row.align-justify
 							.columns.large-5
 								.title.h3 Meet the team
@@ -194,7 +231,7 @@ block content
 											//- .team-slide
 											//- 	+team('4','Tomas Lenkimas','Head of R&D dept')
 
-					.block.margin
+					.block.margin.anim-cont
 						.row
 							.columns
 								.quality-wrap
@@ -214,7 +251,7 @@ block content
 									+partner('5')
 									+partner('3')
 	
-			+nextl('About company','l1','/about.html')
+					+nextl('About company','l1','/about.html')
 			.footer
 				.row
 					.columns.large-4.small-3

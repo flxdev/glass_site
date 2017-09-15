@@ -36,6 +36,15 @@ body
 			padding-right: 40px
 .root__frame
 	+rem(padding-top,80px)
+#barba-wrapper
+	min-height: 100vh
+// 	position: relative
+// 	z-index: 1
+// 	pointer-events: none 
+// 	&>div
+// 		pointer-events: all
+// 		background-color: color(white)
+
 .logo
 	display: block
 	max-width: 316px
@@ -251,9 +260,13 @@ a.title
 					color: color(black)
 					.down-arr
 						transform: translateY(3px)
-
-
-
+	&.white
+		.text,svg
+			color: color(white)
+		&:hover
+			+notouch
+				.text,svg
+					color: color(white)
 
 .mob-menu
 	position: fixed
@@ -588,7 +601,13 @@ a.title
 .footer
 	background-color: #1e232a
 	+rem(padding,80px 0 90px)
-
+	// position: fixed
+	// bottom: 0
+	// left: 0
+	// width: 100%
+	// z-index: 0
+	// contain: paint
+	// backface-visibility: hidden
 	.row 
 		// +rem(max-width,1280px)
 		.columns
@@ -810,7 +829,7 @@ a.title
 		bottom: -23%
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 44.8%
+		padding-bottom: 48%
 .cont 
 	&-inner
 		display: flex 
@@ -848,6 +867,8 @@ a.title
 			&>div,&>a
 				background-color: color(gray)
 .block
+	position: relative
+	z-index: 0
 	&.gray
 		background-color: color(gray)
 	&-text
@@ -899,7 +920,7 @@ a.title
 			// overflow: hidden
 			.block-image-inner
 				margin-top: -10%
-				+r(1380)
+				+r(1450)
 					margin-top: -5%
 .quality
 	&-title
@@ -1051,61 +1072,53 @@ a.title
 			z-index: 1
 	&-slider
 		+rem(padding-left,60px)
+	&.active
+		.team-slide
+			&.slick-active
+				.team-item,.team-item-text
+					transform: none
+					opacity: 1
+				.team-item-who
+					transform: translateX(25px)
+					&:before
+						transform: none
+				.team-item
 
-		// +rem(margin-right,-40px)
+					&:nth-child(1)
+						transition-delay: .1s
+						.team-item-text
+							transition-delay: .3s
+						.team-item-who
+							transition-delay: .6s
+							&:before
+								transition-delay: .6s
+					&:nth-child(2)
+						transition-delay: .2s
+						.team-item-text
+							transition-delay: .4s
+						.team-item-who
+							transition-delay: .7s
+							&:before
+								transition-delay: .7s
+					&:nth-child(3)
+						transition-delay: .3s
+						.team-item-text
+							transition-delay: .5s
+						.team-item-who
+							transition-delay: .8s
+							&:before
+								transition-delay: .8s
+					&:nth-child(4)
+						transition-delay: .4s
+						.team-item-text
+							transition-delay: .6s
+						.team-item-who
+							transition-delay: .9s
+							&:before
+								transition-delay: .9s
 	&-slide
 		font-size: 0
-		// .slick-track
-		// 	display: flex
-		// 	flex-flow: row nowrap
-		// 	align-items: stretch
-		// .slick-list
-		// 	+rem(padding-top,100px)
-		// 	+rem(margin-top,-100px)
-		// 	+rem(padding-bottom,100px)
-		// 	+rem(margin-bottom,-100px)
-		&.slick-active
-			.team-item,.team-item-text
-				transform: none
-				opacity: 1
-			.team-item-who
-				transform: translateX(25px)
-				&:before
-					transform: none
-			.team-item
-
-				&:nth-child(1)
-					transition-delay: .1s
-					.team-item-text
-						transition-delay: .3s
-					.team-item-who
-						transition-delay: .6s
-						&:before
-							transition-delay: .6s
-				&:nth-child(2)
-					transition-delay: .2s
-					.team-item-text
-						transition-delay: .4s
-					.team-item-who
-						transition-delay: .7s
-						&:before
-							transition-delay: .7s
-				&:nth-child(3)
-					transition-delay: .3s
-					.team-item-text
-						transition-delay: .5s
-					.team-item-who
-						transition-delay: .8s
-						&:before
-							transition-delay: .8s
-				&:nth-child(4)
-					transition-delay: .4s
-					.team-item-text
-						transition-delay: .6s
-					.team-item-who
-						transition-delay: .9s
-						&:before
-							transition-delay: .9s
+		
 	&-item 
 		+rem(padding-left,30px)
 		// height: 100%
@@ -1174,6 +1187,7 @@ a.title
 			white-space: nowrap
 		&-element
 			display: inline-block
+			will-change: transform
 			animation: logos 60s linear infinite;
 			
 	&-item
@@ -1202,10 +1216,15 @@ a.title
 		position: relative
 		+rem(padding-top,80px)
 		+rem(padding-bottom,50px)
+		&.inited
+			.projects-bgwrap-inner:before
+				opacity: .4
+				transition-delay: .1s
 	&-bgwrap
 		+coverdiv
 		z-index: -1
 		overflow: hidden
+		contain: paint
 		&-inner
 			width: 100%
 			height: 100%
@@ -1213,32 +1232,334 @@ a.title
 			&:before
 				content: ''
 				+coverdiv
-				z-index: 1
-				opacity: .4
+				z-index: 2
+				opacity: 0
 				background-image: linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+				+tr(opacity .3s)
 
 	&-bgitem
 		+coverdiv
-		transition: transform .5s, opacity .3s
+		transition: transform .7s, opacity .7s
 		opacity: 0
 		transform: scale(1.1)
 		margin-top: -5%
+		z-index: 0
+		transition-delay: .55s
+		// backface-visibility: hidden
 		img 
 			width: 100%
+			// contain: paint
 		&.active 
 			opacity: 1
 			transform: none
+			z-index: 1
+			transition-delay: 0s
+
 	&-content
 		.row
 			+padlr(40px)
+			+rem(min-height,391px)
 		.title
 			+rem(margin-bottom,50px)
-			+rem(margin-bottom,50px)
+			+rm(1450)
+				+rem(margin-bottom,100px)
 		.text.primary
 			+rem(max-width,360px)
+			+rm(1450)
+				+rem(margin-top,100px)
+.tabs
+	&-wrap
+		text-align: right
+	
+	&-inner
+		font-size: 0
+		+rem(width,555px)
+		display: inline-block
+		text-align: left
+		.link-arr
+			+rem(margin-left,35px)
+			+rem(margin-top,55px)
+
+	&-col 
+		width: 50%
+		display: inline-block
+		vertical-align: top
+		
+	&-item 
+		display: block
+		// width: 50%
+		+rem(padding-left,35px)
+		text-align: left
+		+rem(margin-bottom,22px)
+		cursor: pointer
+		// +rem(padding-top,10px)
+		position: relative
+		// &.off
+		// 	pointer-events: none
+		&:hover
+			.tabs-item-block
+				color: #b8c4da
+			.tabs-item-container:before
+				opacity: .5
+		&.active
+			pointer-events: none
+			.tabs-item-block
+				transform: translateY(-50%)	
+			.tabs-item-line
+				left: 0
+				right: 0
+				width: 100%
+		&:not(.active)
+			.tabs-item-line
+				transition-duration: .4s !important
+		&-container
+			position: relative
+			overflow: hidden
+			&:before
+				content: ''
+				display: inline-block
+				height: 1px
+				background-color: color(white)
+				opacity: .2
+				position: absolute
+				left: 0
+				right: 0
+				top: 0
+				+tr(opacity .4s)
+		&-inner
+			position: relative
+			overflow: hidden
+			+rem(height,32px)
+			font-weight: 400
+			+rem(margin-top,7px)
+			font-family: $r
+		&-block 
+			color: #9aa1af
+			+rem(line-height,35px)
+			transition: color .4s, transform .4s
+			will-change: transform
+			&:after
+				display: block
+				content: attr(data-text)
+				color: color(white)
+		&-line
+			height: 1px
+			+tr(width .3s linear)
+			background-color: color(white)
+			// width: 0
+			backface-visibility: hidden
+			will-change: width
+			position: absolute
+			top: 0
+			width: 0;
+			left: auto;
+			right: 0;
+
+
+.anim-cont
+	transition: opacity .4s 
+	&:not(.active)
+		opacity: 0
+.js-image
+	+tr(opacity .3s)
+	opacity: 0
+	&.fade-in 
+		opacity: 1
+
+.bread
+	&-cont
+		+rem(margin-bottom,22px)
+	&-item
+		+rem(font-size,18px)
+		color: color(white)
+		+tr(opacity .3s)
+		opacity: .5
+		line-height: 1.444;
+		&:hover
+			+notouch
+				opacity: 1
+				&:after
+					opacity: .5
+		&:active
+			 opacity: 1
+			 &:after
+				opacity: .5
+		&:after
+			content: '/'
+			display: inline-block
+			+padlr(10px)
+			+tr(opacity .3s)
+.page-head
+	width: 100%
+	position: relative
+	overflow: hidden
+	.block-bg-inner
+		&:before
+			display: none
+	&.head-big
+		.page-head-inner
+			+rem(padding-top,252px)
+		.page-head-gradient
+			height: 140%
+	&-inner
+		position: relative
+		z-index: 0
+		+padlr(40px)
+		+rem(padding-bottom,60px)
+		+rem(padding-top,75px)
+	&-gradient
+		display: block
+		+coverdiv
+		height: 170%
+		z-index: 1
+		top: -10%
+		background-image: linear-gradient( 0deg, rgba(23,62,126,0.90196) 0%, rgba(23,62,126,0.2) 100%);
+	&-content
+		position: relative
+		z-index: 2
+		
+.prod 
+	&-elem 
+		+rm(1201)
+			+rem(padding-left,40px)
+		+rem(padding-top,60px)
+		+rem(padding-bottom,55px)
+		overflow: hidden
+		&:not(:last-child)
+			border-bottom: 1px solid #cccccc
+		&:not(:hover)
+			.carousel_layout-container
+				+rem(padding-left,70px)
+				.carousel_navi
+					transform: translateX(100%) rotate(-300deg)
+					opacity: 0
+					transition-delay: .4s
+				.carousel_layout-item
+					&:nth-child(2)
+						.carousel_layout-bg
+							transform: translateX(4%)
+					&:nth-child(3)
+						.carousel_layout-bg
+							transform: translateX(6%)
+		.title
+			+rem(margin-bottom,30px)
+			+rem(margin-top,20px)
+		.text 
+			+rem(max-width,270px)
+		.link-arr
+			+rem(margin-top,40px)
+			+r(1450)
+				+rem(margin-bottom,50px)
+		.columns
+			.col 
+				justify-content: space-around
+			&:nth-child(2)
+				padding-right: 0!important
+				// +rem(padding-left,90px)
+			&:nth-child(1)
+				+rem(padding-right,50px)
+				+rem(padding-bottom,20px)
+	&-image 
+		position: relative
+		height: 0
+		padding-bottom: 68%
+		+rem(margin-left,-15px)
+		display: block
+		
+		&-inner
+			+coverdiv
+			+cover
+		&-outer
+			display: block
+	&-eleminner
+		.columns
+			&:nth-child(2)
+				padding-right: 0!important
+		&-images
+			img
+				display: block
+				max-width: 100%
+				&:not(:last-child)
+					+rem(margin-bottom,45px)
 
 			
 
-				
-
-
+.carousel_layout-container
+	display: block;
+	position: relative;
+	z-index: 1;
+	+rem(margin-left,-105px)
+	+rem(padding-left,100px)
+	+tr(padding-left .35s ease-in)
+	will-change: padding-left
+	.carousel_layout
+		// width: 955px;
+		// height: 675px;
+		+rem(height, 450px);
+		margin: 0 auto;
+		position: relative;
+		width: 100%
+		perspective: 1200px;
+		display: block
+		+r(1370)
+			+rem(height, 420px);
+		+r(1100)
+			+rem(height, 350px);
+		.carousel_layout-item
+			position: absolute;
+			top: 0;
+			left: 0;
+			// width: 1180px;
+			width: 100%
+			height: 100%;
+			overflow: hidden;
+			perspective-origin: 0 0;
+			will-change: transform
+			&:first-of-type
+				z-index: 3;
+			&:nth-of-type(2)
+				z-index: 2
+			&:nth-of-type(3)
+				z-index: 1
+			.carousel_layout-bg
+				width: 100%;
+				height: 100%;
+				position: relative;
+				overflow: hidden;
+				+tr(transform .35s ease-in)
+				img
+					position: absolute;
+					display: block;
+					// top: -10%;
+					width: 100%;
+					user-select: none;
+	.carousel_navi
+		position: absolute;
+		top: 38%;
+		+rem(left,-30px)
+		z-index: 10;
+		+rem(padding,50px 40px 50px 30px)
+		transition: transform .4s, opacity .25s
+		cursor: pointer
+		transition-delay: 0s
+		+nosel
+		&:hover
+			.icon
+				transform: rotate(10deg);
+				transition: transform .3s;	
+		&.spin
+			.carousel_layout-next
+				transform: rotate(360deg);
+				transition: transform .4s;
+		.carousel_layout-next
+			+rem(width, 25px);
+			+rem(height, 25px);
+			.icon
+				display: block;
+				width: 100%;
+				height: 100%;
+				svg
+					+rem(width, 25px);
+					+rem(height, 25px);
+			&:hover
+				cursor: pointer;
