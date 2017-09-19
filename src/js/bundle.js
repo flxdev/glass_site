@@ -5,3 +5,4 @@
 //=include lib/in-view.min.js
 //=include lib/barba.min.js
 //=include lib/TimelineLite.min.js
+//=include lib/sticky-kit.min.js

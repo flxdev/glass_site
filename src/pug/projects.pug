@@ -1,0 +1,172 @@
+extends _layout
+
+block title
+	title Projects
+	- var _name = "Projects"
+	- var currentPage = "Projects"
+block content
+	.site__loader
+	.root__wrapper
+		.site__overlay
+		.root__frame
+			include includes/_header	
+			#barba-wrapper
+				.barba-container(data-namespace="Projects")
+					.wrapper-frame
+						.block
+							.row
+								.columns
+									// второй тип шапки, структура немного другая
+									.page-head.page-head-gray
+										.block-bg
+										.page-head-inner
+											.page-head-content
+												.bread-cont
+													a(href="/").bread-item Home
+												.row
+													.columns
+														.title.h2 Projects
+													.columns
+						.block
+							.row
+								.columns
+									.projects
+										.projects-inner
+											mixin project(place,name,text,image)
+												a(href="/projects-inner.html").project-item
+													.project-item-bg
+														.project-item-bg-inner
+															img.js-image(data-src='img/projects/'+image+'.jpg')
+													.project-item-content
+														.project-item-content-inner
+															.project-item-arrow
+																.icon
+																	+icon('arr')
+															.project-item-content-head
+																.text #{place}
+																.text.primary.white #{name}
+															.project-item-content-text
+																.text #{text}
+
+											//тут без вариантов раздельные контейнеры для больших и маленьких карточек
+											//хотя в жопу
+											.row.projects-row.big
+												.columns.large-6
+													+project('Dubai, UAE','Opera House',' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!','1')
+												.columns.large-6
+													+project('Riga, Latvia','Z-Towers',' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!','2')
+												.columns.large-6
+													+project('Minsk, Belarus','RRB Bank',' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!','3')
+												.columns.large-6
+													+project('London, UK','Tate Moderns',' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis !','4')
+												.columns.large-6
+													+project('Riyadh, Saudi Arabia','Skywalks',' Lorem ipsum dolor sit amet, ditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!','5')
+												.columns.large-6
+													+project('Helsinger, Denmark','Danish Maritime Museum','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','6')
+												hr.divider
+												.columns.large-4
+													+project('','Opera House, Dubai, UAE','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated in we rwerew wer werwe werwereww eewew ewrwerewr ewrewner pane.','7')
+												.columns.large-4
+													+project('','Norman Foster Office, London, UK','Danish Maritime Museum features doublwe rwerew ewr e glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lamiwe werewrwew werwerwnated inner pane.','8')
+												.columns.large-4
+													+project('','Skywalks, Riyadh, Saudi Arabia','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian w erewrewr werw rwand laminated inner pane.','9')
+												.columns.large-4
+													+project('','Tate Modern, London, UK','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lamina wrewrew wer wrwer wted inner pane.','10')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulateew rwerewr we werwed glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','11')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lam werwr we rwerwinated inner pane.','12')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminat werwerweed inner pane.','13')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','14')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','15')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','16')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
+												.columns.large-4
+													+project('','Opera House, Dubai, UAE','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','7')
+												.columns.large-4
+													+project('','Norman Foster Office, London, UK','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','8')
+												.columns.large-4
+													+project('','Skywalks, Riyadh, Saudi Arabia','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','9')
+												.columns.large-4
+													+project('','Tate Modern, London, UK','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','10')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','11')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','12')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','13')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','14')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','15')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','16')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
+												.columns.large-4
+													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
+						+nextl('Products', 'l2','/products.html')
+			.footer
+				.row
+					.columns.large-4.small-3
+						.col
+							.text.gray.copywrap
+								span.copy © 
+								span.copytext UAB «GLASSBEL BALTIC» 
+									br
+									|2001–2017
+							.text.gray.to-top.js-scroll-to Go to top
+					.columns.large-2
+						.col
+							.footer-nav
+								ul
+									li
+										a(href="#").footer-nav-link.text Home
+									li
+										a(href="#").footer-nav-link.text Company
+									li
+										a(href="#").footer-nav-link.text Products
+									li
+										a(href="#").footer-nav-link.text Projects
+									li
+										a(href="#").footer-nav-link.text Service
+									li
+										a(href="#").footer-nav-link.text News
+									li
+										a(href="#").footer-nav-link.text Contacts
+					.columns.large-2
+						.col
+							.block-contact
+								.text.gray Office
+								.text 11, Pramones str., lt-94102 Klaipeda, Lithuania
+								.text 
+									a(href="tel:+37046416380") +370 (46) 416 380 
+								.text
+									a(href="mailto:solutions@glassbel.com") solutions@glassbel.com
+							.soc-wrapper
+								.soc-wrapper-inner
+									a(href="#").soc-item.fb
+									a(href="#").soc-item.you
+									a(href="#").soc-item.in
+									a(href="#").soc-item.tw
+
+
+					.columns.large-4
+						.col
+							.block-contact
+								.text.gray Francis Ellington UK Glassbel Representative
+								.text Skype: 
+									a(href="skype:francisellington?add") francisellington
+								.text
+									a(href="tel:+4407814781711") +44 (0)7814 781711 
+								.text
+									a(href="mailto:f.ellington@glassbel.com") f.ellington@glassbel.com	
+
+					

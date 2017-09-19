@@ -1,0 +1,138 @@
+extends _layout
+
+block title
+	title Production
+	- var _name = "Production"
+	- var currentPage = "Production"
+block content
+	.site__loader
+	.root__wrapper
+		.site__overlay
+		.root__frame
+			include includes/_header	
+			#barba-wrapper
+				.barba-container(data-namespace="Production-inner")
+					.prod-nav.block.js-prod-head
+						.prod-nav-inner.brand
+							.row
+								.columns
+									a(href="#").prod-nav-link
+										.prod-nav-link-icon
+											.icon
+												+icon('slidearr')
+										.prod-nav-link-text opera house
+								.columns.large-5
+									.text.primary.white Danish Maritime Museum
+								.columns
+									a(href="#").prod-nav-link
+										.prod-nav-link-icon
+											.icon
+												+icon('slidearr')
+										.prod-nav-link-text norman foster office
+					.wrapper-frame
+						.block
+							.row
+								.columns
+									// модификатор head-big
+									.page-head.head-big
+										.block-bg
+											.block-bg-inner
+												img.js-parallax(src="img/head/h3.jpg")
+										.page-head-inner
+											.page-head-gradient.js-parallax(data-speed="25")
+											.page-head-content
+												.bread-cont
+													a(href="/").bread-item Home
+													a(href="/projects.html").bread-item Projects 
+												.title.h2.white DANISH MARITIME MUSEUM
+						.block.margin
+							.row
+								.columns
+									.prod-eleminner
+										.row
+											.columns.large-5
+												.col(data-sticky-parent).js-stick-parent
+													.prod-eleminner-content.content.js-stick
+														.prod-eleminner-content-inner
+															.text.primary Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane. Extra large sizes of units up to 1.9m*5.0m. All glass panes are heat treated, silicone sealed, and used for structurally glazed system.
+															hr
+															.text.gray Features
+															p Location: Helsinger, Denmark
+															p Volume: 1119 sqm.
+															p Architect: BIG
+															p Awards: Project of the year;
+															hr
+															.text.gray Project description
+															p The basis of Danish Maritime Museum construction in Helsinger became old dock, which was formerly used for maintenance and repair of vessels.
+															p Dock serves as a courtyard of the museum, and construction of metal and glass complements it. Outside dock is fenced with glass parapet in order not to lose the impression of depth. Moreover, there are shop windows and three two-level bridges, the lower part of which is glazed.
+															p The design concept of Museum was to transform it to a courtyard by bringing more daylight and air to this project. The impressive dimensions of insulated glass units result in a perfect and clear panoramic view.
+															p Glassbel solution allowed realizing a unique architectural design concept of the Maritime Museum. The project is a reflection of the history and modernity dialogue that shows the versatility of glass application.
+														+nextb('Back to Projects','/projects.html')
+
+											.columns.large-7
+												.prod-eleminner-images
+													img(src="img/prodinner/prodinner3.jpg", alt="")
+													img(src="img/prodinner/prodinner4.jpg", alt="")
+													img(src="img/prodinner/prodinner5.jpg", alt="")
+													img(src="img/prodinner/prodinner6.jpg", alt="")
+													img(src="img/prodinner/prodinner7.jpg", alt="")
+
+
+
+			.footer
+				.row
+					.columns.large-4.small-3
+						.col
+							.text.gray.copywrap
+								span.copy © 
+								span.copytext UAB «GLASSBEL BALTIC» 
+									br
+									|2001–2017
+							.text.gray.to-top.js-scroll-to Go to top
+					.columns.large-2
+						.col
+							.footer-nav
+								ul
+									li
+										a(href="#").footer-nav-link.text Home
+									li
+										a(href="#").footer-nav-link.text Company
+									li
+										a(href="#").footer-nav-link.text Products
+									li
+										a(href="#").footer-nav-link.text Projects
+									li
+										a(href="#").footer-nav-link.text Service
+									li
+										a(href="#").footer-nav-link.text News
+									li
+										a(href="#").footer-nav-link.text Contacts
+					.columns.large-2
+						.col
+							.block-contact
+								.text.gray Office
+								.text 11, Pramones str., lt-94102 Klaipeda, Lithuania
+								.text 
+									a(href="tel:+37046416380") +370 (46) 416 380 
+								.text
+									a(href="mailto:solutions@glassbel.com") solutions@glassbel.com
+							.soc-wrapper
+								.soc-wrapper-inner
+									a(href="#").soc-item.fb
+									a(href="#").soc-item.you
+									a(href="#").soc-item.in
+									a(href="#").soc-item.tw
+
+
+					.columns.large-4
+						.col
+							.block-contact
+								.text.gray Francis Ellington UK Glassbel Representative
+								.text Skype: 
+									a(href="skype:francisellington?add") francisellington
+								.text
+									a(href="tel:+4407814781711") +44 (0)7814 781711 
+								.text
+									a(href="mailto:f.ellington@glassbel.com") f.ellington@glassbel.com	
+
+					

@@ -43,18 +43,18 @@ mixin navi(name, link)
                                                     use(xlink:href="#icon-close" xmlns:xlink="http://www.w3.org/1999/xlink")
                     .mob-menu-nav
                         .nav-item(onclick='')
-                            a(href="#").nav-link.js-nav.active
+                            a(href="/").nav-link.js-nav(class={active:'index' === currentPage})
                                 .title.h2 Home
                         .nav-item(onclick='')
-                            a(href="#").nav-link.js-nav
+                            a(href="#").nav-link.js-nav(class={active: currentPage === 'Company'})
                                 .title.h2 Company
                             .nav-item-sublinks
                                 a(href="#").nav-sublink About us 
-                                a(href="#").nav-sublink Production
+                                a(href="/production.html" class={active: 'Production' === currentPage }).nav-sublink Production
                                 a(href="#").nav-sublink R&D
                                 a(href="#").nav-sublink Accreditations
                         .nav-item(onclick='')
-                            a(href="#").nav-link.js-nav
+                            a(href="/projects.html").nav-link.js-nav(class={active: currentPage === 'Projects'})
                                 .title.h2 Projects
                             .nav-item-sublinks
                                 a(href="#").nav-sublink Brand products 
@@ -62,7 +62,7 @@ mixin navi(name, link)
                                 a(href="#").nav-sublink Insulated glass 
                                 a(href="#").nav-sublink Bonding
                         .nav-item(onclick='')
-                            a(href="#").nav-link.js-nav
+                            a(href="#").nav-link.js-nav(class={active: currentPage === 'Products'})
                                 .title.h2 Products
                             .nav-item-sublinks
                                 a(href="#").nav-sublink Brand products 

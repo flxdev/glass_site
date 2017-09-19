@@ -1,20 +1,29 @@
 mixin icon(name)
-  svg(class="icon icon-" + name)
+  svg(class="icon-" + name)
     use(xlink:href="#"+ name)
 mixin next(text)
   a(href="#").link-arr
     .link-arr-text
       .text #{text}
     .link-arr-icon
-      +icon('arr')
+      .icon
+        +icon('arr')
 mixin nextw(text)
   a(href="#").link-arr.white
     .link-arr-text
       .text #{text}
     .link-arr-icon
-      +icon('arr')
+      .icon
+        +icon('arr')
+mixin nextb(text,link)
+  a(href=link).link-arr.right
+    .link-arr-icon
+      .icon
+        +icon('arr')
+    .link-arr-text
+      .text #{text}
 mixin down(text,val)
-  a(href="#").link-arr.down
+  a(href='#').link-arr.down
     .link-arr-icon
       svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 42 41.9')
         path(d='M40 24.9v14c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1v-14H0v14c0 1.7 1.3 3 3 3h36c1.7 0 3-1.3 3-3v-14h-2z', fill='currentcolor')

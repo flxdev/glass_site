@@ -411,6 +411,10 @@ function lazyImage(){
 
 		}
 		img.classList.add('fade-in');
+		console.log(conf.stick.length)
+		if(conf.stick.length){
+			conf.stick.trigger("sticky_kit:recalc");
+		}
 	}	
 }
 (function () {
@@ -654,22 +658,31 @@ slided.prototype = {
 	},
 	initclick: function(wrap,button){
 		var self = this;
-		button.on('click',function(){
+		button.on('click',function(e){
+			e.preventDefault();
 			var _ = $(this);
 			if(_.hasClass('animate')) return false;
 			_.addClass('animate');
 			_.addClass('spin');
 			setTimeout(function(){
 				 _.removeClass('spin');
-			}, 600);
+			}, 500);
 			var active = wrap.find('.active'),
 				slides = wrap.find(self.opts.slide),
 				next = active.next(),
 				next2 = next.next(),
 				next3 = next2.next();
 			self.refreshSlide(wrap,button,active, next, next2, next3);
-
 		});
+		var blk = wrap.closest('.prod-elem');
+		blk.on('mouseenter',checkHover);
+		function checkHover(){
+			var _ = $(this);
+			_.addClass('hovered');
+			_.on('mouseleave',function(){
+				_.removeClass('hovered');
+			});
+		};
 	},
 	refreshSlide: function(wrap,button,active, next, next2, next3){
 		var self = this;
@@ -717,7 +730,28 @@ slided.prototype = {
 		button.removeClass('animate');
 	},
 };
-
+function stickinit() {
+	setTimeout(function() {
+		$('.js-stick').stick_in_parent({
+			parent: ".js-stick-parent",
+			offset_top: 140,
+		});
+	}, 1)
+}
+function ProdinnerHead(){
+	var target = $('.js-prod-head');
+	var vh = $('.page-head').height();
+	function Chechscroll(){
+		var sTop = $(window).scrollTop();
+		console.log(sTop,vh)
+		if(sTop > vh){
+			target.addClass('active');
+		}else{
+			target.removeClass('active');
+		}
+	}
+	$(window).on('scroll',debounce(Chechscroll))
+}
 var debounce = function(t, e, n) {
 	var o;
 	return function() {
@@ -815,9 +849,34 @@ var Production = Barba.BaseView.extend({
 		console.log("onLeaveComplete");
 	}
 });
+var ProductionInner = Barba.BaseView.extend({
+	namespace: "Production-inner",
+	onEnter: function(){
+		ProdinnerHead();
+		stickinit();
+	},
+	onEnterCompleted: function(){
 
+	},
+	onLeaveComplete: function(){
+		conf.stick.trigger("sticky_kit:detach");
+	}
+});
+var PojectsPage = Barba.BaseView.extend({
+	namespace: "Projects",
+	onEnter: function(){
+		// alert();
+	},
+	onEnterCompleted: function(){
 
+	},
+	onLeaveComplete: function(){
+	}
+});
 IndexPage.init();
 Production.init();
+ProductionInner.init();
+PojectsPage.init();
 BarbaWitget.init();
+
 

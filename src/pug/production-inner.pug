@@ -12,6 +12,23 @@ block content
 			include includes/_header	
 			#barba-wrapper
 				.barba-container(data-namespace="Production-inner")
+					.prod-nav.block.js-prod-head
+						.prod-nav-inner.brand
+							.row
+								.columns
+									a(href="/production-inner-test2.html").prod-nav-link
+										.prod-nav-link-icon
+											.icon
+												+icon('slidearr')
+										.prod-nav-link-text HEAT SOAK TEST
+								.columns.large-5
+									.text.primary.white Glass cutting
+								.columns
+									a(href="/production-inner-test.html").prod-nav-link
+										.prod-nav-link-icon
+											.icon
+												+icon('slidearr')
+										.prod-nav-link-text Edge Treatment: Grinding, Polishing, Bevelling
 					.wrapper-frame
 						.block
 							.row
@@ -35,11 +52,24 @@ block content
 									.prod-eleminner
 										.row
 											.columns.large-5
+												.col(data-sticky-parent).js-stick-parent
+													.prod-eleminner-content.content.js-stick
+														.prod-eleminner-content-inner
+															.text.primary 3300 mm x 7200 mm 129,9" x 283,5"
+															hr
+															.text.gray Features
+															p Glasses Up To 19 mm
+															p Cnc Decoating
+															p Cutting Of Complex Shapes
+															p Top Quality Decoating
+															p Heat Treatment Of Magnetron, Pyrolytic, And Double Sided Coatings
+														+nextb('Back to Production','/production.html')
+
 											.columns.large-7
 												.prod-eleminner-images
-													img.js-image(data-src="img/index/index2.jpg", alt="")
-													img.js-image(data-src="img/prodinner/prodinner.jpg", alt="")
-													img.js-image(data-src="img/prodinner/prodinner2.jpg", alt="")
+													img(src="img/index/index2.jpg", alt="")
+													img(src="img/prodinner/prodinner.jpg", alt="")
+													img(src="img/prodinner/prodinner2.jpg", alt="")
 
 
 

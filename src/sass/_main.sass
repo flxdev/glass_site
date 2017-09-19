@@ -62,6 +62,20 @@ body
 		display: flex
 		height: 100%
 	.navi__item
+		&.active
+			pointer-events: none
+			position: relative
+			&:before
+				content: ''
+				display: inline-block
+				height: 3.5px 
+				position: absolute
+				left: -10px
+				top: 0
+				right: -10px
+				background-color: color(brand)
+			a
+				color: color(menuh)
 		&:not(:last-child)
 			margin-right: 7.3%
 		a
@@ -107,6 +121,8 @@ a.title
 		color: color(black)
 		&.white
 			color: color(white)
+	&.gray 
+		color: color(textgray)
 .white
 	color: color(white)
 .menu-burger
@@ -267,6 +283,13 @@ a.title
 			+notouch
 				.text,svg
 					color: color(white)
+	&.right 
+		.link-arr-icon
+			.icon
+				transform: scale(-1,1)	
+		.link-arr-text
+			+rem(padding-left,25px)
+			padding-right: 0	
 
 .mob-menu
 	position: fixed
@@ -364,6 +387,7 @@ a.title
 			+rem(letter-spacing,.3px)
 			opacity: 1
 			transform: none
+
 .nav
 	&-item
 		&-sublinks
@@ -425,6 +449,9 @@ a.title
 		opacity: 0
 		&:hover
 			color: color(brand)
+		&.active 
+			color: color(brand)	
+			pointer-events: none
 
 
 
@@ -829,7 +856,7 @@ a.title
 		bottom: -23%
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 48%
+		padding-bottom: 45%
 .cont 
 	&-inner
 		display: flex 
@@ -1400,7 +1427,20 @@ a.title
 		.page-head-inner
 			+rem(padding-top,252px)
 		.page-head-gradient
-			height: 140%
+			height: 160%
+	&.page-head-gray
+		.block-bg
+			background-color: color(gray)
+		.bread-item
+			color: color(brand)
+			&:after
+				color: color(brand)
+			// &:hover
+			// 	color: color(black)
+			// 	&:after
+			// 		color: color(brand)
+		.columns
+			padding: 0
 	&-inner
 		position: relative
 		z-index: 0
@@ -1427,13 +1467,13 @@ a.title
 		overflow: hidden
 		&:not(:last-child)
 			border-bottom: 1px solid #cccccc
-		&:not(:hover)
+		&:not(.hovered)
 			.carousel_layout-container
 				+rem(padding-left,70px)
 				.carousel_navi
 					transform: translateX(100%) rotate(-300deg)
 					opacity: 0
-					transition-delay: .4s
+					transition-delay: .5s
 				.carousel_layout-item
 					&:nth-child(2)
 						.carousel_layout-bg
@@ -1481,6 +1521,39 @@ a.title
 				max-width: 100%
 				&:not(:last-child)
 					+rem(margin-bottom,45px)
+		&-content
+			+rem(padding-bottom,50px)
+			+rem(padding-top,30px)
+			+rem(padding-left,40px)
+			+rem(padding-right,30px)
+			backface-visibility: hidden
+			transform: translateX(0)
+			+r(1300)
+				padding-left: 0	
+			&-inner
+				+rem(max-width,392px)
+				+rem(margin-bottom,60px)
+
+.content 
+	p 
+		+rem(font-size,18px)
+		line-height: 1.444;
+		color: color(textblk)
+		+rem(margin,13px 0)
+	.primary
+		+rem(padding-bottom,10px)
+		// border-bottom: 1px solid color(grayl)
+		// +rem(padding-right,45px)
+		+rem(margin-bottom,40px)
+	hr 
+		display: block
+		height: 1px
+		border: 1px solid
+		border-color: color(grayl)
+		border-bottom-color: transparent
+		+rem(margin,30px 0 42px)
+	.text.gray 
+		+rem(margin,30px 0 )
 
 			
 
@@ -1536,9 +1609,9 @@ a.title
 	.carousel_navi
 		position: absolute;
 		top: 38%;
-		+rem(left,-30px)
+		+rem(left,-40px)
 		z-index: 10;
-		+rem(padding,50px 40px 50px 30px)
+		+rem(padding,50px 40px 50px 40px)
 		transition: transform .4s, opacity .25s
 		cursor: pointer
 		transition-delay: 0s
@@ -1563,3 +1636,224 @@ a.title
 					+rem(height, 25px);
 			&:hover
 				cursor: pointer;
+
+.prod-nav
+	position: fixed
+	left: 0
+	+rem(top,80px)
+	z-index: 8
+	width: 100%
+	visibility: hidden
+	&.active 
+		.prod-nav-inner 
+			transform: none
+	&-inner 
+		+tr(transform .35s ease-in-out)
+		transform: translateY(-100%)
+		visibility: visible
+		will-change: transform
+	.columns
+		&:nth-child(1)
+			text-align: left
+			.prod-nav-link-text
+				+rem(padding-left, 70px)
+			.prod-nav-link
+				&:hover 
+					.prod-nav-link-text
+						transform: translateX(-40px)
+		&:nth-child(2)
+			+vertical
+			.text 
+				display: inline-block
+				vertical-align: middle
+				
+		&:nth-child(3)
+			text-align: right
+			.icon
+				transform: scale(-1,1)
+			.prod-nav-link
+				justify-content: flex-end
+				&:hover 
+					.prod-nav-link-text
+						transform: translateX(40px)
+				.prod-nav-link-text
+					order: 1
+					+rem(padding-right, 70px)
+				.prod-nav-link-icon
+					order: 2
+
+	&-link
+		display: inline-block
+		font-size: 0
+		color: color(white)
+		display: flex
+		flex-flow: row nowrap
+		align-items: center
+		+rem(height,60px)
+		.icon 
+			+rem(width,12px)
+			+rem(height,21px)
+			svg 
+				width: 100%
+				height: 100%
+		&-text 
+			+rem(font-size,12px)
+			text-transform: uppercase;
+			line-height: 1.667;
+			+tr(transform .3s)
+
+.brand 
+	background-color: color(brand)
+.projects
+	// +padlr(0px)
+	.columns,.columns:first-child,.columns:last-child
+		+padlr(5px)
+		+rem(padding-top,4.5px)
+		+rem(padding-bottom,4.5px)
+		&.large-4
+			.project-item-arrow
+				display: none
+			.text.primary
+				+rem(font-size,18px)
+			.project-item-bg-inner
+				&:before
+					background: color(brand)
+					transition-delay: .3s
+			.project-item-content-text
+				+cut(5)
+				+r(1300)
+					.text 
+						+rem(font-size,14px)
+	&-inner
+		+rem(margin,20px -5px 55px)
+.project
+	&-item
+		display: block
+		// height: 0
+		position: relative
+		padding-bottom: 67%
+		.text 
+			color: color(white) !important
+		&:hover
+			.project-item-content-head
+				bottom: 100%
+				transform: translateY(100%)
+				transition-delay: .2s
+			.project-item-content-text
+				opacity: 1
+				transform: none
+				transition-delay: .4s
+			.project-item-arrow
+				.icon 
+					transform: none
+					opacity: 1
+					transition-delay: .4s
+			.project-item-bg-inner
+				transform: scale(1.098)
+				&:after
+					opacity: 0
+				&:before
+					opacity: 1
+			.project-item-bg-image
+				
+				zoom: 110%
+				transition-delay: .2s
+			.project-item-bg-inner
+
+
+					// transition-delay: .2s
+		&-bg 
+			+coverdiv
+			z-index: -1
+			overflow: hidden
+			background-color: color(gray)
+			font-size: 0
+			contain: paint
+			img
+				width: auto
+				height: 100%
+				display: block
+				margin: 0 auto
+				z-index: -1
+				backface-visibility: hidden
+				-webkit-font-smoothing: subpixel-antialiased;
+			&-inner
+				width: 100%
+				height: 100%
+				position: relative
+
+				+tr(transform 1s)
+				&:after
+					content: ''
+					+coverdiv
+					z-index: 1
+					+tr(opacity .5s)
+					opacity: 1
+					background-image: linear-gradient( 0deg, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.2) 15%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 100%);
+				&:before
+					content: ''
+					display: block
+					+coverdiv
+					width: 100%
+					+tr(opacity .5s)
+					opacity: 0
+					height: 100%
+					background-image: linear-gradient( 0deg, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.5) 48%, rgba(0,0,0,0.5) 61%, rgba(0,0,0,0.45) 100%);
+		&-arrow
+			+rem(max-width,27px)
+			color: color(white)
+			margin-left: auto
+			transform: translateY(-13px)
+			+r(1300)
+				transform: none
+			.icon,svg
+				width: 100%
+			svg 
+				+rem(height,28px)
+			.icon 
+				transition: transform .2s, opacity .2s
+				transition-timing-function: ease-in-out
+				transform: translateX(-40px)
+				opacity: 0
+		&-content
+			+coverdiv
+			z-index: 0
+			+rem(padding,44px 39px 30px)
+			overflow: hidden
+			+r(1300)
+				+rem(padding,30px 31px 22px)	
+			&-inner
+				position: relative
+				width: 100%
+				height: 100%
+
+			&-head
+				position: absolute
+				bottom: 0
+				left: 0
+				transition: transform .5s, bottom .5s
+				transition-timing-function: cubic-bezier(0.89, 0.02, 0.66, 0.76);
+				.text
+					&:not(.primary)
+						opacity: .3
+						+rem(margin-bottom,3px)
+			&-text 
+				position: absolute
+				bottom: 0
+				left: 0
+				+cut(3)
+				transition: transform .45s, opacity .45s
+				transform: translateY(50px)
+				opacity: 0
+				+rem(padding-right,35px)
+				+rem(padding-bottom,2px)
+				.text 
+					opacity: .7
+.divider
+	display: block !important
+	width: 100% !important
+	border: none
+	height: 0
+	margin: 0
+	+rem(margin-bottom,12px)
+		
