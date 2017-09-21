@@ -50,8 +50,21 @@ mixin nextl(text, img,url)
               .title.h3.white #{text}
             .block-link-arrow-arrow
                +icon('arr')
-
-
+mixin project(place,name,text,image)
+  a(href="/projects-inner.html").project-item
+    .project-item-bg
+      .project-item-bg-inner
+        img.js-image(data-src='img/projects/'+image+'.jpg')
+    .project-item-content
+      .project-item-content-inner
+        .project-item-arrow
+          .icon
+            +icon('arr')
+        .project-item-content-head
+          .text #{place}
+          .text.primary.white #{name}
+        .project-item-content-text
+          .text #{text}
 
 
 

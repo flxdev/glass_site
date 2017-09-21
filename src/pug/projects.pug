@@ -13,44 +13,83 @@ block content
 			#barba-wrapper
 				.barba-container(data-namespace="Projects")
 					.wrapper-frame
-						.block
+						.block.page-head-block
 							.row
 								.columns
 									// второй тип шапки, структура немного другая
 									.page-head.page-head-gray
 										.block-bg
 										.page-head-inner
-											.page-head-content
+											.page-head-content.js-parallax(data-direction="-1")
 												.bread-cont
 													a(href="/").bread-item Home
 												.row
 													.columns
 														.title.h2 Projects
 													.columns
+														.filter-wrapper
+															//select component
+															.filter-selects
+																.sort_wrapper
+																	.sort-select.js-select-item
+																		.sort-select-title
+																			.text.gray By type
+																			.text.js-trgt-text All projects
+																		.dropdown-target
+																			.dropdown-inner
+																				.dropdown-content
+																					.sort-select-item.active
+																						a(href="#",data-text="All projects")
+																							span.text All projects
+																					.sort-select-item
+																						a(href="#",data-text="Commercial")
+																							span.text Commercial
+																					.sort-select-item
+																						a(href="#",data-text="Culture and education")
+																							span.text Culture and education 
+																					.sort-select-item
+																						a(href="#",data-text="Residental and hotels")
+																							span.text Residental and hotels  
+																					.sort-select-item
+																						a(href="#",data-text="Sports facil ities")
+																							span.text Sports facil ities
+																					.sort-select-item
+																						a(href="#",data-text="Transport and infrastructure")
+																							span.text Transport and infrastructure
+																.sort_wrapper
+																	.sort-select.js-select-item
+																		.sort-select-title
+																			.text.gray By specification
+																			.text.js-trgt-text All projects
+																		.dropdown-target
+																			.dropdown-inner
+																				.dropdown-content
+																					.sort-select-item.active
+																						a(href="#",data-text="All projects")
+																							span.text All projects
+																					.sort-select-item
+																						a(href="#",data-text="Commercial")
+																							span.text Commercial
+																					.sort-select-item
+																						a(href="#",data-text="Culture and education")
+																							span.text Culture and education 
+																					.sort-select-item
+																						a(href="#",data-text="Residental and hotels")
+																							span.text Residental and hotels  
+																					.sort-select-item
+																						a(href="#",data-text="Sports facil ities")
+																							span.text Sports facil ities
+																					.sort-select-item
+																						a(href="#",data-text="Transport and infrastructure")
+																							span.text Transport and infrastructure
 						.block
 							.row
 								.columns
 									.projects
 										.projects-inner
-											mixin project(place,name,text,image)
-												a(href="/projects-inner.html").project-item
-													.project-item-bg
-														.project-item-bg-inner
-															img.js-image(data-src='img/projects/'+image+'.jpg')
-													.project-item-content
-														.project-item-content-inner
-															.project-item-arrow
-																.icon
-																	+icon('arr')
-															.project-item-content-head
-																.text #{place}
-																.text.primary.white #{name}
-															.project-item-content-text
-																.text #{text}
-
 											//тут без вариантов раздельные контейнеры для больших и маленьких карточек
 											//хотя в жопу
-											.row.projects-row.big
+											.row.projects-row
 												.columns.large-6
 													+project('Dubai, UAE','Opera House',' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!','1')
 												.columns.large-6
@@ -112,6 +151,7 @@ block content
 													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
 												.columns.large-4
 													+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
+
 						+nextl('Products', 'l2','/products.html')
 			.footer
 				.row

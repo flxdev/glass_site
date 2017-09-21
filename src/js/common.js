@@ -411,10 +411,6 @@ function lazyImage(){
 
 		}
 		img.classList.add('fade-in');
-		console.log(conf.stick.length)
-		if(conf.stick.length){
-			conf.stick.trigger("sticky_kit:recalc");
-		}
 	}	
 }
 (function () {
@@ -495,8 +491,27 @@ function teamslider(){
 		})
 	});
 }
+function moreslider(){
+	$(".js-moreslider").each(function() {
+		var _this = $(this),
+				parent = _this.parent();
+		_this.slick({
+			accessibility: false,
+			arrows: true,
+			dots: false,
+			fade: false,
+			touchMove: false,
+			dragable: false,
+			infinite: false,
+			slidesToShow: _this.hasClass('w3') ? 3: 2,
+			slidesToScroll: 1,
+			appendArrows: parent.find('.slider-nav'),
+			prevArrow: conf.arnprevcontent,
+			nextArrow: conf.arnextcontent,
+		})
+	});
+}
 function scrollAnimations(){
-	console.log('scrollAnimations init')
 	inView.offset({
 		top: 0,
 		bottom: 100,
@@ -559,7 +574,7 @@ tabsanim.prototype = {
 		var id = parseInt(item.getAttribute('data-id'));
 		item.classList.add(self.opts.act);
 		$(this.conts).removeClass(self.opts.act)
-		self.conts.forEach(function(index,i){
+		this.conts.forEach(function(index,i){
 			if(self.conts[i].getAttribute('data-id')== id){
 				self.conts[i].classList.add(self.opts.act);
 			}
@@ -570,7 +585,7 @@ tabsanim.prototype = {
 	},
 	initClick: function(){
 		var self = this;
-		self.triggers.forEach(function(i,index){
+		this.triggers.forEach(function(i,index){
 			self.triggers[index].addEventListener('click',function(){
 				var _ = this;
 				if(!_.classList.contains(self.opts.act) && !_.classList.contains(self.opts.off)) {
@@ -583,7 +598,7 @@ tabsanim.prototype = {
 	},
 	preventClick: function(){
 		var self = this;
-		self.triggers.forEach(function(index,i){
+		this.triggers.forEach(function(index,i){
 			self.triggers[i].classList.add('off');
 			setTimeout(function(){
 				self.triggers[i].classList.remove('off');
@@ -596,14 +611,14 @@ tabsanim.prototype = {
 		// var curInd = this.triggersArray.indexOf(this.current);
 		// setTimeout(function(){
 		// console.log(curInd)
-			self.moveInterval();
+			this.moveInterval();
 		// },self.opts.timer)
 
 	},
 	moveInterval: function(){
 		var self = this;
 		clearTimeout(self.interval)
-		self.interval = setTimeout(function(){
+		this.interval = setTimeout(function(){
 			curInd = self.triggersArray.indexOf(self.current);
 			if(curInd < self.iLen -1){
 				self.current = self.triggers[curInd + 1];
@@ -743,7 +758,6 @@ function ProdinnerHead(){
 	var vh = $('.page-head').height();
 	function Chechscroll(){
 		var sTop = $(window).scrollTop();
-		console.log(sTop,vh)
 		if(sTop > vh){
 			target.addClass('active');
 		}else{
@@ -767,7 +781,48 @@ var debounce = function(t, e, n) {
 		r && t.apply(i, a)
 	}
 };
+var sortItem = function(){
+	var trigger = $('.js-select-item');
+	trigger.each(function(){
+		var _ = $(this),
+			textCont = _.find('.js-trgt-text'),
+			target = _.parent().find('.dropdown-target'),
+			item = target.find('.sort-select-item a');
+		_.on('click', function(){
+			trigger.removeClass('active')
+			_.toggleClass('active');
 
+		});
+		item.each(function(){
+			var _ = $(this);
+			_.on('click',function(e){
+				var altLext = _.data('text');
+				textCont.text(altLext);
+				_.parent().addClass('active').siblings().removeClass('active');
+				e.preventDefault();
+				setTimeout(function(){
+					target.removeClass('active');
+					trigger.removeClass('active');
+				},300);
+			});
+		})
+		$(document).on('mouseup', function (e){
+			if (!trigger.is(e.target)
+				&& trigger.has(e.target).length === 0) {
+				trigger.removeClass('active');
+			}
+		});
+	});
+};
+function returnStickPos(stickEl,stickpos){
+	var ws = $(window).scrollTop();
+	var stickPosVal = parseInt(stickpos);
+	var wh = stickEl.height();
+	if(stickEl.css('position') == 'fixed'){
+		stickEl.css('top',ws + stickPosVal - 80)
+	}
+
+}
 var BarbaWitget = {
 	init: function(){
 		var scope = this;
@@ -778,14 +833,16 @@ var BarbaWitget = {
 			return scope.MovePage;
 		};
 		Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container) {
-			scrollAnimations();
-			if($('.js-parallax').length) {
-				Parallax($('.js-parallax'));
-			}
+
 		}); 
 		Barba.Dispatcher.on('transitionCompleted', function(currentStatus, prevStatus) {
 			lazyImage();
+			if($('.js-parallax').length) {
+				Parallax($('.js-parallax'));
+			}
+			scrollAnimations();
 		});        
+
 	},
 	MovePage: Barba.BaseTransition.extend({
 		start: function(){
@@ -797,23 +854,40 @@ var BarbaWitget = {
 			var deferred = Barba.Utils.deferred();
 
 			return $(this.oldContainer).animate({
-				opacity: 0
-			}, 500).promise();
+				opacity: 0,
+			}, 1000).addClass('moveDown').promise();
+			// return TweenMax.to($(this.oldContainer), 1, {
+			// 	x: 250;
+			// 	autoAlpha: 0,
+			// });
 		},
 		fadeIn: function(){
 			var _this = this;
 			var $el = $(this.newContainer);
-			$(window).scrollTop(0,0)
-			$(this.oldContainer).hide();
-			$(this.newContainer).hide();
-			this.newContainer.style.visibility = 'visible';
 
-			$el.fadeIn({
-				duration: 500,
-				complete: function(){
-					 _this.done();
-				}
-			});
+			$(this.oldContainer).hide();
+			// $el.hide();
+			// $el.style.visibility = 'hidden';
+			$el.addClass('moveUp');
+			TweenMax.set($el, {
+                // autoAlpha: 0,
+                y: 200,
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                right: 0
+            });
+            $(window).scrollTop(0,0)
+            // $el.style.visibility = 'visible';
+            TweenMax.to($el, .5, {
+                y: 0,
+                autoAlpha: 1,
+                onComplete: function () {
+                    TweenMax.set($el, {clearProps: 'all'});
+                    $el.removeClass('moveUp');
+                    _this.done();
+                }
+            });
 		}
 	})
 };
@@ -844,6 +918,7 @@ var Production = Barba.BaseView.extend({
 	},
 	onEnterCompleted: function(){
 		console.log("onEnterCompleted");
+
 	},
 	onLeaveComplete: function(){
 		console.log("onLeaveComplete");
@@ -852,14 +927,23 @@ var Production = Barba.BaseView.extend({
 var ProductionInner = Barba.BaseView.extend({
 	namespace: "Production-inner",
 	onEnter: function(){
-		ProdinnerHead();
-		stickinit();
-	},
-	onEnterCompleted: function(){
 
 	},
+	onLeave: function(){
+		var stickEl = $('.js-stick');
+		var stickPos = stickEl.css('top');
+		if(stickPos != 'auto'){
+			returnStickPos(stickEl,stickPos)
+		}else{
+		}
+	},
+	onEnterCompleted: function(){
+		ProdinnerHead();
+		stickinit();
+		moreslider();
+	},
 	onLeaveComplete: function(){
-		conf.stick.trigger("sticky_kit:detach");
+		// conf.stick.trigger("sticky_kit:detach");
 	}
 });
 var PojectsPage = Barba.BaseView.extend({
@@ -868,11 +952,12 @@ var PojectsPage = Barba.BaseView.extend({
 		// alert();
 	},
 	onEnterCompleted: function(){
-
+		sortItem();
 	},
 	onLeaveComplete: function(){
 	}
 });
+
 IndexPage.init();
 Production.init();
 ProductionInner.init();

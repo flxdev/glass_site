@@ -92,20 +92,66 @@
           <div id="barba-wrapper">
             <div class="barba-container" data-namespace="Projects">
               <div class="wrapper-frame">
-                <div class="block">
+                <div class="block page-head-block">
                   <div class="row">
                     <div class="columns">
                       <!-- второй тип шапки, структура немного другая-->
                       <div class="page-head page-head-gray">
                         <div class="block-bg"></div>
                         <div class="page-head-inner">
-                          <div class="page-head-content">
+                          <div class="page-head-content js-parallax" data-direction="-1">
                             <div class="bread-cont"><a class="bread-item" href="/">Home</a></div>
                             <div class="row">
                               <div class="columns">
                                 <div class="title h2">Projects</div>
                               </div>
-                              <div class="columns"></div>
+                              <div class="columns">
+                                <div class="filter-wrapper">
+                                  <!--select component-->
+                                  <div class="filter-selects">
+                                    <div class="sort_wrapper">
+                                      <div class="sort-select js-select-item">
+                                        <div class="sort-select-title">
+                                          <div class="text gray">By type</div>
+                                          <div class="text js-trgt-text">All projects</div>
+                                        </div>
+                                        <div class="dropdown-target">
+                                          <div class="dropdown-inner">
+                                            <div class="dropdown-content">
+                                              <div class="sort-select-item active"><a href="#" data-text="All projects"><span class="text">All projects</span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Commercial"><span class="text">Commercial</span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Culture and education"><span class="text">Culture and education </span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Residental and hotels"><span class="text">Residental and hotels  </span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Sports facil ities"><span class="text">Sports facil ities</span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Transport and infrastructure"><span class="text">Transport and infrastructure</span></a></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="sort_wrapper">
+                                      <div class="sort-select js-select-item">
+                                        <div class="sort-select-title">
+                                          <div class="text gray">By specification</div>
+                                          <div class="text js-trgt-text">All projects</div>
+                                        </div>
+                                        <div class="dropdown-target">
+                                          <div class="dropdown-inner">
+                                            <div class="dropdown-content">
+                                              <div class="sort-select-item active"><a href="#" data-text="All projects"><span class="text">All projects</span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Commercial"><span class="text">Commercial</span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Culture and education"><span class="text">Culture and education </span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Residental and hotels"><span class="text">Residental and hotels  </span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Sports facil ities"><span class="text">Sports facil ities</span></a></div>
+                                              <div class="sort-select-item"><a href="#" data-text="Transport and infrastructure"><span class="text">Transport and infrastructure</span></a></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -120,697 +166,697 @@
                         <div class="projects-inner">
                           <!--тут без вариантов раздельные контейнеры для больших и маленьких карточек-->
                           <!--хотя в жопу-->
-                          <div class="row projects-row big">
+                          <div class="row projects-row">
                             <div class="columns large-6"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/1.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text">Dubai, UAE</div>
-                                                                <div class="text primary white">Opera House</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/1.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text">Dubai, UAE</div>
+                                      <div class="text primary white">Opera House</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-6"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/2.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text">Riga, Latvia</div>
-                                                                <div class="text primary white">Z-Towers</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/2.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text">Riga, Latvia</div>
+                                      <div class="text primary white">Z-Towers</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-6"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/3.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text">Minsk, Belarus</div>
-                                                                <div class="text primary white">RRB Bank</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/3.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text">Minsk, Belarus</div>
+                                      <div class="text primary white">RRB Bank</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis possimus, porro expedita, illum, voluptatem cumque, ab blanditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-6"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/4.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text">London, UK</div>
-                                                                <div class="text primary white">Tate Moderns</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis !</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/4.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text">London, UK</div>
+                                      <div class="text primary white">Tate Moderns</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia similique quis !</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-6"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/5.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text">Riyadh, Saudi Arabia</div>
-                                                                <div class="text primary white">Skywalks</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text"> Lorem ipsum dolor sit amet, ditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/5.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text">Riyadh, Saudi Arabia</div>
+                                      <div class="text primary white">Skywalks</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text"> Lorem ipsum dolor sit amet, ditiis ut animi odit neque eligendi distinctio explicabo maiores molestiae accusamus sint!</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-6"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/6.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text">Helsinger, Denmark</div>
-                                                                <div class="text primary white">Danish Maritime Museum</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/6.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text">Helsinger, Denmark</div>
+                                      <div class="text primary white">Danish Maritime Museum</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <hr class="divider">
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/7.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Opera House, Dubai, UAE</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated in we rwerew wer werwe werwereww eewew ewrwerewr ewrewner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/7.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Opera House, Dubai, UAE</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated in we rwerew wer werwe werwereww eewew ewrwerewr ewrewner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/8.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Norman Foster Office, London, UK</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features doublwe rwerew ewr e glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lamiwe werewrwew werwerwnated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/8.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Norman Foster Office, London, UK</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features doublwe rwerew ewr e glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lamiwe werewrwew werwerwnated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/9.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Skywalks, Riyadh, Saudi Arabia</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian w erewrewr werw rwand laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/9.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Skywalks, Riyadh, Saudi Arabia</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian w erewrewr werw rwand laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/10.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Tate Modern, London, UK</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lamina wrewrew wer wrwer wted inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/10.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Tate Modern, London, UK</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lamina wrewrew wer wrwer wted inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/11.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulateew rwerewr we werwed glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/11.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulateew rwerewr we werwed glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/12.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lam werwr we rwerwinated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/12.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and lam werwr we rwerwinated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/13.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminat werwerweed inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/13.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminat werwerweed inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/14.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/14.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/15.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/15.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/16.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/16.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/7.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Opera House, Dubai, UAE</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/7.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Opera House, Dubai, UAE</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/8.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Norman Foster Office, London, UK</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/8.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Norman Foster Office, London, UK</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/9.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Skywalks, Riyadh, Saudi Arabia</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/9.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Skywalks, Riyadh, Saudi Arabia</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/10.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">Tate Modern, London, UK</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/10.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">Tate Modern, London, UK</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/11.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/11.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/12.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/12.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/13.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/13.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/14.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/14.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/15.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/15.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/16.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/16.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                             <div class="columns large-4"><a class="project-item" href="/projects-inner.html">
-                                                          <div class="project-item-bg">
-                                                            <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"></div>
-                                                          </div>
-                                                          <div class="project-item-content">
-                                                            <div class="project-item-content-inner">
-                                                              <div class="project-item-arrow">
-                                                                <div class="icon">
-                                                                  <svg class="icon-arr">
-                                                                    <use xlink:href="#arr"></use>
-                                                                  </svg>
-                                                                </div>
-                                                              </div>
-                                                              <div class="project-item-content-head">
-                                                                <div class="text"></div>
-                                                                <div class="text primary white">RRB Bank, Minsk, Belarus</div>
-                                                              </div>
-                                                              <div class="project-item-content-text">
-                                                                <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
-                                                              </div>
-                                                            </div>
-                                                          </div></a>
+                                <div class="project-item-bg">
+                                  <div class="project-item-bg-inner"><img class="js-image" data-src="img/projects/17.jpg"/></div>
+                                </div>
+                                <div class="project-item-content">
+                                  <div class="project-item-content-inner">
+                                    <div class="project-item-arrow">
+                                      <div class="icon">
+                                        <svg class="icon-arr">
+                                          <use xlink:href="#arr"></use>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                    <div class="project-item-content-head">
+                                      <div class="text"></div>
+                                      <div class="text primary white">RRB Bank, Minsk, Belarus</div>
+                                    </div>
+                                    <div class="project-item-content-text">
+                                      <div class="text">Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.</div>
+                                    </div>
+                                  </div>
+                                </div></a>
                             </div>
                           </div>
                         </div>

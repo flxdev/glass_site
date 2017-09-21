@@ -38,13 +38,27 @@ body
 	+rem(padding-top,80px)
 #barba-wrapper
 	min-height: 100vh
+	position: relative
 // 	position: relative
 // 	z-index: 1
 // 	pointer-events: none 
 // 	&>div
 // 		pointer-events: all
 // 		background-color: color(white)
+.barba-container
 
+	&.moveDown
+		transform: translateY(100px)
+		+tr(transform 1s ease-in-out)
+		.prod-nav
+			opacity: 0
+			// +tr(opacity .1s)
+	&.moveUp
+		backface-visibility: hidden
+		* 
+			pointer-events: none
+		.prod-nav
+			opacity: 0
 .logo
 	display: block
 	max-width: 316px
@@ -247,7 +261,7 @@ a.title
 	&-icon 
 		+rem(width,27px)
 		+rem(padding-top,1px)
-		+tr(transform .25s ease-in-out)
+		+tr(transform .25s cubic-bezier(0, 0, 0.1, 0.96))
 		svg
 			width: 100%
 			+rem(max-height,30px)
@@ -409,15 +423,15 @@ a.title
 				opacity: 1
 				transform: none
 				&:nth-child(1)
-					transition-delay:  0s, .2s
+					transition-delay:  0s, .1s
 				&:nth-child(2)
-					transition-delay:  0s, .4s
+					transition-delay:  0s, .2s
 				&:nth-child(3)
-					transition-delay:  0s, .6s
+					transition-delay:  0s, .3s
 				&:nth-child(4)
-					transition-delay:  0s, .8s
+					transition-delay:  0s, .4s
 				&:nth-child(5)
-					transition-delay:  0s, .9s
+					transition-delay:  0s, .5s
 	&-link
 		display: block
 		+nosel
@@ -678,7 +692,7 @@ a.title
 			&[href^="mailto:"],&[href^="skype:"]
 				color: color(white)
 				&:hover
-					color: color(brand)
+					color: #d8d8d8 
 .col 
 	display: flex 
 	flex-flow: column nowrap
@@ -706,7 +720,7 @@ a.title
 			+rem(max-width,250px)
 .promo-slider
 	position: relative
-	padding-bottom: 54%
+	padding-bottom: 51%
 	width: 100%
 	// contain: paint
 	// backface-visibility: hidden
@@ -723,7 +737,7 @@ a.title
 		width: 100%
 		height: 100%
 		position: relative
-		+tr(opacity .3s)
+		// +tr(opacity .3s)
 		will-change: transform, opacity
 		.slick-arrow
 			position: absolute
@@ -733,16 +747,37 @@ a.title
 			bottom: 0
 			opacity: 0
 			z-index: 2
-			cursor: pointer
+
 			&.slick-prev
 				left: 0
+				cursor: url(/img/slidearrw2.svg), auto
+				display: none
+				
 			&.slick-next
 				right: 0
+				cursor: url(/img/slidearrw2.svg), auto
+				width: 100%
 		.slick-list,.slick-track
 			width: 100%
 			height: 100%
 		&:not(.slick-initialized)
 			opacity: 0
+		&.slick-initialized
+			.promo-slider-item
+				&.slick-current
+					transition-delay: .3s!important
+					.img-wrap
+						opacity: 1
+						transform: translate3d(0,0,0)
+						transition-delay: 0s
+					.cont-right
+						opacity: 1
+						transform: translateY(0)
+						transition-delay: .8s
+					.cont-left
+						opacity: 1
+						transform: translate3d(0,0,0)
+						transition-delay: .8s
 	&-item
 		// &:nth-child(2)
 		// 	background-color: green
@@ -754,20 +789,7 @@ a.title
 		// contain: layout
 		&:not(.slick-current)
 			transition-delay: .5s!important
-		&.slick-current
-			transition-delay: .3s!important
-			.img-wrap
-				opacity: 1
-				transform: translate3d(0,0,0)
-				transition-delay: 0s
-			.cont-right
-				opacity: 1
-				transform: translateY(0)
-				transition-delay: .8s
-			.cont-left
-				opacity: 1
-				transform: translate3d(0,0,0)
-				transition-delay: .8s
+
 		&-inner
 			width: 100%
 			height: 100%
@@ -805,6 +827,8 @@ a.title
 			text-align: left
 			position: relative
 			z-index: 1
+			+r(1400)
+				padding-right: 12%
 			.cont-inner
 				height: 100%
 				position: relative
@@ -812,8 +836,13 @@ a.title
 				.title
 					position: relative
 					background: linear-gradient(to top, rgba(175,201,245,1) 0%,rgba(255,255,255,1) 25%,rgba(255,255,255,1) 100%);
+					background-size: 100% 150%
+					background-position: bottom center
 					-webkit-background-clip: text;
+					overflow: visible
 					-webkit-text-fill-color: transparent;
+					-webkit-font-smoothing: subpixel-antialiased
+
 					+r(1400)
 						+rem(font-size,110px)
 					&:before
@@ -849,14 +878,14 @@ a.title
 		bottom: -23%
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 31%
+		padding-bottom: 31.7%
 		
 .item2
 	.promo-slider-item-img
 		bottom: -23%
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 45%
+		padding-bottom: 45.3%
 .cont 
 	&-inner
 		display: flex 
@@ -866,9 +895,10 @@ a.title
 		align-items: flex-end
 	&-right
 		position: absolute
-		right: 0
+		// right: 0
 		+rem(top,70px)
-		+rem(max-width,260px)
+		+rem(max-width,265px)
+		+rem(right,-5px)
 		transition: opacity 1s, transform 1s
 		transform: translateY(-200px)
 		opacity: 0
@@ -961,6 +991,9 @@ a.title
 		+padlr(19px)
 		width: 20%
 		+rem(padding-bottom,20px)
+		transition: transform .45s, opacity .5s
+		transform: translateY(100px)
+		opacity: 0
 		&-outer
 			border: 1px solid #c9c9c9
 			border-radius: 4px
@@ -968,6 +1001,7 @@ a.title
 			padding-bottom: 100%
 			width: 100%
 			position: relative
+
 		&-inner
 			+coverdiv
 			+vertical 
@@ -977,8 +1011,6 @@ a.title
 				vertical-align: middle
 				max-width: 100%
 				+rem(max-height,100px)
-				
-
 	&-wrap 
 		display: flex
 		flex-flow: row wrap 
@@ -989,8 +1021,24 @@ a.title
 			+padlr(0px)
 			+rem(margin-right,-19px)
 			// +rem(padding-left,10px)	
-
-
+.anim-cont.active
+	.quality-item
+		transform: none
+		opacity: 1
+		&:nth-child(3)
+			transition-delay: .1s
+		&:nth-child(4)
+			transition-delay: .2s
+		&:nth-child(5)
+			transition-delay: .3s
+		&:nth-child(6)
+			transition-delay: .4s
+		&:nth-child(7)
+			transition-delay: .5s
+		&:nth-child(8)
+			transition-delay: .6s
+		&:nth-child(9)
+			transition-delay: .7s
 .next 
 	display: block
 	position: relative
@@ -1011,7 +1059,7 @@ a.title
 		position: relative
 		width: 100%
 		height: 100%
-		+tr(transform .45s)
+		+tr(transform .45s linear)
 		&:before
 			content: ''
 			+coverdiv
@@ -1045,7 +1093,7 @@ a.title
 			width: calc(100% - 4rem)
 		&-arrow 
 			+rem(width,43px)
-			+tr(transform .3s ease-in)
+			+tr(transform .3s cubic-bezier(0, 0, 0.1, 0.96))
 			svg
 				width: 100%
 
@@ -1172,7 +1220,7 @@ a.title
 				display: inline-block
 				max-width: 100%
 				vertical-align: bottom
-			
+				contain: paint
 		&-text 
 			+rem(height,100px)
 			+rem(padding-top,40px)
@@ -1243,7 +1291,11 @@ a.title
 		position: relative
 		+rem(padding-top,80px)
 		+rem(padding-bottom,50px)
+		background-color: color(brand)
+		+tr(background-color .3s)
 		&.inited
+			background-color: transparent
+			transition-delay: .1s
 			.projects-bgwrap-inner:before
 				opacity: .4
 				transition-delay: .1s
@@ -1275,7 +1327,7 @@ a.title
 		// backface-visibility: hidden
 		img 
 			width: 100%
-			// contain: paint
+			contain: paint
 		&.active 
 			opacity: 1
 			transform: none
@@ -1384,9 +1436,10 @@ a.title
 
 
 .anim-cont
-	transition: opacity .4s 
+	transition: opacity .3s ease-in,transform .6s ease-out;
 	&:not(.active)
 		opacity: 0
+		transform: translateY(50px);
 .js-image
 	+tr(opacity .3s)
 	opacity: 0
@@ -1420,6 +1473,8 @@ a.title
 	width: 100%
 	position: relative
 	overflow: hidden
+	&-block 
+		z-index: 2
 	.block-bg-inner
 		&:before
 			display: none
@@ -1429,6 +1484,10 @@ a.title
 		.page-head-gradient
 			height: 160%
 	&.page-head-gray
+		overflow: visible
+		.page-head-inner
+			// position: relative
+			
 		.block-bg
 			background-color: color(gray)
 		.bread-item
@@ -1519,6 +1578,7 @@ a.title
 			img
 				display: block
 				max-width: 100%
+
 				&:not(:last-child)
 					+rem(margin-bottom,45px)
 		&-content
@@ -1526,8 +1586,10 @@ a.title
 			+rem(padding-top,30px)
 			+rem(padding-left,40px)
 			+rem(padding-right,30px)
-			backface-visibility: hidden
-			transform: translateX(0)
+			// backface-visibility: hidden
+			// transform: translateX(0)
+			display: block
+			
 			+r(1300)
 				padding-left: 0	
 			&-inner
@@ -1644,12 +1706,13 @@ a.title
 	z-index: 8
 	width: 100%
 	visibility: hidden
+
 	&.active 
 		.prod-nav-inner 
 			transform: none
 	&-inner 
 		+tr(transform .35s ease-in-out)
-		transform: translateY(-100%)
+		transform: translateY(-120%)
 		visibility: visible
 		will-change: transform
 	.columns
@@ -1659,8 +1722,8 @@ a.title
 				+rem(padding-left, 70px)
 			.prod-nav-link
 				&:hover 
-					.prod-nav-link-text
-						transform: translateX(-40px)
+					.prod-nav-link-icon
+						transform: translateX(20px)
 		&:nth-child(2)
 			+vertical
 			.text 
@@ -1674,8 +1737,8 @@ a.title
 			.prod-nav-link
 				justify-content: flex-end
 				&:hover 
-					.prod-nav-link-text
-						transform: translateX(40px)
+					.prod-nav-link-icon
+						transform: translateX(-10px)
 				.prod-nav-link-text
 					order: 1
 					+rem(padding-right, 70px)
@@ -1693,6 +1756,7 @@ a.title
 		.icon 
 			+rem(width,12px)
 			+rem(height,21px)
+
 			svg 
 				width: 100%
 				height: 100%
@@ -1700,7 +1764,10 @@ a.title
 			+rem(font-size,12px)
 			text-transform: uppercase;
 			line-height: 1.667;
-			+tr(transform .3s)
+			white-space: nowrap
+		&-icon
+			+tr(transform .3s cubic-bezier(0, 0, 0.1, 0.96))	
+
 
 .brand 
 	background-color: color(brand)
@@ -1717,10 +1784,11 @@ a.title
 				+rem(font-size,18px)
 			.project-item-bg-inner
 				&:before
-					background: color(brand)
+					// background: color(brand)
 					transition-delay: .3s
 			.project-item-content-text
-				+cut(5)
+				.text
+					+cut(5)
 				+r(1300)
 					.text 
 						+rem(font-size,14px)
@@ -1732,18 +1800,21 @@ a.title
 		// height: 0
 		position: relative
 		padding-bottom: 67%
+		z-index: 0
 		.text 
 			color: color(white) !important
 		&:hover
 			.project-item-content-head
 				bottom: 100%
 				transform: translateY(100%)
-				transition-delay: .2s
+				transition-delay: .3s
 			.project-item-content-text
 				opacity: 1
 				transform: none
 				transition-delay: .4s
 			.project-item-arrow
+				opacity: 1
+				transition-delay: .4s
 				.icon 
 					transform: none
 					opacity: 1
@@ -1804,6 +1875,9 @@ a.title
 			color: color(white)
 			margin-left: auto
 			transform: translateY(-13px)
+			+tr(opacity .2s)
+			transition-delay: 0s
+			opacity: 0
 			+r(1300)
 				transform: none
 			.icon,svg
@@ -1812,9 +1886,10 @@ a.title
 				+rem(height,28px)
 			.icon 
 				transition: transform .2s, opacity .2s
-				transition-timing-function: ease-in-out
+				transition-timing-function: cubic-bezier(0, 0, 0.1, 0.96)
 				transform: translateX(-40px)
 				opacity: 0
+				transition-delay: .4s
 		&-content
 			+coverdiv
 			z-index: 0
@@ -1832,7 +1907,7 @@ a.title
 				bottom: 0
 				left: 0
 				transition: transform .5s, bottom .5s
-				transition-timing-function: cubic-bezier(0.89, 0.02, 0.66, 0.76);
+				transition-timing-function: cubic-bezier(0, 0, 0.1, 0.96);
 				.text
 					&:not(.primary)
 						opacity: .3
@@ -1841,7 +1916,6 @@ a.title
 				position: absolute
 				bottom: 0
 				left: 0
-				+cut(3)
 				transition: transform .45s, opacity .45s
 				transform: translateY(50px)
 				opacity: 0
@@ -1849,6 +1923,7 @@ a.title
 				+rem(padding-bottom,2px)
 				.text 
 					opacity: .7
+					+cut(3)
 .divider
 	display: block !important
 	width: 100% !important
@@ -1856,4 +1931,96 @@ a.title
 	height: 0
 	margin: 0
 	+rem(margin-bottom,12px)
+
+.js-select-trigger.active,.js-select-item.active,.js-select-custom.active,.input-wrapper.in-focus
+	.dropdown-target
+		transform: translateY(0)
+		opacity: 1
+		visibility: visible
+.dropdown-target
+	// +gpu
+	position: absolute
+	z-index: 25
+	// max-height: 0
+	+rem(left,-30px)
+	+rem(min-width,290px)
+	+rem(padding-top,10px)
+	opacity: 0
+	transform: translateY(-5%)
+	transition: opacity .25s, transform .25s, visibility .25s
+	visibility: hidden
+	+clr
+	.dropdown-inner
+		width: 100%
+		+rem(padding,20px 30px)
+		background: color(white)
+		box-shadow: 0px 20px 38px 0px rgba(0, 0, 0, 0.2);
+
+
+
+.sort-select
+	position: relative
+	display: block
+	z-index: 25
+	
+	&:hover,&.active
+		.sort-select-title
+			.text:not(.gray)
+				border-color: color(brandh)
+	&-title
+		display: inline-block
+		cursor: pointer
+		position: relative
+		z-index: 7
+		.text 
+			&.gray
+				+rem(margin-bottom,10px)
+			&:not(.gray)
+				color: color(brand)
+
+	&-item
+		&:hover
+			a 
+				background-color: color(gray)
+		&.active
+			a 
+				background-color: color(gray)
+				.text
+					color: color(brandh)
+		a
+			color: color(textblk)
+			position: relative
+			transition: background-color .3s,color .3s
+			display: block
+			+rem(margin,0 -30px)
+			+rem(padding,10px 30px)
+			&:hover
+				color: color(brandh)
+			.text 
+				+tr(color .3s)
 		
+.filter
+	&-wrapper
+	&-selects
+		font-size: 0
+		text-align: right
+		+rem(padding-right,30px)
+		.sort_wrapper
+			min-width: 30%
+			display: inline-block
+			vertical-align: middle
+			+rem(padding-right,20px)
+			text-align: left
+			
+.more-slider
+	&-head 
+		display: flex
+		flex-flow: row nowrap
+		justify-content: space-between
+		+rem(margin-bottom,40px)
+	&-slider
+		+rem(margin, 0 -5px)
+		.columns
+			+padlr(5px)
+			.slick-track
+				backface-visibility: hidden
