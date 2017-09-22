@@ -1,9 +1,9 @@
 extends _layout
 
 block title
-	title Production
-	- var _name = "Production"
-	- var currentPage = "Production"
+	title products-inner
+	- var _name = "products-inner"
+	- var currentPage = "products-inner"
 block content
 	.site__loader
 	.root__wrapper
@@ -37,14 +37,14 @@ block content
 									.page-head.head-big
 										.block-bg
 											.block-bg-inner
-												img.js-parallax(src="img/head/h3.jpg")
+												img.js-parallax(src="img/head/h4.jpg")
 										.page-head-inner
 											.page-head-gradient.js-parallax(data-speed="25")
 											.page-head-content.js-parallax(data-direction="-1")
 												.bread-cont
 													a(href="/").bread-item Home
-													a(href="/projects.html").bread-item Projects 
-												.title.h2.white DANISH MARITIME MUSEUM
+													a(href="/products.html").bread-item Products 
+												.title.h2.white Glass-BULLETPROOF
 						.block.margin
 							.row
 								.columns
@@ -54,57 +54,30 @@ block content
 												.col(data-sticky-parent).js-stick-parent
 													.prod-eleminner-content.content.js-stick
 														.prod-eleminner-content-inner
-															.text.primary Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane. Extra large sizes of units up to 1.9m*5.0m. All glass panes are heat treated, silicone sealed, and used for structurally glazed system.
+															.type-wrap
+																.type-item(style='background-image:url(img/icons/icon-bullet-w.png);')
+															.text.primary BULLETPROOF glass has a numerous range of applications, including shopfronts, military vehicles, hospitals, government and bank institutions
 															hr
-															.text.gray Features
-															p Location: Helsinger, Denmark
-															p Volume: 1119 sqm.
-															p Architect: BIG
-															p Awards: Project of the year;
+															.text.gray Specifications
+															p Sizes of 3210x7500
+															p Thickness depends on glass bullet resistance
 															hr
-															.text.gray Project description
-															p The basis of Danish Maritime Museum construction in Helsinger became old dock, which was formerly used for maintenance and repair of vessels.
-															p Dock serves as a courtyard of the museum, and construction of metal and glass complements it. Outside dock is fenced with glass parapet in order not to lose the impression of depth. Moreover, there are shop windows and three two-level bridges, the lower part of which is glazed.
-															p The design concept of Museum was to transform it to a courtyard by bringing more daylight and air to this project. The impressive dimensions of insulated glass units result in a perfect and clear panoramic view.
-															p Glassbel solution allowed realizing a unique architectural design concept of the Maritime Museum. The project is a reflection of the history and modernity dialogue that shows the versatility of glass application.
+															.text.gray Download
+															+down('Broschure','21mb')
+															+down('Examples of projects','3.72mb')
 														+nextb('Back to Projects','/projects.html')
 
 											.columns.large-7
 												.prod-eleminner-images
-													img(src="img/prodinner/prodinner3.jpg", alt="")
-													img(src="img/prodinner/prodinner4.jpg", alt="")
-													img(src="img/prodinner/prodinner5.jpg", alt="")
-													img(src="img/prodinner/prodinner6.jpg", alt="")
-													img(src="img/prodinner/prodinner7.jpg", alt="")
+													img(src="img/prodinner/1.jpg", alt="")
+													img(src="img/prodinner/2.jpg", alt="")
+													img(src="img/prodinner/3.jpg", alt="")
 						.block.margin
 							.row
 								.columns
 									.more-slider
 										.more-slider-head
-											.title.h3 Used products
-											.slider-nav
-										// модификатор w3 для 3х слайдов
-										.more-slider-slider.row.projects-row.js-moreslider
-											.columns.large-6
-												+product('1','Extra large size','Laminated glass with cut outs and inserts for point fixing')
-											.columns.large-6
-												+product('2','Glass-BULLETPROOF','Laminated glass with cut outs and inserts for point fixing')
-											.columns.large-6
-												+product('1','Extra large size','Laminated glass with cut outs and inserts for point fixing')
-											.columns.large-6
-												+product('1','Extra large size','Laminated glass with cut outs and inserts for point fixing')
-											.columns.large-6
-												+product('1','Extra large size','Laminated glass with cut outs and inserts for point fixing')
-											.columns.large-6
-												+product('1','Extra large size','Laminated glass with cut outs and inserts for point fixing')
-											.columns.large-6
-												+product('1','Extra large size','Laminated glass with cut outs and inserts for point fixing')
-						.block.margin
-							.row
-								.columns
-									.more-slider
-										.more-slider-head
-											.title.h3 SIMILAR PROJECTS
+											.title.h3 References
 											.slider-nav
 										// модификатор w3 для 3х слайдов
 										.more-slider-slider.row.projects-row.js-moreslider.w3
@@ -130,6 +103,7 @@ block content
 												+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
 											.columns.large-4
 												+project('','RRB Bank, Minsk, Belarus','Danish Maritime Museum features double glazed insulated glass units with super neutral HSSN70/37 coating from Guardian and laminated inner pane.','17')
+
 
 			include includes/_footer
 

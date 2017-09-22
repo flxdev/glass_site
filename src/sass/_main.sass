@@ -14,6 +14,10 @@ body
 	height: 100%
 	font-family: "Roboto"
 	color: #000
+	width: 100%
+	&.menu-open
+		position: fixed
+		
 .root
 .root__wrapper
 .root__frame
@@ -1616,6 +1620,13 @@ a.title
 		+rem(margin,30px 0 42px)
 	.text.gray 
 		+rem(margin,30px 0 )
+	.link-arr.down
+		+rem(margin-bottom,15px)
+	.type-wrap
+		+rem(margin-bottom,25px)
+		.type-item
+			+rem(width,42px)
+			+rem(height,42px)
 
 			
 
@@ -2011,6 +2022,54 @@ a.title
 			vertical-align: middle
 			+rem(padding-right,20px)
 			text-align: left
+	&-tabs 
+		font-size: 0
+		text-align: right
+		+rem(padding-right,20px)
+		white-space: nowrap
+		+r(1300)
+			padding-right: 0
+		+r(1100)
+			text-align: left
+			+rem(padding-left,50px)
+		&-item 
+			display: inline-block
+			vertical-align: bottom
+			+padlr(13px)
+			text-align: center
+			+r(1300)
+				+padlr(8px)
+
+			&-inner
+				+tr(color .3s)
+				position: relative
+				+rem(padding-top,35px)
+				+rem(padding-bottom,15px)
+				+r(1100)
+					+rem(font-size,15px)
+				&:before
+					content: ''
+					display: inline-block
+					height: 4px
+					left: 0
+					right: 0
+					background-color: color(brand)
+					position: absolute
+					+rem(bottom,-8px)
+					transform-origin: left center
+					+tr(transform .4s ease-in)
+					transform: scaleX(0)
+			&:hover
+				.filter-tabs-item-inner	
+					&:before
+						transform: scaleX(.2)
+						transition-duration: .2s
+			&.active
+				pointer-events: none
+				.filter-tabs-item-inner
+					color: color(brand)
+					&:before
+						transform: scaleX(1)
 			
 .more-slider
 	&-head 
@@ -2024,3 +2083,101 @@ a.title
 			+padlr(5px)
 			.slick-track
 				backface-visibility: hidden
+			.text.primary.white
+				+rem(font-size,18px)
+		.product
+			&-item 
+				padding-top: 0
+				padding-bottom: 0
+.product
+	&-item 
+		+rem(padding-top,25px)
+		+rem(padding-bottom,25px)
+		display: block
+		&:hover
+			.text.primary
+				color: color(brand)
+			img
+				transform: scale(1.1)
+		&-inner
+			font-size: 0
+			&>div 
+				display: inline-block
+				vertical-align: middle
+		&-image
+			width: 39%
+			overflow: hidden
+			
+			&-outer
+				position: relative
+				padding-bottom: 67%
+			&-inner
+				+coverdiv
+				background-color: color(gray)
+				img 
+					display: block
+					height: 100%
+					transition: opacity .3s, transform .3s ease-in
+					margin: 0 auto
+		&-type
+			position: absolute
+			+rem(left,20px)
+			+rem(top,20px)
+
+		&-content
+			width: 61%
+			+rem(max-width,335px)
+			padding-left: 8%
+			.text.gray
+				white-space: nowrap
+			.text.primary
+				+tr(color .3s)
+				+rem(margin,5px 0 30px)
+				+cut(2)
+			.text.descr
+				+cut(2)
+.type-item
+	display: inline-block
+	vertical-align: top
+	+rem(width,35px)
+	+rem(height,35px)
+	+contain
+	+rem(margin-right,5px)
+	+rem(margin-bottom,5px)
+.contact
+	&-cont
+		img 
+			transform: none !important
+		.block-text
+			+rem(padding-top,45px)
+			+rem(padding-right,25px)
+	&-text 
+		font-size: 0
+		.link-arr
+			+rem(margin-top,60px)
+		.text.primary
+
+			+rem(margin-bottom,50px)
+		.block-contact
+			display: inline-block
+			vertical-align: top
+			width: 50%
+			+rem(padding-right,10px)
+			a
+				font-weight: 600
+				transition: color .3s, opacity .3s
+				&[href^="tel:"]
+					color: color(text)
+					&:hover
+						color: color(brand)
+				&[href^="mailto:"],&[href^="skype:"]
+					color: color(brand)
+					&:hover
+						color: color(brandh)
+.map 
+	&-container
+		position: relative
+		padding-bottom: 39%
+		background-color: color(gray)
+		&-inner
+			+coverdiv

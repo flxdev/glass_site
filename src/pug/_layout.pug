@@ -65,7 +65,19 @@ mixin project(place,name,text,image)
           .text.primary.white #{name}
         .project-item-content-text
           .text #{text}
-
+mixin product(img,name,text,type)
+  a(href="/products-inner.html").product-item
+    .product-item-inner
+      .product-item-image
+        .product-item-image-outer
+          .product-item-image-inner
+            img.js-image(data-src='img/products/'+img+'.jpg')
+          .product-item-type
+            .type-item(style='background-image:url(img/icons/icon-bullet.png);')
+      .product-item-content
+        .text.gray Laminated, Insulated Glass
+        .text.primary #{name}
+        .text.descr #{text}
 
 
 doctype html

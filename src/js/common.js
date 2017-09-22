@@ -823,6 +823,256 @@ function returnStickPos(stickEl,stickpos){
 	}
 
 }
+var opts;
+function initMap() {
+	var trel = $('#map');
+	var map;
+	opts = {
+				zoom: 12,
+				fullscreenControl: true,
+				scrollwheel: false,
+				mapTypeControl: false,
+				scaleControl: false,
+				// center: centercords,
+				streetViewControl: false,
+				gestureHandling: "greedy",
+				zoomControlOptions: {
+						position: google.maps.ControlPosition.RIGHT_CENTER
+				},
+				 styles:[
+					{
+						"featureType": "administrative",
+						"elementType": "labels.text.fill",
+						"stylers": [
+							{
+								"color": "#444444"
+							}
+						]
+					},
+					{
+						"featureType": "landscape",
+						"elementType": "all",
+						"stylers": [
+							{
+								"color": "#ffffff"
+							}
+						]
+					},
+					{
+						"featureType": "poi",
+						"elementType": "all",
+						"stylers": [
+							{
+								"visibility": "simplified"
+							},
+							{
+								"color": "#377041"
+							},
+							{
+								"lightness": "79"
+							},
+							{
+								"saturation": "0"
+							}
+						]
+					},
+					{
+						"featureType": "poi.attraction",
+						"elementType": "all",
+						"stylers": [
+							{
+								"visibility": "off"
+							}
+						]
+					},
+					{
+						"featureType": "poi.business",
+						"elementType": "all",
+						"stylers": [
+							{
+								"visibility": "off"
+							}
+						]
+					},
+					{
+						"featureType": "road",
+						"elementType": "all",
+						"stylers": [
+							{
+								"saturation": -100
+							},
+							{
+								"lightness": 45
+							},
+							{
+								"visibility": "simplified"
+							},
+							{
+								"color": "#f0f0f0"
+							}
+						]
+					},
+					{
+						"featureType": "road",
+						"elementType": "labels",
+						"stylers": [
+							{
+								"visibility": "simplified"
+							}
+						]
+					},
+					{
+						"featureType": "road",
+						"elementType": "labels.text",
+						"stylers": [
+							{
+								"color": "#b0b0b0"
+							}
+						]
+					},
+					{
+						"featureType": "road.highway",
+						"elementType": "all",
+						"stylers": [
+							{
+								"visibility": "simplified"
+							}
+						]
+					},
+					{
+						"featureType": "road.highway",
+						"elementType": "geometry.stroke",
+						"stylers": [
+							{
+								"visibility": "simplified"
+							},
+							{
+								"color": "#b0b0b0"
+							}
+						]
+					},
+					{
+						"featureType": "road.arterial",
+						"elementType": "labels.icon",
+						"stylers": [
+							{
+								"visibility": "off"
+							}
+						]
+					},
+					{
+						"featureType": "transit",
+						"elementType": "all",
+						"stylers": [
+							{
+								"visibility": "simplified"
+							},
+							{
+								"lightness": "29"
+							},
+							{
+								"saturation": "9"
+							}
+						]
+					},
+					{
+						"featureType": "transit",
+						"elementType": "geometry.fill",
+						"stylers": [
+							{
+								"visibility": "off"
+							}
+						]
+					},
+					{
+						"featureType": "transit",
+						"elementType": "geometry.stroke",
+						"stylers": [
+							{
+								"visibility": "off"
+							}
+						]
+					},
+					{
+						"featureType": "transit",
+						"elementType": "labels.text",
+						"stylers": [
+							{
+								"visibility": "simplified"
+							},
+							{
+								"lightness": "0"
+							},
+							{
+								"saturation": "0"
+							},
+							{
+								"gamma": "3.84"
+							},
+							{
+								"color": "#5d5353"
+							}
+						]
+					},
+					{
+						"featureType": "transit",
+						"elementType": "labels.icon",
+						"stylers": [
+							{
+								"visibility": "on"
+							}
+						]
+					},
+					{
+						"featureType": "water",
+						"elementType": "all",
+						"stylers": [
+							{
+								"color": "#cadfe7"
+							},
+							{
+								"visibility": "on"
+							}
+						]
+					}
+				]
+			}; 
+	initialize(trel[0])
+}
+function initialize(elem){
+	var _ = elem;
+	var latcord = parseFloat(_.getAttribute('data-lat'));
+	var loncord = parseFloat(_.getAttribute('data-lon'));
+	var imgpath = _.getAttribute('data-icon');
+	var centercords = new google.maps.LatLng(latcord, loncord);
+	mapvar = new google.maps.Map(_,opts);
+	mapvar.setCenter(centercords)
+	var img = {
+		url: imgpath,
+		size: new google.maps.Size(53, 85),
+		origin: new google.maps.Point(0, 0),
+		scaledSize: new google.maps.Size(26.5, 42.5),
+		anchor: new google.maps.Point(13.25, 21.25),
+	};
+
+	var marker = new google.maps.Marker({
+		position: centercords,
+		map: mapvar,
+		icon: img,
+		zIndex: 99999
+	});
+	elem.classList.add('inited');
+}
+function googleMaps(){
+	var script_tag = document.createElement("script");
+	if(typeof(google) != "object") {
+		script_tag.setAttribute("type", "text/javascript");
+		script_tag.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyDcFkgUmSnM7fy40cDnRn8BB_xu1cp7Ros&callback=initMap");
+		document.getElementById("map").appendChild(script_tag);
+	} else {
+		initialize(document.getElementById("map")) 
+	}
+};
 var BarbaWitget = {
 	init: function(){
 		var scope = this;
@@ -846,6 +1096,8 @@ var BarbaWitget = {
 	},
 	MovePage: Barba.BaseTransition.extend({
 		start: function(){
+			conf.body.removeClass('menu-open')
+			alert()
 			Promise
 				.all([this.newContainerLoading, this.fadeOut()])
 				.then(this.fadeIn.bind(this));
@@ -872,10 +1124,10 @@ var BarbaWitget = {
 			TweenMax.set($el, {
                 // autoAlpha: 0,
                 y: 200,
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                right: 0
+                // position: 'absolute',
+                // left: 0,
+                // top: 0,
+                // right: 0
             });
             $(window).scrollTop(0,0)
             // $el.style.visibility = 'visible';
@@ -957,11 +1209,23 @@ var PojectsPage = Barba.BaseView.extend({
 	onLeaveComplete: function(){
 	}
 });
-
+var contacts = Barba.BaseView.extend({
+	namespace: "Contacts",
+	onEnter: function(){
+		// alert();
+	},
+	onEnterCompleted: function(){
+		// initMap();
+		 googleMaps();
+	},
+	onLeaveComplete: function(){
+	}
+});
 IndexPage.init();
 Production.init();
 ProductionInner.init();
 PojectsPage.init();
+contacts.init();
 BarbaWitget.init();
 
 
