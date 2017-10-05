@@ -43,7 +43,7 @@ mixin nextl(text, img,url)
        .block-bg-img.js-parallax(data-direction="-1" data-speed="30" style="background-image: url(img/next/"+img+".jpg)", alt="")
     .block-link
       .row.align-middle
-        .columns.large-6.large-offset-4
+        .columns.large-6.medium-6.large-offset-4.medium-offset-4
           .text What's next?
           .block-link-arrow
             .block-link-arrow-text
@@ -78,8 +78,35 @@ mixin product(img,name,text,type)
         .text.gray Laminated, Insulated Glass
         .text.primary #{name}
         .text.descr #{text}
-
-
+mixin product2(img,name,text,type)
+  a(href="/products-inner.html").product-item.product-item-v2
+    .product-item-inner
+      .product-item-image
+        .product-item-image-outer
+          .product-item-image-inner
+            img.js-image(data-src='img/products/'+img+'.jpg')
+      .product-item-content
+        .text.primary #{name}
+        .text.descr #{text}
+mixin newscontent(date, title, text)
+  .newscont
+    a(href="news-inner.html").newscont-inner
+      .text.gray #{date}
+      .text.primary #{title}
+      .text #{text}
+    +next('Show more')
+mixin partner(icon)
+  .quality-item
+    .quality-item-outer
+      .quality-item-inner
+        img.js-image(data-src="img/partners/"+icon+".png", alt="")
+mixin partner2(icon,name)
+  .quality-item
+    .quality-item-outer
+      .quality-item-inner
+        img.js-image(data-src="img/partners/"+icon+".png", alt="")
+        .text 
+          .text-inner #{name}
 doctype html
 html
   head

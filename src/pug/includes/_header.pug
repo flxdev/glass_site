@@ -46,13 +46,13 @@ mixin navi(name, link)
                             a(href="/").nav-link.js-nav(class={active:'index' === currentPage})
                                 .title.h2 Home
                         .nav-item(onclick='')
-                            a(href="#").nav-link.js-nav(class={active: currentPage === 'Company'})
+                            a(href="company.html").nav-link.js-nav(class={active: currentPage === 'Company'})
                                 .title.h2 Company
                             .nav-item-sublinks
                                 a(href="#").nav-sublink About us 
-                                a(href="/production.html" class={active: 'Production' === currentPage }).nav-sublink Production
-                                a(href="#").nav-sublink R&D
-                                a(href="#").nav-sublink Accreditations
+                                a(href="production.html" class={active: 'Production' === currentPage }).nav-sublink Production
+                                a(href="rd.html").nav-sublink R&D
+                                a(href="accreditations.html").nav-sublink Accreditations
                         .nav-item(onclick='')
                             a(href="/projects.html").nav-link.js-nav(class={active: currentPage === 'Projects'})
                                 .title.h2 Projects
@@ -71,6 +71,6 @@ mixin navi(name, link)
                                 a(href="#").nav-sublink Bonding
                     .mob-menu-footer
                         .mob-menu-footer-nav
-                            a(href="#").nav-sublink.js-nav Service 
-                            a(href="/news.html").nav-sublink.js-nav News
+                            a(href="services.html").nav-sublink.js-nav Service 
+                            a(href="news.html").nav-sublink.js-nav News
                             a(href="contacts.html").nav-sublink.js-nav Contacts

@@ -50,28 +50,35 @@ function Menu() {
 		OpenClass = 'active',
 		OpenClass2 = 'menu-open';
 
-	trigger.add(target).on('click', function() {
+	trigger.add(target).on('click', function(e) {
+
 
 		if (!trigger.hasClass('anim')) {
-			trigger.addClass('anim');
-			
-			target.toggleClass(OpenClass);
-			
-			if(trigger.hasClass(OpenClass)){
-				
-				setTimeout(function(){
-					trigger.removeClass(OpenClass);
-				},400);
-				
-				conf.body.removeClass(OpenClass2);
 
-				window.__prevScrollTop && (window.scroll(0, window.__prevScrollTop));
-				window.__prevScrollTop = null;
+			trigger.addClass('anim');
+
+
+			
+
+			if(trigger.hasClass(OpenClass)){
+				var div = $('.mob-menu-inner');
+				if (!div.is(e.target) 
+					&& div.has(e.target).length === 0) {
+					setTimeout(function(){
+						trigger.removeClass(OpenClass);
+					},400);
+					target.removeClass(OpenClass);
+					conf.body.removeClass(OpenClass2);
+					window.__prevScrollTop && (window.scroll(0, window.__prevScrollTop));
+					window.__prevScrollTop = null;
+				}
+
 			}else{
 				var top = $(window).scrollTop();
 				window.__prevScrollTop = top;
 				trigger.addClass(OpenClass);
 				conf.body.addClass(OpenClass2);
+				target.addClass(OpenClass);
 				document.body.style.top = -top + "px";
 				window.scroll(0, window.__prevScrollTop);
 			}
@@ -80,9 +87,9 @@ function Menu() {
 			}, 500);
 		}
 	})
-	$('.mob-menu-inner').click(function(e) {
-		e.stopPropagation();
-	});
+	// $('.mob-menu-inner').click(function(e) {
+	// 	e.stopPropagation();
+	// });
 }
 function scaleVideoContainer() {
 
@@ -508,6 +515,45 @@ function moreslider(){
 			appendArrows: parent.find('.slider-nav'),
 			prevArrow: conf.arnprevcontent,
 			nextArrow: conf.arnextcontent,
+		})
+	});
+}
+function feedbackslider(){
+	$(".js-feedbackslider-main").each(function() {
+		var _this = $(this),
+				parent = _this.parent();
+		_this.slick({
+			accessibility: false,
+			arrows: true,
+			dots: false,
+			fade: true,
+			touchMove: false,
+			dragable: false,
+			infinite: false,
+			slidesToShow: 1,
+			speed: 1000,
+			slidesToScroll: 1,
+			asNavFor: parent.find('.js-feedbackslider-bg'),
+			appendArrows: parent.find('.slider-nav'),
+			prevArrow: conf.arnprevcontent,
+			nextArrow: conf.arnextcontent,
+		})
+	});
+	$(".js-feedbackslider-bg").each(function() {
+		var _this = $(this),
+				parent = _this.parent();
+		_this.slick({
+			accessibility: false,
+			arrows: false,
+			dots: false,
+			fade: true,
+			touchMove: false,
+			dragable: false,
+			infinite: false,
+			speed: 1000,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			asNavFor: parent.find('.js-feedbackslider-main'),
 		})
 	});
 }
@@ -1078,7 +1124,7 @@ var BarbaWitget = {
 		var scope = this;
 
 		Barba.Pjax.start();
-
+		Barba.Prefetch.init();
 		Barba.Pjax.getTransition = function(){
 			return scope.MovePage;
 		};
@@ -1096,8 +1142,8 @@ var BarbaWitget = {
 	},
 	MovePage: Barba.BaseTransition.extend({
 		start: function(){
-			conf.body.removeClass('menu-open')
-			alert()
+			conf.body.removeClass('menu-open');
+			$('.js-menu').add('.mob-menu').removeClass('active');
 			Promise
 				.all([this.newContainerLoading, this.fadeOut()])
 				.then(this.fadeIn.bind(this));
@@ -1122,6 +1168,7 @@ var BarbaWitget = {
 			// $el.style.visibility = 'hidden';
 			$el.addClass('moveUp');
 			TweenMax.set($el, {
+				force3D:true,
                 // autoAlpha: 0,
                 y: 200,
                 // position: 'absolute',
@@ -1133,6 +1180,7 @@ var BarbaWitget = {
             // $el.style.visibility = 'visible';
             TweenMax.to($el, .5, {
                 y: 0,
+                force3D:true,
                 autoAlpha: 1,
                 onComplete: function () {
                     TweenMax.set($el, {clearProps: 'all'});
@@ -1150,12 +1198,11 @@ var IndexPage = Barba.BaseView.extend({
 	namespace: "index",
 	onEnter: function(){
 		promoslider();
-		var tab = document.querySelector('.js-tabs-cont');
-		tabs = new tabsanim(tab);
-		teamslider();
-		
 	},
 	onEnterCompleted: function(){
+		teamslider();
+		var tab = document.querySelector('.js-tabs-cont');
+		tabs = new tabsanim(tab);
 	},
 	onLeaveComplete: function(){
 		delete tabs
@@ -1221,11 +1268,24 @@ var contacts = Barba.BaseView.extend({
 	onLeaveComplete: function(){
 	}
 });
+var content = Barba.BaseView.extend({
+	namespace: "Content",
+	onEnter: function(){
+		// alert();
+	},
+	onEnterCompleted: function(){
+		// initMap();
+		feedbackslider();
+	},
+	onLeaveComplete: function(){
+	}
+});
 IndexPage.init();
 Production.init();
 ProductionInner.init();
 PojectsPage.init();
 contacts.init();
+content.init();
 BarbaWitget.init();
 
 

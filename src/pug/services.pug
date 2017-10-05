@@ -1,0 +1,145 @@
+extends _layout
+
+block title
+	title Services
+	- var _name = "Services"
+	- var currentPage = "Services"
+block content
+	.site__loader
+	.root__wrapper
+		.site__overlay
+		.root__frame
+			include includes/_header	
+			#barba-wrapper
+				.barba-container(data-namespace="Content")
+					.wrapper-frame
+						.block.page-head-block
+							.row
+								.columns
+									.page-head
+										.block-bg
+											.block-bg-inner
+												img.js-parallax(src="img/head/h9.jpg")
+										.page-head-inner
+											.page-head-gradient.js-parallax(data-speed="25")
+											.page-head-content.js-parallax(data-direction="-1")
+												.bread-cont
+													a(href="/").bread-item Home
+												.title.h2.white Services
+						.block.margin.anim-cont
+							.row.gray
+								.columns
+									.describe
+										.row
+											.columns.large-6
+												.title.h3 Customer service 24/7
+												.describe-cont.content
+													.text.primary For facade contractors
+													p Support in tenders providing technical data sheets and advising on optimal glass compositions, advice during the design phase, providing static/dynamic calculations assistance. Fast-track samples and mock-ups production, just in time deliveries of top quality glass products either to production facilities or to the project sites, no matter where they are located and support with all required technical and QA related documentation;
+
+											.columns.large-3
+												.describe-cont.content
+													.text.primary For facade consultants and designers
+													p Competent and technically driven advice on different glass processing methods and materials selection possibilities, sample production and testing;competent and.
+													p Technically driven advice on different glass processing methods and materials selection possibilities, sample production and testing;
+											.columns.large-3
+												.describe-cont.content
+													.text.primary For developers
+													p Advice on optimal value for money and best ROI for the progressive glass/facade solutions, which would secure long term value.
+												.describe-cont.content
+													.text.primary For architects
+													p Provision of aesthetically ambitious ideas in glass products, ensuring transparency, reflection and visual characteristics;
+						.block.margin.anim-cont.text-top
+							.row.align-stretch
+								.columns.large-5
+									.block-text
+										.col
+											a(href='#').title.h3 COST 
+												br 
+												|ESTIMATION
+											.block-text-content
+												ul 
+													li Strict compliance of commercial offers to project‘s specification;
+													li Evaluation of required value engineering options;
+													li Preparation of Prequalification Form for the projects;
+													li Accurate advises on technical documentation;
+													li Estimation of optimal delivery and logistics solutions to site;
+								.columns.large-7
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index2.jpg", alt="")
+						.block.margin.anim-cont.text-top
+							.row.align-stretch
+								.columns.large-7
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index3.jpg", alt="")
+								.columns.large-5
+									.block-text
+										.col
+											a(href='#').title.h3 Planning
+											.block-text-content
+												ul 
+													li Effective solutions for optimized production;
+													li Deliveries of remakes and breakages to our customers on priority basis;
+													li Availability of raw materials on stock;
+													li Booking of production capacities on project basis;
+						.block.margin.anim-cont.text-top
+							.row.align-stretch
+								.columns.large-5
+									.block-text
+										.col
+											a(href='#').title.h3 QUALITY 
+												br
+												|ASSURANCE
+											.block-text-content
+												ul 
+													li ISO 9001:2008 and ISO 14001:2004 certified;
+													li Multilayer Quality Assurance System;
+													li 100% quality control of raw materials;
+													li Online quality control during production process;
+													li Fine-tuned to specific product technological processes;
+								.columns.large-7
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index4.jpg", alt="")
+						.block.margin.anim-cont.text-top
+							.row.align-stretch
+								.columns.large-7
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index3.jpg", alt="")
+								.columns.large-5
+									.block-text
+										.col
+											a(href='#').title.h3 PROJECT 
+												br
+												|MANAGEMENT
+											.block-text-content
+												ul 
+													li Promt and accurate project handling;
+													li Individual project manager to every single customer;
+													li Online information about project status;
+													li Packing and delivery according client‘s requirements;
+													li Flexible attitude to changes during any project phase;
+						.block.margin.anim-cont.text-top
+							.row.align-stretch
+								.columns.large-5
+									.block-text
+										.col
+											a(href='#').title.h3 PACKING
+											.block-text-content
+												ul 
+													li Dispatching daily trucks all over Europe;
+													li Loading of containers online at factory and delivering straight to port;
+													li Delivering on open specialized platform;
+													li Packing according client‘s requirements;
+													li Using certified metal craneable stillages and wooden crates;
+													li Special positioning on stillages based on facade drawings in order to make glass instalation easier and faster;
+								.columns.large-7
+									a(href="#").block-image.block-image-parallax
+										.block-image-inner.js-parallax
+											img(src="img/index/index4.jpg", alt="")
+			include includes/_footer
+
+					
