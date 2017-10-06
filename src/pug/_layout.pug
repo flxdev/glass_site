@@ -123,6 +123,14 @@ html
     //BEGIN out
     .root
       block content
+      .modals
+        .modal-layout(data-modal='review').js-popup-container
+          .modal-container
+            .modal-container-inner
+              .modal-container-header
+                i.small-link.pop-close.closePopup
+              .modal-container-content.js-review-target
+
     //END out
     script(src="js/bundle.js")
     script(src="js/common.js")

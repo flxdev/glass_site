@@ -1,24 +1,21 @@
 mixin navi(name, link)
     li.navi__item(class={active: name === currentPage})
-        a(href=link) #{name}
+        a(href=link).js-nav #{name}
 .header
     .row.align-stretch
         .columns.large-4
-            if(_name == "index")
-                .logo
-            else
-                a(class="logo" href="/")
+            a(class="logo" href="/").js-nav
         .columns.large-4
             nav.navigation      
                 ul         
-                    +navi("Company", "company.html")
-                    +navi("Projects", "projects.html")
-                    +navi("Services", "services.html")
+                    +navi("Company", "/company.html")
+                    +navi("Projects", "/projects.html")
+                    +navi("Services", "/services.html")
         .columns.large-4
             .row.align-justify.align-middle
                 nav.navigation      
                     ul         
-                        +navi("Contact us", "contacts.html")
+                        +navi("Contact us", "/contacts.html")
                 .menu-burger.js-menu
                     .menu-burger-inner
                         i
@@ -43,34 +40,34 @@ mixin navi(name, link)
                                                     use(xlink:href="#icon-close" xmlns:xlink="http://www.w3.org/1999/xlink")
                     .mob-menu-nav
                         .nav-item(onclick='')
-                            a(href="/").nav-link.js-nav(class={active:'index' === currentPage})
+                            a(href="/").nav-link.js-nav
                                 .title.h2 Home
                         .nav-item(onclick='')
-                            a(href="company.html").nav-link.js-nav(class={active: currentPage === 'Company'})
+                            a(href="/company.html").nav-link.js-nav
                                 .title.h2 Company
                             .nav-item-sublinks
-                                a(href="#").nav-sublink About us 
-                                a(href="production.html" class={active: 'Production' === currentPage }).nav-sublink Production
-                                a(href="rd.html").nav-sublink R&D
-                                a(href="accreditations.html").nav-sublink Accreditations
+                                a(href="#").nav-sublink.js-nav About us 
+                                a(href="/production.html").nav-sublink.js-nav Production
+                                a(href="/rd.html").nav-sublink.js-nav R&D
+                                a(href="/accreditations.html").nav-sublink.js-nav Accreditations
                         .nav-item(onclick='')
-                            a(href="/projects.html").nav-link.js-nav(class={active: currentPage === 'Projects'})
+                            a(href="/projects.html").nav-link.js-nav
                                 .title.h2 Projects
                             .nav-item-sublinks
-                                a(href="#").nav-sublink Brand products 
-                                a(href="#").nav-sublink Laminated glass
-                                a(href="#").nav-sublink Insulated glass 
-                                a(href="#").nav-sublink Bonding
+                                a(href="#").nav-sublink.js-nav Brand products 
+                                a(href="#").nav-sublink.js-nav Laminated glass
+                                a(href="#").nav-sublink.js-nav Insulated glass 
+                                a(href="#").nav-sublink.js-nav Bonding
                         .nav-item(onclick='')
-                            a(href="#").nav-link.js-nav(class={active: currentPage === 'Products'})
+                            a(href="/products.html").nav-link.js-nav
                                 .title.h2 Products
                             .nav-item-sublinks
-                                a(href="#").nav-sublink Brand products 
-                                a(href="#").nav-sublink Laminated glass
-                                a(href="#").nav-sublink Insulated glass 
-                                a(href="#").nav-sublink Bonding
+                                a(href="#").nav-sublink.js-nav Brand products 
+                                a(href="#").nav-sublink.js-nav Laminated glass
+                                a(href="#").nav-sublink.js-nav Insulated glass 
+                                a(href="#").nav-sublink.js-nav Bonding
                     .mob-menu-footer
                         .mob-menu-footer-nav
-                            a(href="services.html").nav-sublink.js-nav Service 
-                            a(href="news.html").nav-sublink.js-nav News
-                            a(href="contacts.html").nav-sublink.js-nav Contacts
+                            a(href="/services.html").nav-sublink.js-nav Service 
+                            a(href="/news.html").nav-sublink.js-nav News
+                            a(href="/contacts.html").nav-sublink.js-nav Contacts

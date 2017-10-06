@@ -43,6 +43,7 @@ body
 #barba-wrapper
 	min-height: 100vh
 	position: relative
+	+tr(all .5s)
 // 	position: relative
 // 	z-index: 1
 // 	pointer-events: none 
@@ -80,20 +81,7 @@ body
 		display: flex
 		height: 100%
 	.navi__item
-		&.active
-			pointer-events: none
-			position: relative
-			&:before
-				content: ''
-				display: inline-block
-				height: 3.5px 
-				position: absolute
-				left: -10px
-				top: 0
-				right: -10px
-				background-color: color(brand)
-			a
-				color: color(menuh)
+	
 		&:not(:last-child)
 			margin-right: 7.3%
 		a
@@ -104,10 +92,32 @@ body
 			+rem(line-height,80px)
 			+rem(height,80px)
 			display: inline-block
-			
+			position: relative
 			&:hover
 				color: color(menuh)
+			&.active
+				pointer-events: none
+
+				color: color(menuh)
+				&:before
+					left: -10px;
+					right: -10px;
+					width: calc(100% + 20px);
+			&:before
+				content: ''
+				display: inline-block
+				height: 3.5px 
+				position: absolute
+				// left: -10px
+				top: 0
+				right: -10px
+				background-color: color(brand)
+				width: 0;
+				left: auto;
+				transition: width .3s linear;
+
 .title
+
 	text-transform: uppercase;
 	line-height: 0.857;
 	font-family: $t
@@ -139,6 +149,10 @@ a.title
 		color: color(black)
 		&.white
 			color: color(white)
+		a 
+			color: color(brand)
+			&:hover
+				color: color(brand)
 	&.gray 
 		color: color(textgray)
 .white
@@ -452,18 +466,13 @@ a.title
 		+nosel
 		.title
 			line-height: 0.835;
-
-
 			+rem(letter-spacing,.2px)
 			+r(1500)
 				+rem(font-size,60px)
-
-
-
 		&.active
 			pointer-events: none
 			.title
-				color: #dcdcdd
+				color: #dcdcdd !important
 
 	&-sublink
 		+rem(font-size,18px)
@@ -2294,6 +2303,7 @@ a.title
 			vertical-align: top
 			width: 50%
 			+rem(padding-right,10px)
+			backface-visibility: hidden
 			a
 				font-weight: 600
 				transition: color .3s, opacity .3s
@@ -2574,3 +2584,244 @@ a.title
 			transition-delay: .6s
 
 
+.review
+	+rem(margin,16px -3px 43px -3px)
+	.columns
+		+rem(padding,3px)
+		&:first-child,&:last-child
+			+rem(padding,3px)
+	&-item 
+		border: 1px solid #c9c9c9
+		display: flex 
+		height: 100%
+		+padlr(23px)
+		+rem(padding-top,35px)
+		+rem(padding-bottom,30px)
+		&-img 
+			+rem(height,125px)
+			+rem(padding-bottom,50px)
+			img
+				+rem(max-width,216px)
+		&-inner
+			position: relative
+			+rem(padding-bottom,95px)
+			&.cutted
+				.review-item-content
+					.text:not(.primary)
+						+rem(max-height,123px)
+					.review-trigger
+						display: inherit
+		&-who
+			position: absolute
+			bottom: 0
+			left: 0
+
+			right: 0
+			.gray 
+				color: #7c7c7b
+		&-content 
+			.primary 
+				+rem(margin-bottom,15px)
+			.text:not(.primary)
+				// +cut(5)
+				overflow: hidden
+				position: relative
+				
+			p 
+				&:not(:first-child)
+					+rem(margin-top,10px)
+			.review-trigger
+				position: absolute
+				right: 0
+				+rem(bottom,-2px)
+				cursor: pointer
+				background-color: #FFF
+				display: none
+				z-index: 1
+				+r(1200)
+					+rem(bottom,-5px)
+				&:hover
+					span 
+						color: color(brandh)
+				span 
+					color: color(brand)
+					+tr(color .3s)
+					position: relative
+					&:before
+						content: ''
+						display: inline-block
+						position: absolute
+						z-index: -1
+						+rem(left,-22px)
+						top: 0
+						background-color: #FFF
+						+rem(width,10px)
+						+rem(height,25px)
+
+.modal-layout
+	position: fixed
+	left: 0
+	right: 0
+	bottom: 0
+	top: 0
+	width: 100%
+	height: 100%
+	margin: 0
+	background-color: rgba(14, 59, 133,.9);
+	z-index: 200
+	opacity: 0
+	visibility: hidden
+	transition: opacity .2s, visibility .2s
+	+vertical
+	contain: paint 
+	overflow-y: auto
+	transition-delay: .5s
+	&.active
+		visibility: visible
+		opacity: 1
+		transition-delay: 0s
+		.modal-container
+			transform: translateY(0)
+			opacity: 1
+			transition-delay: .2s
+	.modal-container
+		display: inline-block
+		vertical-align: middle 
+		+rem(min-width,320px)
+		+rem(max-width,741px)
+		width: 100%
+		background: color(white)
+		position: relative
+		transform: translateY(5%)
+		transition: transform .2s, opacity .2s
+		opacity: 0
+		// overflow: hidden
+		transition-delay: 0.3s
+		+rem(padding,50px 60px)
+		+rem(margin,25px 0)
+		.review-item-inner
+			text-align: left
+	.small-link
+		cursor: pointer
+		position: absolute
+		+rem(right,0px)
+		+rem(top,0px)
+		display: inline-block
+		+rem(width,70px)
+		+rem(height,70px)
+		+vertical
+		&:after
+			content: ''
+			+rem(width,22px)
+			+rem(height,22px)
+			+contain
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAoCAMAAABU4iNhAAAAIVBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAt9G3DAAAACnRSTlMAAZcDpYhQkdpguYhB+AAAAJ1JREFUeNqF1DkOxDAMBEFShw/9/8FrLWx0RLQiclTRBIyIPMLekbFhW1PgXC3/cK0pcG3ax3remaXLc4PR46UtK9g+CFUIVQhVCFUIVQhVCFUIVQhVCFUINQjtQKEXUChQqEF6pCyDUIWXUQofQikcKjCEZuOXxSCrQgKBFSXVkEwoiVB2oWxCmYUyGe0DWFFuMrCg302+gQW9H/gDB90NjUrkGHEAAAAASUVORK5CYII=);
+			display: inline-block
+			vertical-align: middle
+.search
+	&-wrapper 
+		display: block
+		+rem(max-width,680px)
+		+rem(margin-left,80px)
+		+rem(margin-bottom,40px)
+	&-inp 
+		position: relative
+		&-inp 
+			width: 100%
+			border: 1px solid color(brand)
+			display: block
+			width: 100%
+			+rem(font-size,18px)
+			color: rgb(0, 0, 0);
+			+padlr(30px)
+			+rem(padding-top,25px)
+			+rem(padding-bottom,25px)
+			font-family: "Roboto"
+		&-button
+			background: color(white)
+			position: absolute
+			right: 1px
+			top: 1px
+			bottom: 1px
+			+rem(width,80px)
+			&:hover
+				svg
+					color: color(brand)
+
+			i
+				display: inline-block
+				width: 100%
+				height: 100%
+				+vertical 
+				svg 
+					display: inline-block
+					vertical-align: middle
+					+rem(width,22px)
+					+rem(height,22px)
+	&-result
+		+rem(margin-top,100px)
+		&>.text.primary
+			&+ a
+				+rem(margin-top,40px)
+		&-item
+			display: block
+			border-bottom: 1px solid #cecece
+			+rem(padding-top,40px)
+			+rem(padding-bottom,40px)
+			font-size: 0
+			&-num,&-content
+				display: inline-block
+				vertical-align: top
+			&-num 
+				+rem(width,40px)
+				+rem(padding-top,10px)
+			&-content
+				width: calc(100% - 2.5rem)
+				b 
+					color: color(brand)
+				.primary
+					+rem(margin-bottom,5px)
+	&-pagi 
+		font-size: 0
+		+rem(margin-top,60px)
+		+rem(margin-left,-3px)
+		&-item 
+			display: inline-block
+			vertical-align: middle
+			+rem(width,45px)
+			+rem(height,45px)
+			border: 1px solid #cecece
+			+rem(margin, 0 3px)
+			+vertical
+			+tr(border-color .3s)
+			&.disabled
+				background-color: color(gray)
+				pointer-events: none
+				.search-pagi-item-inner
+					opacity: .5
+			&.active 
+				border-color: color(brand)
+				pointer-events: none
+				.search-pagi-item-inner
+					color: #000
+			&:hover
+				&:not(.dot)
+					border-color: color(brand)
+			&-inner 
+				display: inline-block
+				vertical-align: middle
+				color: #7c7c7b
+				+rem(font-size,16px)
+				svg 
+					color: color(brand)
+					+rem(width,15px)
+					+rem(height,15px)
+
+			&.nav-right
+				.search-pagi-item-inner
+					transform: scale(-1,1)
+			&.nav-right,&.nav-left
+				.search-pagi-item-inner
+					font-size: 0
+				&:hover 
+					border-color: color(brand)
