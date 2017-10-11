@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	teamslider();
 
 	scrollAnimations();
+	scrollToEl();
 });
 // $(window).on('resize',debounce(footerH))
 var conf = {
@@ -431,7 +432,7 @@ function lazyImage(){
 	NodeList.prototype.forEach = Array.prototype.forEach;
 })();
 function Parallax($parallaxes) {
-	$(window).on('scroll', function(){
+	$(window).off('scroll.prl').on('scroll.prl', function(){
 		var scrollTop = $(window).scrollTop(),
 				bSH = conf.body[0].scrollHeight,
 				$prlx, $wrapper, wrapperRect, wrapperOffset, wrapperMargin,
@@ -866,17 +867,36 @@ function stickinit() {
 	}, 1)
 }
 function ProdinnerHead(){
+
 	var target = $('.js-prod-head');
+	var targetNext = target.find('.columns:first-child').find('.prod-nav-link');
+	var targetNextText = targetNext.find('.prod-nav-link-text');
+	var targetPrev = target.find('.columns:last-child').find('.prod-nav-link');
+	var targetPrevText = targetPrev.find('.prod-nav-link-text');
+	var targetCur = target.find('.columns:nth-child(2)').find('.text');
 	var vh = $('.page-head').height();
-	function Chechscroll(){
-		var sTop = $(window).scrollTop();
-		if(sTop > vh){
-			target.addClass('active');
-		}else{
-			target.removeClass('active');
-		}
-	}
-	$(window).on('scroll',debounce(Chechscroll))
+
+	var cont = $('.barba-container').last();
+	var nextL = cont.data('next-link');
+	var nextText = cont.data('next-text');
+	var prevL = cont.data('prev-link');
+	var prevText = cont.data('prev-text');
+	var curText = cont.data('cur-text');
+	targetNext.attr('href',nextL);
+	targetPrev.attr('href',prevL);
+	targetNextText.text(nextText);
+	targetPrevText.text(prevText);
+	targetCur.text(curText);
+	target.addClass('active');
+	// function Chechscroll(){
+	// 	var sTop = $(window).scrollTop();
+	// 	if(sTop > vh){
+
+	// 	}else{
+	// 		target.removeClass('active');
+	// 	}
+	// }
+	// $(window).on('scroll',debounce(Chechscroll))
 }
 var debounce = function(t, e, n) {
 	var o;
@@ -1193,15 +1213,15 @@ function scrollToEl(){
 		var target = $('body').find('[data-id="' + elementClick + '"]');
 		var pad = 80;
 		var destination;
+		if( $(this).hasClass('to-top')){
+			destination = 0;
+			$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: destination}, 600);
+		}
 		if(target.length){
 			destination = $(target).offset().top,
 			$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: destination - pad}, 600);
 		}
 
-		if( $(this).hasClass('to-top')){
-			destination = 0;
-			$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: destination}, 600);
-		}
 	});
 }
 function loadState(){
@@ -1240,6 +1260,7 @@ var BarbaWitget = {
 			Array.prototype.forEach.call(navigationLinkIsActive, function (navigationLink) {
 						return navigationLink.classList.add('active');
 			});
+
 		});        
 
 		Barba.Dispatcher.on('transitionCompleted', function(currentStatus, prevStatus) {
@@ -1248,8 +1269,8 @@ var BarbaWitget = {
 				Parallax($('.js-parallax'));
 			}
 			scrollAnimations();
-			scrollToEl();
 			lazyImage();
+			scrollToEl();
 		});
 	},
 	MovePage: Barba.BaseTransition.extend({
@@ -1267,33 +1288,19 @@ var BarbaWitget = {
 			return $(this.oldContainer).animate({
 				opacity: 0,
 			}, 1000,function(){
-				// alert()
 			}).addClass('moveDown').promise();
 
-			// return TweenMax.to($(this.oldContainer), 1, {
-			// 	x: 250;
-			// 	autoAlpha: 0,
-			// });
 		},
 		fadeIn: function(){
 			var _this = this;
 			var $el = $(this.newContainer);
-			
 			$(this.oldContainer).hide();
-			// $el.hide();
-			// $el.style.visibility = 'hidden';
 			$el.addClass('moveUp');
 			TweenMax.set($el, {
 				force3D:true,
-                // autoAlpha: 0,
                 y: 200,
-                // position: 'absolute',
-                // left: 0,
-                // top: 0,
-                // right: 0
             });
             $(window).scrollTop(0,0)
-            // $el.style.visibility = 'visible';
             TweenMax.to($el, .5, {
                 y: 0,
                 force3D:true,
@@ -1307,9 +1314,7 @@ var BarbaWitget = {
 		}
 	})
 };
-// Barba.Dispatcher.on('transitionCompleted', function(currentStatus, oldStatus, container) {
 
-// });
 var IndexPage = Barba.BaseView.extend({
 	namespace: "index",
 	onEnter: function(){
@@ -1351,20 +1356,20 @@ var ProductionInner = Barba.BaseView.extend({
 			returnStickPos(stickEl,stickPos)
 		}else{
 		}
+		$('.js-prod-head').removeClass('active');
 	},
 	onEnterCompleted: function(){
-		ProdinnerHead();
+
 		stickinit();
 		moreslider();
+		ProdinnerHead();
 	},
 	onLeaveComplete: function(){
-		// conf.stick.trigger("sticky_kit:detach");
 	}
 });
 var PojectsPage = Barba.BaseView.extend({
 	namespace: "Projects",
 	onEnter: function(){
-		// alert();
 	},
 	onEnterCompleted: function(){
 		sortItem();
@@ -1375,10 +1380,8 @@ var PojectsPage = Barba.BaseView.extend({
 var contacts = Barba.BaseView.extend({
 	namespace: "Contacts",
 	onEnter: function(){
-		// alert();
 	},
 	onEnterCompleted: function(){
-		// initMap();
 		 googleMaps();
 	},
 	onLeaveComplete: function(){
