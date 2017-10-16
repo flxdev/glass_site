@@ -17,6 +17,9 @@ body
 	width: 100%
 	&.menu-open
 		position: fixed
+	&.loading
+		overflow: hidden
+		
 		
 .root
 .root__wrapper
@@ -114,7 +117,6 @@ body
 				transition: width .3s linear;
 
 .title
-
 	text-transform: uppercase;
 	line-height: 0.857;
 	font-family: $t
@@ -761,9 +763,10 @@ a.title
 		width: 100%
 		height: 100%
 		position: relative
-		+tr(opacity .3s)
-		transition-delay: .4s
+		+tr(opacity .2s)
+		// transition-delay: .4s
 		will-change: transform, opacity
+		opacity: 0
 		.slick-arrow
 			position: absolute
 			width: 50%
@@ -785,9 +788,9 @@ a.title
 		.slick-list,.slick-track
 			width: 100%
 			height: 100%
-		&:not(.slick-initialized)
-			opacity: 0
-			transition-delay: 0
+		&.slick-initialized
+			opacity: 1
+			transition-delay: .3s
 		// &.slick-initialized
 		.promo-slider-item
 			&.slick-current
@@ -3093,3 +3096,78 @@ a.title
 	    stroke-dashoffset: 8000
 	100%
 		stroke-dashoffset: 4000
+.preloader
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	background-color: color(brand)
+	z-index: 100
+	transition: opacity .3s, visibility .3s
+	&.done 
+		opacity: 0
+		visibility: hidden
+	&.half 
+		.preloader-item
+			.preloader-item-inner
+				transform: none
+			&.small 
+				.preloader-item-inner
+					transition-delay: .1s
+			&.big 
+				.preloader-item-inner	
+					transition-delay: .2s
+	&-inner
+		width: 100%
+		height: 100%
+		overflow: hidden
+		position: relative
+		background-color: color(brand)
+	&-outer 
+		width: 100%
+		height: 100%
+		position: relative
+		
+	&-item 
+		display: inline-block
+		position: absolute
+		background-color: color(white)
+		transform-origin: right bottom
+		transform: rotate(30deg)
+		+vertical
+		&.small 
+			width: 100%
+			height: 100%	
+			z-index: 1
+			bottom: 30%
+			right: 40.5%
+			.preloader-item-inner
+				width: 74.4%
+				height: 82%
+				transform: scaleX(1.35) scaleY(1.24)
+		&.big 
+			width: 150%
+			height: 149%	
+			right: 27%
+			bottom: 0
+			.preloader-item-inner
+				transform: scaleX(1.23) scaleY(1.15)
+		&-inner
+			width: 82.6%
+			height: 88.1%
+			display: inline-block
+			vertical-align: middle
+			background-color: color(brand)
+			
+			transition: transform 1.2s ease-in-out
+	&-counter 
+		position: absolute
+		+rem(left,40px)
+		+rem(bottom,40px)
+		display: inline-block
+		
+
+
+
+		// transform: rotate(30deg)

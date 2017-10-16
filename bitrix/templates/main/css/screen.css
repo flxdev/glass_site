@@ -658,6 +658,8 @@ body {
   width: 100%; }
   body.menu-open {
     position: fixed; }
+  body.loading {
+    overflow: hidden; }
 
 .header {
   position: fixed;
@@ -762,7 +764,7 @@ body {
 .title {
   text-transform: uppercase;
   line-height: 0.857;
-  font-family: "Tactic";
+  font-family: "Tactic", Arial;
   color: #0e3b85;
   color: var(--color-brand);
   -webkit-transition: color 0.3s;
@@ -961,7 +963,7 @@ a.title:hover {
     display: inline-block;
     text-align: center;
     font-size: 1.125rem;
-    font-family: "Roboto";
+    font-family: "Roboto", Arial;
     position: relative;
     z-index: 0;
     padding: 1rem 1.75rem;
@@ -1310,7 +1312,7 @@ a.title:hover {
       .mob-menu-search .search-form .field-row .field .search-input {
         width: 100%;
         height: 3.125rem;
-        font-family: "Roboto";
+        font-family: "Roboto", Arial;
         font-size: 1.125rem;
         padding: 0 2.8125rem 0 0;
         background-color: transparent;
@@ -1381,7 +1383,7 @@ a.title:hover {
         z-index: -1;
         top: 0;
         left: 0;
-        font-family: "Roboto";
+        font-family: "Roboto", Arial;
         line-height: 3.125rem;
         height: 3.125rem;
         font-size: 1.125rem; }
@@ -1579,11 +1581,10 @@ a.title:hover {
     width: 100%;
     height: 100%;
     position: relative;
-    -webkit-transition: opacity 0.3s;
-    transition: opacity 0.3s;
-    -webkit-transition-delay: .4s;
-    transition-delay: .4s;
-    will-change: transform, opacity; }
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    will-change: transform, opacity;
+    opacity: 0; }
     .promo-slider-inner .slick-arrow {
       position: absolute;
       width: 50%;
@@ -1603,10 +1604,10 @@ a.title:hover {
     .promo-slider-inner .slick-list, .promo-slider-inner .slick-track {
       width: 100%;
       height: 100%; }
-    .promo-slider-inner:not(.slick-initialized) {
-      opacity: 0;
-      -webkit-transition-delay: 0;
-      transition-delay: 0; }
+    .promo-slider-inner.slick-initialized {
+      opacity: 1;
+      -webkit-transition-delay: .3s;
+      transition-delay: .3s; }
     .promo-slider-inner .promo-slider-item.slick-current {
       -webkit-transition-delay: 0.3s !important;
       transition-delay: 0.3s !important; }
@@ -2487,7 +2488,7 @@ a.title:hover {
     height: 2rem;
     font-weight: 400;
     margin-top: 0.4375rem;
-    font-family: "Roboto"; }
+    font-family: "Roboto", Arial; }
   .tabs-item-block {
     color: #9aa1af;
     line-height: 2.1875rem;
@@ -4409,33 +4410,120 @@ a.title:hover {
   100% {
     stroke-dashoffset: 4000; } }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0e3b85;
+  background-color: var(--color-brand);
+  z-index: 100;
+  -webkit-transition: opacity .3s, visibility .3s;
+  transition: opacity .3s, visibility .3s; }
+  .preloader.done {
+    opacity: 0;
+    visibility: hidden; }
+  .preloader.half .preloader-item .preloader-item-inner {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none; }
+  .preloader.half .preloader-item.small .preloader-item-inner {
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s; }
+  .preloader.half .preloader-item.big .preloader-item-inner {
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s; }
+  .preloader-inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #0e3b85;
+    background-color: var(--color-brand); }
+  .preloader-outer {
+    width: 100%;
+    height: 100%;
+    position: relative; }
+  .preloader-item {
+    display: inline-block;
+    position: absolute;
+    background-color: #fff;
+    background-color: var(--color-white);
+    -webkit-transform-origin: right bottom;
+    -ms-transform-origin: right bottom;
+    transform-origin: right bottom;
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+    text-align: center;
+    font-size: 0; }
+    .preloader-item:before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 0;
+      height: 100%; }
+    .preloader-item.small {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      bottom: 30%;
+      right: 40.5%; }
+      .preloader-item.small .preloader-item-inner {
+        width: 74.4%;
+        height: 82%;
+        -webkit-transform: scaleX(1.35) scaleY(1.24);
+        -ms-transform: scaleX(1.35) scaleY(1.24);
+        transform: scaleX(1.35) scaleY(1.24); }
+    .preloader-item.big {
+      width: 150%;
+      height: 149%;
+      right: 27%;
+      bottom: 0; }
+      .preloader-item.big .preloader-item-inner {
+        -webkit-transform: scaleX(1.23) scaleY(1.15);
+        -ms-transform: scaleX(1.23) scaleY(1.15);
+        transform: scaleX(1.23) scaleY(1.15); }
+    .preloader-item-inner {
+      width: 82.6%;
+      height: 88.1%;
+      display: inline-block;
+      vertical-align: middle;
+      background-color: #0e3b85;
+      background-color: var(--color-brand);
+      -webkit-transition: -webkit-transform 1.2s ease-in-out;
+      transition: -webkit-transform 1.2s ease-in-out;
+      transition: transform 1.2s ease-in-out;
+      transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out; }
+  .preloader-counter {
+    position: absolute;
+    left: 2.5rem;
+    bottom: 2.5rem;
+    display: inline-block; }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
   * {
     -webkit-text-size-adjust: none; } }
-
-@media print, screen and (min-width: 64em) and (min-width: 64em) {
+  @media print, screen and (min-width: 64em) and (min-width: 64em) {
 
   .large-expand {
     -ms-flex: 1 1 0px;
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
     flex: 1 1 0px; } }
-
-@media print, screen and (min-width: 40em) and (min-width: 40em) {
+  @media print, screen and (min-width: 40em) and (min-width: 40em) {
 
   .medium-expand {
     -ms-flex: 1 1 0px;
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
     flex: 1 1 0px; } }
-
-@media only screen and (max-width: 1600px) {
+  @media only screen and (max-width: 1600px) {
 
   .feat-wrap {
     margin: 0 -2.5rem; } }
-
-@media not all and (-moz-touch-enabled: 1), not all and (pointer: coarse), not all and (-ms-high-contrast: none) and (max-width: 600px) {
+  @media not all and (-moz-touch-enabled: 1), not all and (pointer: coarse), not all and (-ms-high-contrast: none) and (max-width: 600px) {
 
   .btn.reverse:hover span {
     color: #0e3b85;
@@ -4491,36 +4579,31 @@ a.title:hover {
 
   .bread-item:hover:after {
     opacity: .5; } }
-
-@media only screen and (min-width: 1500px) {
+  @media only screen and (min-width: 1500px) {
 
   .half-title .col .title + img {
     -webkit-transform: scale(0.5);
     -ms-transform: scale(0.5);
     transform: scale(0.5); } }
-
-@media only screen and (max-width: 1500px) {
+  @media only screen and (max-width: 1500px) {
 
   .nav-link .title {
     font-size: 3.75rem; } }
-
-@media only screen and (min-width: 1450px) {
+  @media only screen and (min-width: 1450px) {
 
   .projects-content .title {
     margin-bottom: 6.25rem; }
 
   .projects-content .text.primary {
     margin-top: 6.25rem; } }
-
-@media only screen and (max-width: 1450px) {
+  @media only screen and (max-width: 1450px) {
 
   .block-image-parallax .block-image-inner {
     margin-top: -5%; }
 
   .prod-elem .link-arr {
     margin-bottom: 3.125rem; } }
-
-@media only screen and (max-width: 1400px) {
+  @media only screen and (max-width: 1400px) {
 
   .promo-slider-item-content {
     padding-right: 12%;
@@ -4531,13 +4614,11 @@ a.title:hover {
 
   .block-image-parallax {
     max-height: 26.875rem; } }
-
-@media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 1370px) {
 
   .carousel_layout-container .carousel_layout {
     height: 26.25rem; } }
-
-@media only screen and (max-width: 1300px) {
+  @media only screen and (max-width: 1300px) {
 
   .promo-slider-item-content {
     padding-left: 10%;
@@ -4589,13 +4670,11 @@ a.title:hover {
     -webkit-transform: scale(1.15);
     -ms-transform: scale(1.15);
     transform: scale(1.15); } }
-
-@media only screen and (min-width: 1201px) {
+  @media only screen and (min-width: 1201px) {
 
   .prod-elem {
     padding-left: 2.5rem; } }
-
-@media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1200px) {
 
   html {
     font-size: 15px; }
@@ -4654,13 +4733,11 @@ a.title:hover {
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1); } }
-
-@media only screen and (max-width: 1140px) {
+  @media only screen and (max-width: 1140px) {
 
   .logo {
     max-width: 16.25rem; } }
-
-@media only screen and (max-width: 1100px) {
+  @media only screen and (max-width: 1100px) {
 
   .promo-slider-item-content .cont-inner .title {
     font-size: 5.9375rem; }
@@ -4685,8 +4762,7 @@ a.title:hover {
     -webkit-transform: scale(1) translateX(6%);
     -ms-transform: scale(1) translateX(6%);
     transform: scale(1) translateX(6%); } }
-
-@media only screen and (max-width: 1040px) {
+  @media only screen and (max-width: 1040px) {
 
   .projects-row.row-blue .project-item {
     padding-bottom: 55%; }
@@ -4694,18 +4770,15 @@ a.title:hover {
   .half-title {
     padding-left: 0;
     padding-right: 0; } }
-
-@media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1024px) {
 
   .footer-nav-link {
     padding-left: 1.875rem; } }
-
-@media only screen and (max-width: 992px) {
+  @media only screen and (max-width: 992px) {
 
   .cap {
     display: block; } }
-
-@media print, screen and (min-width: 64em) {
+  @media print, screen and (min-width: 64em) {
 
   .row .row {
     margin-right: 0;
@@ -5022,8 +5095,7 @@ a.title:hover {
     -webkit-box-direction: reverse;
     -webkit-flex-direction: column-reverse;
     flex-direction: column-reverse; } }
-
-@media print, screen and (min-width: 40em) {
+  @media print, screen and (min-width: 40em) {
 
   .row .row {
     margin-right: 0;
