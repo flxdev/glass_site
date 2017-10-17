@@ -11,24 +11,7 @@ block content
 		.root__frame
 			include includes/_header	
 			#barba-wrapper
-				.barba-container(data-namespace="Production-inner")
-					.prod-nav.block.js-prod-head
-						.prod-nav-inner.brand
-							.row
-								.columns
-									a(href="/production-inner-test2.html").prod-nav-link
-										.prod-nav-link-icon
-											.icon
-												+icon('slidearr')
-										.prod-nav-link-text HEAT SOAK TEST
-								.columns.large-5
-									.text.primary.white Glass cutting
-								.columns
-									a(href="/production-inner-test.html").prod-nav-link
-										.prod-nav-link-icon
-											.icon
-												+icon('slidearr')
-										.prod-nav-link-text Edge Treatment: Grinding, Polishing, Bevelling
+				.barba-container(data-namespace="Production-inner",data-next-link='/production-inner-test.html',data-next-text='lorem Ipsum',data-prev-link='/production-inner-test2.html',data-prev-text='tra-ta-ta',data-cur-text='GLASS CUTTING')
 					.wrapper-frame
 						.block.page-head-block
 							.row

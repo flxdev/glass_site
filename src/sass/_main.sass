@@ -1,5 +1,9 @@
 *, *:after, *:before
 	box-sizing: border-box
+* 
+	&::selection 
+		background-color: rgba(21, 79, 175, 0.81)
+		color: color(white)
 a 
 	text-decoration: none
 img
@@ -19,7 +23,9 @@ body
 		position: fixed
 	&.loading
 		overflow: hidden
-		
+input 
+	box-shadow: none !important
+	outline: none !important
 		
 .root
 .root__wrapper
@@ -59,9 +65,13 @@ body
 		transform: translateY(100px)
 		+tr(transform 1s ease-in-out)
 	&.moveUp
-		backface-visibility: hidden
+		// backface-visibility: hidden
 		* 
 			pointer-events: none
+body
+	&.loading
+		.logo	
+			opacity: 0
 .logo
 	display: block
 	max-width: 316px
@@ -71,6 +81,7 @@ body
 	background-size: contain
 	background-repeat: no-repeat
 	background-position: left center
+	+tr(opacity .3s .15s)
 	+r(1140)
 		+rem(max-width,260px)
 	&.active 
@@ -505,7 +516,7 @@ a.title
 		// +rem(margin-bottom, 13px)
 		.not-empty
 			.field-row
-				+rem(padding-left, 30px)
+				// +rem(padding-left, 30px)
 		.field-row
 			position: relative
 			// +rem(padding-left, 45px)
@@ -766,7 +777,7 @@ a.title
 		+tr(opacity .2s)
 		// transition-delay: .4s
 		will-change: transform, opacity
-		opacity: 0
+		// opacity: 0
 		.slick-arrow
 			position: absolute
 			width: 50%
@@ -775,12 +786,10 @@ a.title
 			bottom: 0
 			opacity: 0
 			z-index: 2
-
 			&.slick-prev
 				left: 0
 				cursor: url(/img/slidearrw2.svg), auto
 				display: none
-				
 			&.slick-next
 				right: 0
 				cursor: url(/img/slidearrw2.svg), auto
@@ -788,9 +797,14 @@ a.title
 		.slick-list,.slick-track
 			width: 100%
 			height: 100%
-		&.slick-initialized
-			opacity: 1
-			transition-delay: .3s
+		&:not(.slick-initialized)
+			overflow: hidden
+			* 
+				opacity: 1 !important
+				transform: none !important
+				transition-delay: 0s !important
+			// opacity: 1
+			// transition-delay: .3s
 		// &.slick-initialized
 		.promo-slider-item
 			&.slick-current
@@ -828,7 +842,7 @@ a.title
 			+cover
 			// contain: paint
 			*
-				backface-visibility: hidden
+				// backface-visibility: hidden
 			&:after
 				content: ''
 				display: inline-block
@@ -904,12 +918,12 @@ a.title
 				transform: translate3d(0,200px,0)
 				opacity: 0
 				transition-delay: .4s
-				backface-visibility: hidden
+				// backface-visibility: hidden
 					// contain: paint
 				img 
 					display: block
 					max-width: 100%
-					contain: paint
+					// contain: paint
 .item1
 	.promo-slider-item-img
 		bottom: -23%
@@ -1163,7 +1177,7 @@ a.title
 		position: relative
 		width: 100%
 		height: 100%
-		+tr(transform .45s linear)
+		+tr(transform .8s)
 		&:before
 			content: ''
 			+coverdiv
@@ -1840,7 +1854,11 @@ a.title
 					+rem(height, 25px);
 			&:hover
 				cursor: pointer;
-
+body
+	&:not(.loading)
+		.prod-nav.active
+			.prod-nav-inner 
+				transform: none	
 .prod-nav
 	position: fixed
 	left: 0
@@ -1848,15 +1866,15 @@ a.title
 	z-index: 8
 	width: 100%
 	visibility: hidden
-
-	&.active 
-		.prod-nav-inner 
-			transform: none
+	// &.active 
+	// 	.prod-nav-inner 
+	// 		transform: none
 	&-inner 
 		+tr(transform .35s ease-in-out)
 		transform: translateY(-120%)
 		visibility: visible
 		will-change: transform
+		+rem(height,60px)
 	.columns
 		&:nth-child(1)
 			text-align: left
@@ -2039,6 +2057,7 @@ a.title
 					width: 100%
 					+tr(opacity .5s)
 					opacity: 0
+					z-index: 2
 					height: 100%
 					background-image: linear-gradient( 0deg, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.5) 48%, rgba(0,0,0,0.5) 61%, rgba(0,0,0,0.45) 100%);
 		&-arrow
@@ -2894,10 +2913,10 @@ a.title
 		.text.primary
 			color: color(white)
 .logistics
+	// overflow: hidden
+	position: relative
+	// &-wrapper
 
-	&-wrapper
-		overflow: hidden
-		position: relative
 	&-content 
 		display: block
 		width: 45%
@@ -2910,7 +2929,7 @@ a.title
 			&-map 
 				+coverdiv
 				z-index: -1
-				transform: scale(1.3)
+				transform: scale(1.2)
 				+rem(margin-top,-50px)
 				transform-origin: right center
 				+r(1300)
@@ -2929,8 +2948,10 @@ a.title
 					.block 
 						transition: transform .3s, opacity .3s
 						&.block1,&.block2,&.block3,&.block4,&.block5,&.block6
-							transition: opacity .15s
-							transition-delay: .15s
+						// &.finish
+						// 	transition: opacity .15s
+						// // 	transition: opacity .3s
+							
 					.block3
 						.line2
 							stroke-dashoffset: 8000;
@@ -2938,6 +2959,22 @@ a.title
 					.line2
 						opacity: 0
 						transition-duration: 0s
+					// .block2
+					// 	&.active
+					// 		opacity: 1 !important
+					// 		.finish
+					// 			opacity: 0
+					// 			transition-delay: 0s
+					// 			animation: fadeblk .15s 1.7s linear forwards
+					// 		.pin 
+					// 			opacity: 0
+					// 			transition-delay: .3s
+					// 			transform: translateY(-30px)
+					// 			animation: fadepin .3s 1.9s linear forwards
+					// 		.line2
+					// 			opacity: 1
+					// 			transition-delay: .4s
+					// 			animation: line 1.7s .6s linear forwards
 
 
 			&-element 
@@ -2956,7 +2993,6 @@ a.title
 				padding-bottom: 1.375rem
 				&-block
 					color: color(textblk)
-
 					&:after
 						color: color(textblk)
 				&-line 
@@ -2976,10 +3012,12 @@ a.title
 						&~.tabs-map
 							.block1,.block3,.block4,.block5,.block6
 								opacity: 0
-								transition-delay: 0s
+								transition-delay: .3s
 							.block2
 								.finish
 									opacity: 0
+									transition-duration: .1s
+									transition-delay: .0s !important
 									animation: fadeblk .15s 1.1s linear forwards
 								.pin 
 									opacity: 0
@@ -2987,17 +3025,19 @@ a.title
 									animation: fadepin .2s 1.25s linear forwards
 								.line2
 									opacity: 1
+									transition-delay: .3s
 									animation: line 1.5s linear forwards
-
 				&.item-2
 					&:hover
 						&~.tabs-map
 							.block1,.block3,.block2,.block5,.block6
 								opacity: 0
-								transition-delay: 0s
+								transition-delay: .3s
 							.block4
 								.finish
 									opacity: 0
+									transition-duration: .1s
+									transition-delay: .0s !important
 									animation: fadeblk .15s .75s linear forwards
 								.pin 
 									opacity: 0
@@ -3005,16 +3045,19 @@ a.title
 									animation: fadepin .2s .9s linear forwards
 								.line2
 									opacity: 1
+									transition-delay: .3s
 									animation: line 6s linear forwards
 				&.item-3
 					&:hover
 						&~.tabs-map
 							.block4,.block3,.block2,.block5,.block6
 								opacity: 0
-								transition-delay: 0s
+								transition-delay: .3s
 							.block1
 								.finish
 									opacity: 0
+									transition-duration: .1s
+									transition-delay: .0s !important
 									animation: fadeblk .15s .7s linear forwards
 								.pin 
 									opacity: 0
@@ -3022,16 +3065,19 @@ a.title
 									animation: fadepin .2s .85s linear forwards
 								.line2
 									opacity: 1
+									transition-delay: .3s
 									animation: line 1.5s linear forwards
 				&.item-4
 					&:hover
 						&~.tabs-map
 							.block4,.block3,.block2,.block1,.block6
 								opacity: 0
-								transition-delay: 0s
+								transition-delay: .3s
 							.block5
 								.finish
 									opacity: 0
+									transition-duration: .1s
+									transition-delay: .0s !important
 									animation: fadeblk .15s .75s linear forwards
 								.pin 
 									opacity: 0
@@ -3039,16 +3085,19 @@ a.title
 									animation: fadepin .2s .9s linear forwards
 								.line2
 									opacity: 1
+									transition-delay: .3s
 									animation: line 5s linear forwards
 				&.item-5
 					&:hover
 						&~.tabs-map
 							.block4,.block5,.block2,.block1,.block6
 								opacity: 0
-								transition-delay: 0s
+								transition-delay: .3s
 							.block3
 								.finish
 									opacity: 0
+									transition-duration: .1s
+									transition-delay: .0s !important
 									animation: fadeblk .15s 1.2s linear forwards
 								.pin
 									opacity: 0
@@ -3056,16 +3105,19 @@ a.title
 									animation: fadepin .2s 1.35s linear forwards
 								.line2
 									opacity: 1
+									transition-delay: .3s
 									animation: line2 1.5s linear forwards
 				&.item-6
 					&:hover
 						&~.tabs-map
 							.block4,.block5,.block2,.block1,.block3
 								opacity: 0
-								transition-delay: 0s
+								transition-delay: .3s
 							.block6
 								.finish
 									opacity: 0
+									transition-duration: .1s
+									transition-delay: .0s !important
 									animation: fadeblk .15s .7s linear forwards
 								.pin 
 									opacity: 0
@@ -3073,6 +3125,7 @@ a.title
 									animation: fadepin .2s .85s linear forwards
 								.line2
 									opacity: 1
+									transition-delay: .3s
 									animation: line 1.5s linear forwards
 @keyframes fadeblk 
 	0%
@@ -3103,8 +3156,9 @@ a.title
 	width: 100%
 	height: 100%
 	background-color: color(brand)
-	z-index: 100
-	transition: opacity .3s, visibility .3s
+	z-index: 110
+	overflow: hidden
+	// transition: opacity .3s, visibility .3s
 	&.done 
 		opacity: 0
 		visibility: hidden
@@ -3121,7 +3175,7 @@ a.title
 	&-inner
 		width: 100%
 		height: 100%
-		overflow: hidden
+		// overflow: hidden
 		position: relative
 		background-color: color(brand)
 	&-outer 
@@ -3137,25 +3191,25 @@ a.title
 		transform: rotate(30deg)
 		+vertical
 		&.small 
-			width: 100%
-			height: 100%	
+			width: 300%
+			height: 200%	
 			z-index: 1
 			bottom: 30%
 			right: 40.5%
 			.preloader-item-inner
-				width: 74.4%
-				height: 82%
-				transform: scaleX(1.35) scaleY(1.24)
+				width: 91.4%
+				height: 91%
+				transform: scaleX(1.1) scaleY(1.11)
 		&.big 
-			width: 150%
-			height: 149%	
+			width: 270%
+			height: 300%	
 			right: 27%
 			bottom: 0
 			.preloader-item-inner
-				transform: scaleX(1.23) scaleY(1.15)
+				transform: scaleX(1.13) scaleY(1.08)
 		&-inner
-			width: 82.6%
-			height: 88.1%
+			width: 90.4%
+			height: 94%
 			display: inline-block
 			vertical-align: middle
 			background-color: color(brand)
