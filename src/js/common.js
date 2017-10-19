@@ -86,10 +86,11 @@ $(window).on('load',function(){
 // new MainPageLoader();
 function MainPageLoader2(){
 	this.init();
+	
 };
 MainPageLoader2.prototype = {
 	init: function(){
-		this.images = document.images;
+		this.images = document.querySelectorAll('img');
 		this.images_total_count = this.images.length;
 		this.images_loaded_count = 0;
 		this.preloader = document.querySelector('.preloader');
@@ -97,20 +98,23 @@ MainPageLoader2.prototype = {
 		this.preloaderSmall = this.preloader.querySelector('.preloader-item.small .preloader-item-inner');
 		this.preloaderBig = this.preloader.querySelector('.preloader-item.big .preloader-item-inner');
 		this.percent_display = document.querySelector('.preloader-counter');
+		this.progress = 0;
+		this.persent = 100 / this.images_total_count;
 		this.smallScaleX = 1.1;
 		this.smallScaleY = 1.11;
 		this.BigScaleX = 1.13;
 		this.BigScaleY = 1.08;
 		this.createImageClone();
 		this.prevValue = 0;
+		
 		// this.loadAnimation();
 	},
 	createImageClone: function(){
 		for(var i = 0; i < this.images_total_count; i++) {
 			image_clone = new Image();
+			image_clone.src = this.images[i].src || this.images[i].dataset.src;
 			image_clone.onload = this.imageLoaded.bind(this);
 			image_clone.onerror = this.imageLoaded.bind(this);
-			image_clone.src = this.images[i].src;
 		}
 	},
 	imageLoaded: function(){
@@ -120,6 +124,8 @@ MainPageLoader2.prototype = {
 
 		// console.log((((100 / this.images_total_count) * this.images_loaded_count) << 0) + "%")
 		this.percent_display.innerHTML = (((100 / this.images_total_count) * this.images_loaded_count) << 0);
+		// this.progress += this.persent;
+		// this.percent_display.textContent = parseInt(this.progress);
 		$(this.percent_display).prop('Counter',0).animate({
 			Counter: parseInt(((100 / this.images_total_count) * this.images_loaded_count) << 0)
 		}, {
@@ -129,11 +135,11 @@ MainPageLoader2.prototype = {
 				$(this).text(parseInt(now));
 			},
 			complete: function(){
-				if (parseInt($(this).text()) === 100){
-					setTimeout(function(){
-						self.completeAnimation();
-					},700)
-				}
+				// alert()
+				// if (parseInt($(this).text()) === 100){
+
+				// }
+
 			}
 		});
 		TweenMax.to(this.preloaderSmall,.1,{
@@ -146,6 +152,11 @@ MainPageLoader2.prototype = {
 			scaleY: (this.BigScaleY - 1) / this.images_total_count * (this.images_total_count - this.images_loaded_count) + 1,
 			ease: Expo.easeOut,
 		});
+		if(this.images_loaded_count === this.images_total_count){
+			setTimeout(function(){
+				self.completeAnimation();
+			},700)
+		}
 	},
 	// loadAnimation: function(){
 	// 	this.preloader.classList.add('half')
@@ -459,10 +470,64 @@ if (!window.Promise) {
   window.Promise = Promise;
 }
 
+if (!Array.prototype.forEach) {
 
+  Array.prototype.forEach = function (callback, thisArg) {
+
+    var T, k;
+
+    if (this == null) {
+      throw new TypeError(' this is null or not defined');
+    }
+
+    // 1. Положим O равным результату вызова ToObject passing the |this| value as the argument.
+    var O = Object(this);
+
+    // 2. Положим lenValue равным результату вызова внутреннего метода Get объекта O с аргументом "length".
+    // 3. Положим len равным ToUint32(lenValue).
+    var len = O.length >>> 0;
+
+    // 4. Если IsCallable(callback) равен false, выкинем исключение TypeError.
+    // Смотрите: http://es5.github.com/#x9.11
+    if (typeof callback !== 'function') {
+        throw new TypeError(callback + ' is not a function');
+    }
+
+    // 5. Если thisArg присутствует, положим T равным thisArg; иначе положим T равным undefined.
+    if (arguments.length > 1) {
+      T = thisArg;
+    }
+
+    // 6. Положим k равным 0
+    k = 0;
+
+    // 7. Пока k < len, будем повторять
+    while (k < len) {
+
+      var kValue;
+
+      // a. Положим Pk равным ToString(k).
+      //   Это неявное преобразование для левостороннего операнда в операторе in
+      // b. Положим kPresent равным результату вызова внутреннего метода HasProperty объекта O с аргументом Pk.
+      //   Этот шаг может быть объединён с шагом c
+      // c. Если kPresent равен true, то
+      if (k in O) {
+
+        // i. Положим kValue равным результату вызова внутреннего метода Get объекта O с аргументом Pk.
+        kValue = O[k];
+
+        // ii. Вызовем внутренний метод Call функции callback с объектом T в качестве значения this и
+        // списком аргументов, содержащим kValue, k и O.
+        callback.call(T, kValue, k, O);
+      }
+      // d. Увеличим k на 1.
+      k++;
+    }
+    // 8. Вернём undefined.
+  };
+}
 function lazyImage(){
 	// Get all of the images that are marked up to lazy load
-	
 	var arr = document.querySelectorAll('.js-image');
 	var images = [];
 	for(var i = 0; i < arr.length; i++){
@@ -477,15 +542,16 @@ function lazyImage(){
 	var imageCount = images.length;
 	var observer = void 0;
 	// If we don't have support for intersection observer, loads the images immediately
+	
 	if (!('IntersectionObserver' in window)) {
 		for(var i = 0; i < imageCount; i++){
+
 			preloadImage(images[i]);
 		}
 
 	} else {
 		// It is supported, load the images
 		observer = new IntersectionObserver(onIntersection, config);
-
 		for(var i = 0; i< imageCount; i++){
 			if (images[i].classList.contains('js-image-handled')) {
 				return;
@@ -494,7 +560,12 @@ function lazyImage(){
 			observer.observe(images[i]);
 		}
 	}
+	if(window.navigator.userAgent.indexOf("Edge") > -1){
+		for(var i = 0; i < imageCount; i++){
 
+			preloadImage(images[i]);
+		}
+	}
 	/**
 	 * Fetchs the image for the given URL
 	 * @param {string} url 
@@ -518,7 +589,7 @@ function lazyImage(){
 		var src = image.dataset.src;
 
 		if (!src) {
-
+			
 			return;
 		}
 
@@ -594,10 +665,7 @@ function lazyImage(){
 		img.classList.add('fade-in');
 	}	
 }
-(function () {
-	if ( typeof NodeList.prototype.forEach === "function" ) return false;
-	NodeList.prototype.forEach = Array.prototype.forEach;
-})();
+
 function Parallax($parallaxes) {
 	$(window).off('scroll.prl').on('scroll.prl', function(){
 		var scrollTop = $(window).scrollTop(),
@@ -792,7 +860,10 @@ tabsanim.prototype = {
 		var id = parseInt(item.getAttribute('data-id'));
 		item.classList.add(self.opts.act);
 		$(this.conts).removeClass(self.opts.act)
-		this.conts.forEach(function(index,i){
+		// for(var i = 0; i<this.conts.length; i++){
+
+		// }
+		Array.prototype.forEach.call(this.conts,function(index,i){
 			if(self.conts[i].getAttribute('data-id')== id){
 				self.conts[i].classList.add(self.opts.act);
 			}
@@ -803,7 +874,7 @@ tabsanim.prototype = {
 	},
 	initClick: function(){
 		var self = this;
-		this.triggers.forEach(function(i,index){
+		Array.prototype.forEach.call(this.triggers,function(i,index){
 			self.triggers[index].addEventListener('click',function(){
 				var _ = this;
 				if(!_.classList.contains(self.opts.act) && !_.classList.contains(self.opts.off)) {
@@ -816,7 +887,7 @@ tabsanim.prototype = {
 	},
 	preventClick: function(){
 		var self = this;
-		this.triggers.forEach(function(index,i){
+		Array.prototype.forEach.call(this.triggers,function(index,i){
 			self.triggers[i].classList.add('off');
 			setTimeout(function(){
 				self.triggers[i].classList.remove('off');
@@ -1289,6 +1360,10 @@ function MapTriggers(){
 				_.addClass('active').siblings('.tabs-item').removeClass('active');
 				mapblocks.removeClass('active').removeClass('hidden');
 			}
+			if(!_.hasClass('item-all')){
+				$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: $('.logistics').offset().top  - 180}, 650);
+			}
+			
 		});
 	});
 	mapblocks.each(function(){
