@@ -1575,8 +1575,10 @@ a.title:hover {
 
 .promo-slider {
   position: relative;
-  padding-bottom: 51%;
-  width: 100%; }
+  height: -webkit-calc(100vh - 120px);
+  height: calc(100vh - 120px);
+  width: 100%;
+  max-height: 51.25rem; }
   .promo-slider .btn {
     position: absolute;
     left: 12.5rem;
@@ -2761,9 +2763,11 @@ a.title:hover {
   z-index: 1;
   margin-left: -6.5625rem;
   padding-left: 6.25rem;
-  -webkit-transition: padding-left 0.35s ease-in;
-  transition: padding-left 0.35s ease-in;
-  will-change: padding-left; }
+  -webkit-transition: padding-left 0.4s ease;
+  transition: padding-left 0.4s ease;
+  will-change: padding-left;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
   .carousel_layout-container .carousel_layout {
     height: 28.125rem;
     margin: 0 auto;
@@ -2781,7 +2785,11 @@ a.title:hover {
       overflow: hidden;
       -webkit-perspective-origin: 0 0;
       perspective-origin: 0 0;
-      will-change: transform; }
+      will-change: transform;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden; }
       .carousel_layout-container .carousel_layout .carousel_layout-item:first-of-type {
         z-index: 3; }
       .carousel_layout-container .carousel_layout .carousel_layout-item:nth-of-type(2) {
@@ -2793,10 +2801,10 @@ a.title:hover {
         height: 100%;
         position: relative;
         overflow: hidden;
-        -webkit-transition: -webkit-transform 0.35s ease-in;
-        transition: -webkit-transform 0.35s ease-in;
-        transition: transform 0.35s ease-in;
-        transition: transform 0.35s ease-in, -webkit-transform 0.35s ease-in; }
+        -webkit-transition: -webkit-transform 0.4s ease;
+        transition: -webkit-transform 0.4s ease;
+        transition: transform 0.4s ease;
+        transition: transform 0.4s ease, -webkit-transform 0.4s ease; }
         .carousel_layout-container .carousel_layout .carousel_layout-item .carousel_layout-bg img {
           position: absolute;
           display: block;
@@ -2961,46 +2969,51 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
   background-color: #0e3b85;
   background-color: var(--color-brand); }
 
-.projects .columns, .projects .columns:first-child, .projects .columns:last-child {
-  padding-left: 0.3125rem;
-  padding-right: 0.3125rem;
-  padding-top: 0.28125rem;
-  padding-bottom: 0.28125rem; }
-  .projects .columns.large-4 .project-item-arrow, .projects .columns:first-child.large-4 .project-item-arrow, .projects .columns:last-child.large-4 .project-item-arrow {
+.projects {
+  -webkit-transition: opacity .3s ease-in,-webkit-transform .6s ease-out;
+  transition: opacity .3s ease-in,-webkit-transform .6s ease-out;
+  transition: opacity .3s ease-in,transform .6s ease-out;
+  transition: opacity .3s ease-in,transform .6s ease-out,-webkit-transform .6s ease-out; }
+  .projects.moveUp {
+    -webkit-transform: translateY(150px);
+    -ms-transform: translateY(150px);
+    transform: translateY(150px);
+    opacity: 0; }
+  .projects .columns, .projects .columns:first-child, .projects .columns:last-child {
+    padding-left: 0.3125rem;
+    padding-right: 0.3125rem;
+    padding-top: 0.28125rem;
+    padding-bottom: 0.28125rem; }
+    .projects .columns.large-4 .project-item-arrow, .projects .columns:first-child.large-4 .project-item-arrow, .projects .columns:last-child.large-4 .project-item-arrow {
+      display: none; }
+    .projects .columns.large-4 .text.primary, .projects .columns:first-child.large-4 .text.primary, .projects .columns:last-child.large-4 .text.primary {
+      font-size: 1.125rem; }
+    .projects .columns.large-4 .project-item-bg-inner:before, .projects .columns:first-child.large-4 .project-item-bg-inner:before, .projects .columns:last-child.large-4 .project-item-bg-inner:before {
+      -webkit-transition-delay: .3s;
+      transition-delay: .3s; }
+    .projects .columns.large-4 .project-item-content-text .text, .projects .columns:first-child.large-4 .project-item-content-text .text, .projects .columns:last-child.large-4 .project-item-content-text .text {
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      overflow: hidden; }
+  .projects-inner {
+    margin: 1.25rem -0.3125rem 3.4375rem; }
+  .projects-row.row-blue .project-item {
+    padding-bottom: 44.5%; }
+    .projects-row.row-blue .project-item:hover .project-item-bg-inner:after {
+      opacity: 0; }
+  .projects-row.row-blue .project-item-arrow {
     display: none; }
-  .projects .columns.large-4 .text.primary, .projects .columns:first-child.large-4 .text.primary, .projects .columns:last-child.large-4 .text.primary {
-    font-size: 1.125rem; }
-  .projects .columns.large-4 .project-item-bg-inner:before, .projects .columns:first-child.large-4 .project-item-bg-inner:before, .projects .columns:last-child.large-4 .project-item-bg-inner:before {
-    -webkit-transition-delay: .3s;
-    transition-delay: .3s; }
-  .projects .columns.large-4 .project-item-content-text .text, .projects .columns:first-child.large-4 .project-item-content-text .text, .projects .columns:last-child.large-4 .project-item-content-text .text {
+  .projects-row.row-blue .project-item-bg-inner:before {
+    background: #0e3b85;
+    background: var(--color-brand); }
+  .projects-row.row-blue .project-item-content-text .text {
     text-overflow: ellipsis;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     display: -webkit-box;
     overflow: hidden; }
-
-.projects-inner {
-  margin: 1.25rem -0.3125rem 3.4375rem; }
-
-.projects-row.row-blue .project-item {
-  padding-bottom: 44.5%; }
-  .projects-row.row-blue .project-item:hover .project-item-bg-inner:after {
-    opacity: 0; }
-
-.projects-row.row-blue .project-item-arrow {
-  display: none; }
-
-.projects-row.row-blue .project-item-bg-inner:before {
-  background: #0e3b85;
-  background: var(--color-brand); }
-
-.projects-row.row-blue .project-item-content-text .text {
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  overflow: hidden; }
 
 .project-item {
   display: block;
@@ -4151,7 +4164,10 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
   z-index: 1101;
   display: none; }
   .cap .cap-inner {
-    width: 31.25rem;
+    max-width: 33.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -4188,32 +4204,238 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
       -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
       transform: scale(1.2);
-      margin-top: -3.125rem;
+      margin-top: -5rem;
       -webkit-transform-origin: right center;
       -ms-transform-origin: right center;
-      transform-origin: right center; }
+      transform-origin: right center;
+      pointer-events: none; }
+      .logistics-content .tabs-map:not(.animating) .block.anim-ready {
+        display: none; }
+      .logistics-content .tabs-map.animating {
+        pointer-events: none; }
+        .logistics-content .tabs-map.animating .block.block1, .logistics-content .tabs-map.animating .block.block2, .logistics-content .tabs-map.animating .block.block3, .logistics-content .tabs-map.animating .block.block4, .logistics-content .tabs-map.animating .block.block5, .logistics-content .tabs-map.animating .block.block6 {
+          display: none; }
+        .logistics-content .tabs-map.animating .block.anim-ready .finish {
+          pointer-events: none;
+          stroke-width: 2;
+          stroke: #f4f4f4 !important;
+          fill: transparent; }
+        .logistics-content .tabs-map.animating .anim-ready-2 .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .3s 4.1s linear forwards;
+          animation: fadeblk .3s 4.1s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-2 .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 4.25s linear forwards;
+          animation: fadepin .2s 4.25s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-2 .line2 {
+          opacity: 1;
+          -webkit-animation: line 2.5s 2s linear forwards;
+          animation: line 2.5s 2s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-4 .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .3s 3.75s linear forwards;
+          animation: fadeblk .3s 3.75s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-4 .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 3.9s linear forwards;
+          animation: fadepin .2s 3.9s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-4 .line2 {
+          opacity: 1;
+          -webkit-animation: line 7s 3s linear forwards;
+          animation: line 7s 3s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-1 .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .3s 3s linear forwards;
+          animation: fadeblk .3s 3s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-1 .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 3.1s linear forwards;
+          animation: fadepin .2s 3.1s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-1 .line2 {
+          opacity: 1;
+          -webkit-animation: line 2.5s  1.5s linear forwards;
+          animation: line 2.5s  1.5s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-5 .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .3s 2.7s linear forwards;
+          animation: fadeblk .3s 2.7s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-5 .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 2.8s linear forwards;
+          animation: fadepin .2s 2.8s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-5 .line2 {
+          opacity: 1;
+          -webkit-animation: line 6s 1.7s linear forwards;
+          animation: line 6s 1.7s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-3 .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .3s 2.2s linear forwards;
+          animation: fadeblk .3s 2.2s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-3 .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 2.35s linear forwards;
+          animation: fadepin .2s 2.35s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-3 .line2 {
+          opacity: 1;
+          -webkit-animation: line2 1.5s 1s linear forwards;
+          animation: line2 1.5s 1s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-6 .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .3s 3.5s linear forwards;
+          animation: fadeblk .3s 3.5s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-6 .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 3.7s linear forwards;
+          animation: fadepin .2s 3.7s linear forwards; }
+        .logistics-content .tabs-map.animating .anim-ready-6 .line2 {
+          opacity: 1;
+          -webkit-animation: line 2s 2.5s linear forwards;
+          animation: line 2s 2.5s linear forwards; }
       .logistics-content .tabs-map svg {
         height: 100%;
         display: block;
-        margin-left: auto; }
+        margin-left: auto;
+        pointer-events: all; }
         .logistics-content .tabs-map svg path {
           overflow: visible; }
-        .logistics-content .tabs-map svg .block {
-          -webkit-transition: opacity .3s, -webkit-transform .3s;
-          transition: opacity .3s, -webkit-transform .3s;
-          transition: transform .3s, opacity .3s;
-          transition: transform .3s, opacity .3s, -webkit-transform .3s; }
-        .logistics-content .tabs-map svg .block3 .line2 {
+        .logistics-content .tabs-map svg .block.block1 .line, .logistics-content .tabs-map svg .block.block1 .start, .logistics-content .tabs-map svg .block.block1 .line2, .logistics-content .tabs-map svg .block.block1 .pin, .logistics-content .tabs-map svg .block.block2 .line, .logistics-content .tabs-map svg .block.block2 .start, .logistics-content .tabs-map svg .block.block2 .line2, .logistics-content .tabs-map svg .block.block2 .pin, .logistics-content .tabs-map svg .block.block3 .line, .logistics-content .tabs-map svg .block.block3 .start, .logistics-content .tabs-map svg .block.block3 .line2, .logistics-content .tabs-map svg .block.block3 .pin, .logistics-content .tabs-map svg .block.block4 .line, .logistics-content .tabs-map svg .block.block4 .start, .logistics-content .tabs-map svg .block.block4 .line2, .logistics-content .tabs-map svg .block.block4 .pin, .logistics-content .tabs-map svg .block.block5 .line, .logistics-content .tabs-map svg .block.block5 .start, .logistics-content .tabs-map svg .block.block5 .line2, .logistics-content .tabs-map svg .block.block5 .pin, .logistics-content .tabs-map svg .block.block6 .line, .logistics-content .tabs-map svg .block.block6 .start, .logistics-content .tabs-map svg .block.block6 .line2, .logistics-content .tabs-map svg .block.block6 .pin {
+          pointer-events: none; }
+        .logistics-content .tabs-map svg .block.hidden .line2, .logistics-content .tabs-map svg .block.hidden .line, .logistics-content .tabs-map svg .block.hidden .pin {
+          opacity: 0; }
+        .logistics-content .tabs-map svg .block.hidden .finish {
+          fill: transparent;
+          stroke: #0e3b85;
+          stroke: var(--color-brand); }
+        .logistics-content .tabs-map svg .block.hidden .finish:hover {
+          fill: rgba(173, 163, 163, 0.2); }
+        .logistics-content .tabs-map svg .block:not(.hidden) .finish:hover, .logistics-content .tabs-map svg .block.active .finish:hover {
+          opacity: .9; }
+        .logistics-content .tabs-map svg .block3 .line2, .logistics-content .tabs-map svg .anim-ready-3 .line2 {
           stroke-dashoffset: 8000;
           stroke-dasharray: 4000; }
         .logistics-content .tabs-map svg .line2 {
           opacity: 0;
           -webkit-transition-duration: 0s;
           transition-duration: 0s; }
+        .logistics-content .tabs-map svg .finish {
+          -webkit-transition: opacity .2s, stroke .2s, fill .2s;
+          transition: opacity .2s, stroke .2s, fill .2s;
+          stroke-width: 1;
+          stroke: #0e3b85;
+          stroke: var(--color-brand);
+          cursor: pointer; }
+        .logistics-content .tabs-map svg .block2.active .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .15s 1.1s linear forwards;
+          animation: fadeblk .15s 1.1s linear forwards; }
+        .logistics-content .tabs-map svg .block2.active .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 1.25s linear forwards;
+          animation: fadepin .2s 1.25s linear forwards; }
+        .logistics-content .tabs-map svg .block2.active .line2 {
+          opacity: 1;
+          -webkit-animation: line 1.5s linear forwards;
+          animation: line 1.5s linear forwards; }
+        .logistics-content .tabs-map svg .block4.active .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .15s .75s linear forwards;
+          animation: fadeblk .15s .75s linear forwards; }
+        .logistics-content .tabs-map svg .block4.active .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s .9s linear forwards;
+          animation: fadepin .2s .9s linear forwards; }
+        .logistics-content .tabs-map svg .block4.active .line2 {
+          opacity: 1;
+          -webkit-animation: line 6s linear forwards;
+          animation: line 6s linear forwards; }
+        .logistics-content .tabs-map svg .block1.active .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .15s .7s linear forwards;
+          animation: fadeblk .15s .7s linear forwards; }
+        .logistics-content .tabs-map svg .block1.active .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s .85s linear forwards;
+          animation: fadepin .2s .85s linear forwards; }
+        .logistics-content .tabs-map svg .block1.active .line2 {
+          opacity: 1;
+          -webkit-animation: line 1.5s linear forwards;
+          animation: line 1.5s linear forwards; }
+        .logistics-content .tabs-map svg .block5.active .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .15s .75s linear forwards;
+          animation: fadeblk .15s .75s linear forwards; }
+        .logistics-content .tabs-map svg .block5.active .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s .9s linear forwards;
+          animation: fadepin .2s .9s linear forwards; }
+        .logistics-content .tabs-map svg .block5.active .line2 {
+          opacity: 1;
+          -webkit-animation: line 5s linear forwards;
+          animation: line 5s linear forwards; }
+        .logistics-content .tabs-map svg .block3.active .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .15s 1.2s linear forwards;
+          animation: fadeblk .15s 1.2s linear forwards; }
+        .logistics-content .tabs-map svg .block3.active .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s 1.35s linear forwards;
+          animation: fadepin .2s 1.35s linear forwards; }
+        .logistics-content .tabs-map svg .block3.active .line2 {
+          opacity: 1;
+          -webkit-animation: line2 1.5s linear forwards;
+          animation: line2 1.5s linear forwards; }
+        .logistics-content .tabs-map svg .block6.active .finish {
+          fill: transparent;
+          -webkit-animation: fadeblk .15s .7s linear forwards;
+          animation: fadeblk .15s .7s linear forwards; }
+        .logistics-content .tabs-map svg .block6.active .pin {
+          opacity: 0;
+          -webkit-transform: translateY(-30px);
+          -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+          -webkit-animation: fadepin .2s .85s linear forwards;
+          animation: fadepin .2s .85s linear forwards; }
+        .logistics-content .tabs-map svg .block6.active .line2 {
+          opacity: 1;
+          -webkit-animation: line 1.5s linear forwards;
+          animation: line 1.5s linear forwards; }
     .logistics-content .tabs-element {
       font-size: 0;
       margin-top: 3.125rem;
@@ -4227,189 +4449,46 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
       padding-left: 0;
       padding-right: 2.5rem;
       margin-bottom: 0;
-      padding-bottom: 1.375rem; }
+      padding-bottom: 1.375rem;
+      position: relative;
+      z-index: 1; }
       .logistics-content .tabs-item-block {
         color: #303234;
         color: var(--color-textblk); }
         .logistics-content .tabs-item-block:after {
-          color: #303234;
-          color: var(--color-textblk); }
+          color: #0e3b85;
+          color: var(--color-brand); }
       .logistics-content .tabs-item-line {
-        background-color: #303234;
-        background-color: var(--color-textblk); }
+        background-color: #0e3b85;
+        background-color: var(--color-brand); }
       .logistics-content .tabs-item-container:before {
         background-color: #303234;
         background-color: var(--color-textblk); }
-      .logistics-content .tabs-item:hover .tabs-item-block {
+      .logistics-content .tabs-item.active .tabs-item-block {
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%); }
-      .logistics-content .tabs-item:hover .tabs-item-line {
+      .logistics-content .tabs-item.active .tabs-item-line {
         left: 0;
         right: 0;
         width: 100%; }
-      .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block1, .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block3, .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block4, .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block5, .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block6 {
-        opacity: 0;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s; }
-      .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block2 .finish {
-        opacity: 0;
-        -webkit-transition-duration: .1s;
-        transition-duration: .1s;
-        -webkit-transition-delay: .0s !important;
-        transition-delay: .0s !important;
-        -webkit-animation: fadeblk .15s 1.1s linear forwards;
-        animation: fadeblk .15s 1.1s linear forwards; }
-      .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block2 .pin {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation: fadepin .2s 1.25s linear forwards;
-        animation: fadepin .2s 1.25s linear forwards; }
-      .logistics-content .tabs-item.item-1:hover ~ .tabs-map .block2 .line2 {
-        opacity: 1;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s;
-        -webkit-animation: line 1.5s linear forwards;
-        animation: line 1.5s linear forwards; }
-      .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block1, .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block3, .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block2, .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block5, .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block6 {
-        opacity: 0;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s; }
-      .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block4 .finish {
-        opacity: 0;
-        -webkit-transition-duration: .1s;
-        transition-duration: .1s;
-        -webkit-transition-delay: .0s !important;
-        transition-delay: .0s !important;
-        -webkit-animation: fadeblk .15s .75s linear forwards;
-        animation: fadeblk .15s .75s linear forwards; }
-      .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block4 .pin {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation: fadepin .2s .9s linear forwards;
-        animation: fadepin .2s .9s linear forwards; }
-      .logistics-content .tabs-item.item-2:hover ~ .tabs-map .block4 .line2 {
-        opacity: 1;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s;
-        -webkit-animation: line 6s linear forwards;
-        animation: line 6s linear forwards; }
-      .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block4, .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block3, .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block2, .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block5, .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block6 {
-        opacity: 0;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s; }
-      .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block1 .finish {
-        opacity: 0;
-        -webkit-transition-duration: .1s;
-        transition-duration: .1s;
-        -webkit-transition-delay: .0s !important;
-        transition-delay: .0s !important;
-        -webkit-animation: fadeblk .15s .7s linear forwards;
-        animation: fadeblk .15s .7s linear forwards; }
-      .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block1 .pin {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation: fadepin .2s .85s linear forwards;
-        animation: fadepin .2s .85s linear forwards; }
-      .logistics-content .tabs-item.item-3:hover ~ .tabs-map .block1 .line2 {
-        opacity: 1;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s;
-        -webkit-animation: line 1.5s linear forwards;
-        animation: line 1.5s linear forwards; }
-      .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block4, .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block3, .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block2, .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block1, .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block6 {
-        opacity: 0;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s; }
-      .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block5 .finish {
-        opacity: 0;
-        -webkit-transition-duration: .1s;
-        transition-duration: .1s;
-        -webkit-transition-delay: .0s !important;
-        transition-delay: .0s !important;
-        -webkit-animation: fadeblk .15s .75s linear forwards;
-        animation: fadeblk .15s .75s linear forwards; }
-      .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block5 .pin {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation: fadepin .2s .9s linear forwards;
-        animation: fadepin .2s .9s linear forwards; }
-      .logistics-content .tabs-item.item-4:hover ~ .tabs-map .block5 .line2 {
-        opacity: 1;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s;
-        -webkit-animation: line 5s linear forwards;
-        animation: line 5s linear forwards; }
-      .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block4, .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block5, .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block2, .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block1, .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block6 {
-        opacity: 0;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s; }
-      .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block3 .finish {
-        opacity: 0;
-        -webkit-transition-duration: .1s;
-        transition-duration: .1s;
-        -webkit-transition-delay: .0s !important;
-        transition-delay: .0s !important;
-        -webkit-animation: fadeblk .15s 1.2s linear forwards;
-        animation: fadeblk .15s 1.2s linear forwards; }
-      .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block3 .pin {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation: fadepin .2s 1.35s linear forwards;
-        animation: fadepin .2s 1.35s linear forwards; }
-      .logistics-content .tabs-item.item-5:hover ~ .tabs-map .block3 .line2 {
-        opacity: 1;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s;
-        -webkit-animation: line2 1.5s linear forwards;
-        animation: line2 1.5s linear forwards; }
-      .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block4, .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block5, .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block2, .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block1, .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block3 {
-        opacity: 0;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s; }
-      .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block6 .finish {
-        opacity: 0;
-        -webkit-transition-duration: .1s;
-        transition-duration: .1s;
-        -webkit-transition-delay: .0s !important;
-        transition-delay: .0s !important;
-        -webkit-animation: fadeblk .15s .7s linear forwards;
-        animation: fadeblk .15s .7s linear forwards; }
-      .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block6 .pin {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        transform: translateY(-30px);
-        -webkit-animation: fadepin .2s .85s linear forwards;
-        animation: fadepin .2s .85s linear forwards; }
-      .logistics-content .tabs-item.item-6:hover ~ .tabs-map .block6 .line2 {
-        opacity: 1;
-        -webkit-transition-delay: .3s;
-        transition-delay: .3s;
-        -webkit-animation: line 1.5s linear forwards;
-        animation: line 1.5s linear forwards; }
+      .logistics-content .tabs-item:hover .tabs-item-block {
+        color: #303234;
+        color: var(--color-textblk); }
 
 @-webkit-keyframes fadeblk {
   0% {
-    opacity: 0; }
+    fill: transparent; }
   100% {
-    opacity: 1; } }
+    fill: #0e3b85;
+    fill: var(--color-brand); } }
 
 @keyframes fadeblk {
   0% {
-    opacity: 0; }
+    fill: transparent; }
   100% {
-    opacity: 1; } }
+    fill: #0e3b85;
+    fill: var(--color-brand); } }
 
 @-webkit-keyframes fadepin {
   0% {
@@ -4544,6 +4623,19 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     left: 2.5rem;
     bottom: 2.5rem;
     display: inline-block; }
+  @media only screen and (max-height: 1050px) and (max-width: 1400px) and (pointer: coarse) {
+
+  .item1 .promo-slider-item-img {
+    bottom: -20% !important; }
+
+  .item1 .cont-inner {
+    padding-bottom: 30.7% !important; }
+
+  .item2 .promo-slider-item-img {
+    bottom: -25% !important; }
+
+  .item2 .cont-inner {
+    padding-bottom: 39.3% !important; } }
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
   * {
@@ -4622,23 +4714,16 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
 
   .bread-item:hover:after {
     opacity: .5; } }
+  @media only screen and (max-width: 1500px) {
+
+  .nav-link .title {
+    font-size: 3.75rem; } }
   @media only screen and (min-width: 1500px) {
 
   .half-title .col .title + img {
     -webkit-transform: scale(0.5);
     -ms-transform: scale(0.5);
     transform: scale(0.5); } }
-  @media only screen and (max-width: 1500px) {
-
-  .nav-link .title {
-    font-size: 3.75rem; } }
-  @media only screen and (min-width: 1450px) {
-
-  .projects-content .title {
-    margin-bottom: 6.25rem; }
-
-  .projects-content .text.primary {
-    margin-top: 6.25rem; } }
   @media only screen and (max-width: 1450px) {
 
   .block-image-parallax .block-image-inner {
@@ -4646,6 +4731,13 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
 
   .prod-elem .link-arr {
     margin-bottom: 3.125rem; } }
+  @media only screen and (min-width: 1450px) {
+
+  .projects-content .title {
+    margin-bottom: 6.25rem; }
+
+  .projects-content .text.primary {
+    margin-top: 6.25rem; } }
   @media only screen and (max-width: 1400px) {
 
   .promo-slider-item-content {
@@ -4653,25 +4745,51 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     padding-left: 13.2%; }
 
   .promo-slider-item-content .cont-inner .title {
-    font-size: 6.875rem; }
+    font-size: 5.9375rem; }
+
+  .promo-slider-item-content .cont-inner .text.primary {
+    font-size: 1.5625rem; }
+
+  .item1 .promo-slider-item-img {
+    bottom: -30%; }
+
+  .item1 .cont-inner {
+    padding-bottom: 28.7%; }
+
+  .item1 .cont-inner .cont-right {
+    top: 1.875rem; }
+
+  .item2 .promo-slider-item-img {
+    bottom: -44%; }
+
+  .item2 .cont-inner {
+    padding-bottom: 35%; }
 
   .block-image-parallax {
-    max-height: 26.875rem; } }
+    max-height: 26.875rem; }
+
+  .logistics-content .tabs-map {
+    -webkit-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15); } }
   @media only screen and (max-width: 1370px) {
 
   .carousel_layout-container .carousel_layout {
     height: 26.25rem; } }
   @media only screen and (max-width: 1300px) {
 
+  .promo-slider {
+    max-height: 38.75rem; }
+
   .promo-slider-item-content {
     padding-left: 10%;
     padding-right: 8%; }
 
-  .item1 .cont-inner {
-    padding-bottom: 28.7%; }
+  .item1 .promo-slider-item-img {
+    bottom: -23%; }
 
-  .item2 .cont-inner {
-    padding-bottom: 40%; }
+  .item2 .promo-slider-item-img {
+    bottom: -29%; }
 
   .block-image-parallax {
     max-height: 25rem; }
@@ -4710,9 +4828,9 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     margin: 0 -0.625rem; }
 
   .logistics-content .tabs-map {
-    -webkit-transform: scale(1.15);
-    -ms-transform: scale(1.15);
-    transform: scale(1.15); } }
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); } }
   @media only screen and (min-width: 1201px) {
 
   .prod-elem {
@@ -4770,23 +4888,18 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     padding-left: 0; }
 
   .review-item-content .review-trigger {
-    bottom: -0.3125rem; }
-
-  .logistics-content .tabs-map {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1); } }
+    bottom: -0.3125rem; } }
   @media only screen and (max-width: 1140px) {
 
   .logo {
     max-width: 16.25rem; } }
   @media only screen and (max-width: 1100px) {
 
+  .promo-slider .btn {
+    left: 6.25rem; }
+
   .promo-slider-item-content .cont-inner .title {
     font-size: 5.9375rem; }
-
-  .promo-slider-item-content .cont-inner .text.primary {
-    font-size: 1.25rem; }
 
   .carousel_layout-container .carousel_layout {
     height: 21.875rem; }
@@ -4802,9 +4915,10 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     padding-bottom: 85%; }
 
   .logistics-content .tabs-map {
-    -webkit-transform: scale(1) translateX(6%);
-    -ms-transform: scale(1) translateX(6%);
-    transform: scale(1) translateX(6%); } }
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    margin-top: -6.25rem; } }
   @media only screen and (max-width: 1040px) {
 
   .projects-row.row-blue .project-item {
@@ -4813,6 +4927,14 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
   .half-title {
     padding-left: 0;
     padding-right: 0; } }
+  @media only screen and (max-width: 1025px) {
+
+  .promo-slider {
+    height: 0;
+    padding-bottom: 54%; }
+
+  .item2 .promo-slider-item-img {
+    bottom: -30%; } }
   @media only screen and (max-width: 1024px) {
 
   .footer-nav-link {

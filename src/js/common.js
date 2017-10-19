@@ -1278,21 +1278,39 @@ function MapTriggers(){
 	var maincont = $('.tabs-triggerwrap');
 	var triggers = maincont.find('.tabs-item');
 	var mapblocks = maincont.find('.mapblock');
-	maincont.on('mouseenter',function(){
-		setTimeout(function(){
-			mapblocks.addClass('hidden')
-		},400);
-	}).on('mouseleave',function(){
-		mapblocks.removeClass('hidden').removeClass('active');
-	});
 
 	triggers.each(function(){
 		var _ = $(this);
 		var id  = _.data('id');
-		_.on('mouseenter', function(){
-			mapblocks.filter('[data-id="'+id+'"]').addClass('active').siblings().removeClass('active');
+		_.on('click', function(){
+			_.addClass('active').siblings('.tabs-item').removeClass('active');
+			mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');
+			if(_.hasClass('item-all')){
+				_.addClass('active').siblings('.tabs-item').removeClass('active');
+				mapblocks.removeClass('active').removeClass('hidden');
+			}
 		});
 	});
+	mapblocks.each(function(){
+		var _ = $(this);
+		var id  = _.data('id');
+		_.on('click', function(){
+			_.removeClass('hidden').addClass('active').siblings('.mapblock').removeClass('active').addClass('hidden');
+			triggers.filter('[data-id="'+id+'"]').addClass('active').siblings().removeClass('active');
+		});
+	});
+}
+function animateMap(){
+	var target = $('.tabs-map');
+	if(target.length){
+		var blocks = document.querySelectorAll('.mapblock');
+		setTimeout(function(){
+			target.addClass('animating');		
+		},750)
+		setTimeout(function(){
+			target.removeClass('animating');		
+		},5500)
+	}
 }
 var BarbaWitget = {
 	init: function(){
@@ -1456,6 +1474,7 @@ var contacts = Barba.BaseView.extend({
 var content = Barba.BaseView.extend({
 	namespace: "Content",
 	onEnter: function(){
+		animateMap();
 		var revItems = document.querySelectorAll('.review-item');
 		if(revItems.length){
 			revfunc = new review(revItems);
@@ -1465,7 +1484,8 @@ var content = Barba.BaseView.extend({
 	onEnterCompleted: function(){
 		// initMap();
 		feedbackslider();
-		// MapTriggers();
+		MapTriggers();
+		
 	},
 	onLeaveComplete: function(){
 	}
