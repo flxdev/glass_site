@@ -715,7 +715,13 @@ a.title
 					white-space: nowrap
 			&:last-child
 				.block-contact
-					padding-left: 8%
+					padding-left: 8
+			&:nth-last-child(2)
+				.text
+					&>a[href^="tel:"]
+						&:only-child
+							+rem(margin-top,10px)
+							display: block
 						
 	.text
 		color: $footertext
@@ -727,7 +733,7 @@ a.title
 				color: $white
 				opacity: 1
 		&.gray 
-			opacity: .3
+			opacity: .4
 		a
 			transition: color .3s, opacity .3s
 			&[href^="tel:"]
@@ -763,6 +769,7 @@ a.title
 		&.gray 
 			+rem(margin-bottom,10px)
 			+rem(max-width,250px)
+
 // .promo-slider
 // 	position: relative
 // 	// padding-bottom: 51%
@@ -1022,28 +1029,51 @@ a.title
 			height: 100%
 			top: 0
 			bottom: 0
-			opacity: 0
 			z-index: 2
+			background: 0 0
 
 			&.slick-prev
 				left: 0
-				cursor: url(/img/slidearrw2.svg), auto
+				cursor: 
 				display: none
 				
 			&.slick-next
 				right: 0
-				cursor: url(/img/slidearrw2.svg), auto
+				// cursor: url(/img/slidearrw2.svg), auto
+				+vertical
 				width: 100%
+				text-align: right
+				// z-index: 4
+				&:before
+					display: inline-block
+					vertical-align: middle
+					content: ''
+					+rem(width,40px)
+					+rem(height,40px)
+					+contain
+					background-image: url(/img/slidearrw2.svg)
+					position: relative
+					z-index: 5
+					+rem(margin-right,30px)
+					animation: sdb 1.5s infinite
+					// z-index: 3
+		// .slick-list
+		// 		z-index: 1
 		.slick-list,.slick-track
 			width: 100%
 			height: 100%
+			position: relative
+		.slick-track
+			z-index: 1
 		&:not(.slick-initialized)
 			opacity: 0
 			transition-delay: 0
 		// &.slick-initialized
 		.promo-slider-item
+			// z-index: 0 !important	
 			&.slick-current
 				transition-delay: .3s!important
+				// z-index: 	1 !important	
 				.img-wrap
 					opacity: 1
 					transform: translate3d(0,0,0)
@@ -1214,7 +1244,15 @@ a.title
 			+rem(padding-left,5px)
 			+rem(margin-bottom,10px)
 
-
+@keyframes sdb
+    0% 
+        transform: translate(-20px,0);
+        opacity: 0
+    50%
+        opacity: 1
+    100%
+        transform: translate(10px,0px);
+        opacity: 0
 .margin
 	+rem(margin,60px 0)
 .row 
@@ -1849,6 +1887,8 @@ a.title
 	&.head-big
 		.page-head-inner
 			+rem(padding-top,252px)
+			+r(1200)
+				+rem(padding-top,180px)	
 		.page-head-gradient
 			height: 160%
 	&.page-head-gray
@@ -2140,6 +2180,8 @@ body
 			.text 
 				display: inline-block
 				vertical-align: middle
+				+r(1385)
+					+rem(font-size,18px)
 				
 		&:nth-child(3)
 			text-align: right
@@ -2207,16 +2249,25 @@ body
 				+r(1300)
 					.text 
 						+rem(font-size,14px)
+	&.rd 
+			.projects-inner
+				margin-top: 0 !important
+				margin-bottom: 0 !important
+			.projects-row
+				+rem(margin-top,-23px)
 	&-inner
 		+rem(margin,20px -5px 55px)
 	&-row 
 		&.row-blue
 			.project-item
-				padding-bottom: 44.5%
-				+r(1300)
-					padding-bottom: 50%
-				+r(1040)
-					padding-bottom: 55%
+				padding-bottom: 0
+				height: 100%
+				
+				// padding-bottom: 44.5%
+				// +r(1300)
+				// 	padding-bottom: 50%
+				// +r(1040)
+				// 	padding-bottom: 55%
 				&:hover
 					.project-item-bg-inner
 						&:after
@@ -2227,12 +2278,26 @@ body
 				&:before
 					background: $brand
 			.project-item-content-text .text
-				+cut(6)
+				+cut(25)
+			.project-item-content
+				position: static
+				
 			.project-item-content-head
 				.text.primary
 					+r(1200)
 						+rem(font-size,23px)
 			.project-item-content-text
+				position: static
+				+rem(padding-top,70px)
+				height: 100%
+				display: flex
+				flex-flow: column nowrap
+				justify-content: flex-end
+				+rem(min-height,290px)
+				// align-items: flex-start
+				.text
+					display: inherit
+
 				+r(1300)
 					padding-right: 0
 				// +r(1500)
@@ -2515,7 +2580,9 @@ body
 		justify-content: space-between
 		+rem(margin-bottom,40px)
 	&-slider
-		+rem(margin, 0 -5px)
+		// +rem(margin, 0 -6px)
+		+rem(margin-left,-5px)
+		+rem(margin-right,-5px)
 		.columns
 			+padlr(5px)
 			.slick-track
@@ -2550,7 +2617,7 @@ body
 			font-size: 0
 			&>div 
 				display: inline-block
-				vertical-align: middle
+				vertical-align: top
 		&-image
 			width: 39%
 			overflow: hidden
@@ -2575,6 +2642,7 @@ body
 			width: 61%
 			+rem(max-width,335px)
 			padding-left: 8%
+			+rem(padding-top,10px)
 			.text.gray
 				white-space: nowrap
 			.text.primary
@@ -2603,8 +2671,9 @@ body
 		.link-arr
 			+rem(margin-top,60px)
 		.text.primary
-
 			+rem(margin-bottom,50px)
+		.text.gray 
+			color: #a2a2a2
 		.block-contact
 			display: inline-block
 			vertical-align: top
@@ -2622,6 +2691,14 @@ body
 					color: $brand
 					&:hover
 						color: $brandh
+			&:nth-child(2)
+				.text
+					&>a[href^="tel:"]
+						&:only-child
+							+rem(margin-top,10px)
+							display: block
+
+						
 .map 
 	&-container
 		position: relative
@@ -3180,8 +3257,7 @@ body
 	// &-wrapper
 	+rem(margin-top,-60px)
 	+rem(padding-top,60px)
-	+ie11
-		overflow: hidden
+	overflow: hidden
 		
 	&-triggerwrap
 
@@ -3199,21 +3275,20 @@ body
 			&-map 
 				+coverdiv
 				// z-index: -1
-				transform: scale(1.2)
-				+rem(margin-top,-80px)
+				// transform: scale(1.2)
 				transform-origin: right center
+				+rem(margin-top,30px)
 				pointer-events: none
-				+r(1400)
-					transform: scale(1.05) 
-				+r(1300)
-					transform: scale(.9)
-				+r(1200)
-					transform: scale(.8)
-				+r(1100)
-					transform: scale(.75)
-					+rem(margin-top,-100px)
-				+r(1000)
-					transform: scale(.7)
+				// +r(1400)
+				// 	transform: scale(1.05) 
+				// +r(1300)
+				// 	transform: scale(.9)
+				// +r(1200)
+				// 	transform: scale(.8)
+				// +r(1100)
+				// 	transform: scale(.75)
+				// +r(1000)
+				// 	transform: scale(.7)
 				&:not(.animating)
 					.block 
 						&.anim-ready
@@ -3309,8 +3384,24 @@ body
 					display: block
 					margin-left: auto
 					pointer-events: all
+					will-change: transform
+					+tr(transform 2s)
+					width: 60%
+					transform-origin: right top
 					+ie11
 						margin-right: -22%
+					&.move2
+						transform: scale(1.15) translateX(10%)
+					&.move4
+						transform: scale(1.25) translateX(5%)
+					&.move1
+						transform: scale(1.2) translateX(10%)
+					&.move5
+						transform: scale(1.35) translateX(5%)
+					&.move3
+						transform: scale(1.2) translateY(-12%) translateX(0%)
+					&.move6
+						transform: scale(1.2) translateY(5%) translateX(20%)
 					path 
 						overflow: visible
 					.block 

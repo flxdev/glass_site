@@ -2,8 +2,8 @@ extends _layout
 
 block title
 	title Production
-	- var _name = "Production"
-	- var currentPage = "Production"
+	- var _name = "News"
+	- var currentPage = "News"
 block content
 	.site__loader
 	.root__wrapper
@@ -11,7 +11,7 @@ block content
 		.root__frame
 			include includes/_header	
 			#barba-wrapper
-				.barba-container(data-namespace="Production-inner")
+				.barba-container(data-namespace="news-inner")
 					.wrapper-frame
 						.block.page-head-block
 							.row

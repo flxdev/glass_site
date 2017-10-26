@@ -1165,7 +1165,7 @@ var sortItem = function(){
 				},300);
 			});
 		})
-		$(document).on('mouseup', function (e){
+		$(document).on('click touchmove', function (e){
 			if (!trigger.is(e.target)
 				&& trigger.has(e.target).length === 0) {
 				trigger.removeClass('active');
@@ -1347,6 +1347,7 @@ function loadState(){
 }
 function MapTriggers(){
 	var maincont = $('.tabs-triggerwrap');
+	var mapsvg = maincont.find('svg');
 	var triggers = maincont.find('.tabs-item');
 	var mapblocks = maincont.find('.mapblock');
 
@@ -1354,6 +1355,8 @@ function MapTriggers(){
 		var _ = $(this);
 		var id  = _.data('id');
 		_.on('click', function(){
+
+			mapsvg.attr('class', '').addClass('move'+id+'')
 			_.addClass('active').siblings('.tabs-item').removeClass('active');
 			mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');
 			if(_.hasClass('item-all')){
@@ -1370,6 +1373,7 @@ function MapTriggers(){
 		var _ = $(this);
 		var id  = _.data('id');
 		_.on('click', function(){
+			mapsvg.attr('class', '').addClass('move'+id+'')
 			_.removeClass('hidden').addClass('active').siblings('.mapblock').removeClass('active').addClass('hidden');
 			triggers.filter('[data-id="'+id+'"]').addClass('active').siblings().removeClass('active');
 		});
@@ -1401,7 +1405,6 @@ var BarbaWitget = {
 		// }); 
 		Barba.Dispatcher.on('newPageReady', function (currentStatus) {
 			var link = currentStatus.url.split(window.location.origin)[1].substring(0);
-			console.log(link)
 			var navigationLinks = document.querySelectorAll('.js-nav');
 			var navigationLinkIsActive = document.querySelectorAll('[href="' + link + '"]');
 
@@ -1526,6 +1529,27 @@ var ProductionInner = Barba.BaseView.extend({
 	onLeaveComplete: function(){
 	}
 });
+var NewsInner = Barba.BaseView.extend({
+	namespace: "news-inner",
+	onEnter: function(){
+
+	},
+	onLeave: function(){
+		var stickEl = $('.js-stick');
+		var stickPos = stickEl.css('top');
+		if(stickPos != 'auto'){
+			returnStickPos(stickEl,stickPos)
+		}else{
+		}
+	},
+	onEnterCompleted: function(){
+
+		stickinit();
+		moreslider();
+	},
+	onLeaveComplete: function(){
+	}
+});
 var PojectsPage = Barba.BaseView.extend({
 	namespace: "Projects",
 	onEnter: function(){
@@ -1571,6 +1595,7 @@ ProductionInner.init();
 PojectsPage.init();
 contacts.init();
 content.init();
+NewsInner.init();
 BarbaWitget.init();
 
 
