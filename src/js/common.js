@@ -1,89 +1,7 @@
 $(window).on('load',function(){
 	lazyImage();
-	// if(conf.firstLoad == false){
 	loadState();
-	// 	conf.firstLoad = true
-	// }
-
 });
-// main preloader site
-// function MainPageLoader(){
-// 	this.init();
-// };
-// MainPageLoader.prototype = {
-// 	init: function(){
-// 		this.images = document.images;
-// 		this.images_total_count = this.images.length;
-// 		this.images_loaded_count = 0;
-// 		this.preloader = document.querySelector('.preloader');
-// 		this.preloaderContainer = this.preloader.querySelector('.preloader-inner');
-// 		this.preloaderSmall = this.preloader.querySelector('.preloader-item.small .preloader-item-inner');
-// 		this.preloaderBig = this.preloader.querySelector('.preloader-item.big .preloader-item-inner');
-// 		this.percent_display = document.querySelector('.preloader-counter');
-// 		this.createImageClone();
-// 		this.prevValue = 0;
-// 		this.loadAnimation();
-// 	},
-// 	createImageClone: function(){
-// 		for(var i = 0; i < this.images_total_count; i++) {
-// 			image_clone = new Image();
-// 			image_clone.onload = this.imageLoaded.bind(this);
-// 			image_clone.onerror = this.imageLoaded.bind(this);
-// 			image_clone.src = this.images[i].src;
-// 		}
-// 	},
-// 	imageLoaded: function(){
-// 		var self = this;
-// 		this.prevValue = (((100 / this.images_total_count) * this.images_loaded_count) << 0);
-// 		this.images_loaded_count++;
-
-// 		// console.log((((100 / this.images_total_count) * this.images_loaded_count) << 0) + "%")
-// 		this.percent_display.innerHTML = (((100 / this.images_total_count) * this.images_loaded_count) << 0);
-// 		$(this.percent_display).prop('Counter',0).animate({
-// 			Counter: parseInt(((100 / this.images_total_count) * this.images_loaded_count) << 0)
-// 		}, {
-// 			duration: 10,
-// 			easing: 'swing',
-// 			step: function (now) {
-// 				$(this).text(parseInt(now));
-// 			},
-// 			complete: function(){
-// 				if (parseInt($(this).text()) == 100){
-// 					setTimeout(function(){
-// 						self.completeAnimation();
-// 					},500)
-// 				}
-// 			}
-// 		});
-// 	},
-// 	loadAnimation: function(){
-// 		this.preloader.classList.add('half')
-// 	},
-// 	completeAnimation: function(){
-// 		var self = this;
-// 		this.logo = document.querySelector('.logo');
-// 		this.logoOffset = this.logo.getBoundingClientRect();
-// 		this.logoWidth = '37px';
-// 		this.logoHeight = '25px';
-// 		this.logoTop = 25;
-// 		TweenMax.to(this.preloaderContainer,.8,{
-// 			delay: .5,
-// 			width: self.logoWidth,
-// 			height: self.logoHeight,
-// 			ease: Expo.easeOut,
-// 			x: this.logoOffset.left - 6,
-// 			y: this.logoTop
-// 		});
-// 		TweenMax.to(this.preloader,.3,{
-// 			delay: .7,
-// 			autoAlpha: 0,
-// 			onComplete: function () {
-// 				document.body.classList.remove('loading')
-// 			}
-// 		});
-// 	}
-// }
-// new MainPageLoader();
 function MainPageLoader2(){
 	this.init();
 	
@@ -1165,7 +1083,7 @@ var sortItem = function(){
 				},300);
 			});
 		})
-		$(document).on('click touchmove', function (e){
+		$(document).on('click touchstart', function (e){
 			if (!trigger.is(e.target)
 				&& trigger.has(e.target).length === 0) {
 				trigger.removeClass('active');
@@ -1194,7 +1112,7 @@ function initMap() {
 				scaleControl: false,
 				// center: centercords,
 				streetViewControl: false,
-				gestureHandling: "greedy",
+				gestureHandling: "cooperative",
 				zoomControlOptions: {
 						position: google.maps.ControlPosition.RIGHT_CENTER
 				},

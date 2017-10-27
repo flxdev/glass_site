@@ -61,18 +61,18 @@ block content
 									a(href="#").btn.js-promo-link
 										span Show project
 
-						.block.margin
+						.block.margin.flexblock
 							.row.gray.align-stretch
-								.columns.large-6
+								.columns.large-6.medium-6
 									a(href="#").block-image
-										.block-image-inner
-											img(src="img/index/index1.jpg", alt="")
+										.block-image-inner(style='background-image: url(img/index/index1.jpg)')
+											//- img(src="img/index/index1.jpg", alt="")
 											//.video-container
 												.video-container-inner
 													video.fillWidth(autoplay='', loop='')
 														source(src='img/index/video/clouds.mp4', type='video/mp4')
 														source(src='img/index/video/clouds.webm', type='video/webm')
-								.columns.large-6
+								.columns.large-6.medium-6
 									.block-text
 										.col
 											+content('About company','Since 2001, GLASSBEL is a leading glass processing company focusing on architectural and interior glass markets','Company','/production.html')
@@ -167,29 +167,29 @@ block content
 												+comp('6')
 												+comp('7')
 
-						.block.margin.anim-cont
+						.block.margin.anim-cont.flexblock
 							.row.align-stretch
-								.columns.large-5
+								.columns.large-5.medium-5
 									.block-text
 										.col
 											+content('Production','All flat glass processing methods. JUMBO size and over','Production','/production.html')
-								.columns.large-7
+								.columns.large-7.medium-7
 									a(href="#").block-image.block-image-parallax
 										.block-image-inner.js-parallax
 											img(src="img/index/index2.jpg", alt="")
-						.block.margin.anim-cont
+						.block.margin.anim-cont.flexblock
 							.row.align-stretch
-								.columns.large-7
+								.columns.large-7.medium-7
 									a(href="#").block-image.block-image-parallax
 										.block-image-inner.js-parallax
 											img(src="img/index/index3.jpg", alt="")
-								.columns.large-5
+								.columns.large-5.medium-5
 									.block-text
 										.col
 											+content('Service','24/7 Operations. Customer Service Company','Service','/production.html')
-						.block.margin.anim-cont
+						.block.margin.anim-cont.flexblock
 							.row.align-stretch
-								.columns.large-5
+								.columns.large-5.medium-5
 									.block-text
 										.col
 											+content('Packing & logistics','By sea, by air, by land. Customized packing and logistics solutions','Logistics','/production.html')
@@ -199,9 +199,9 @@ block content
 											img(src="img/index/index4.jpg", alt="")
 					.block.margin.gray.team.anim-cont
 						.row.align-justify
-							.columns.large-5
+							.columns.large-5.medium-5
 								.title.h3 Meet the team
-							.columns.large-6
+							.columns.large-6.medium-6
 								.text.primary Highly experienced specialists in flat glass innovations and process
 						.row
 							.columns

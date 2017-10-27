@@ -51,6 +51,9 @@ input
 	width: 100%
 	.row
 		height: 80px
+		.columns:first-child
+			position: relative;
+			z-index: 0;
 .row
 	& >	.columns
 		&:first-child
@@ -87,11 +90,12 @@ body
 	max-width: 316px
 	width: 100%
 	height: 100%
-	background-image: url(../img/icons/logo.jpg)
-	background-size: contain
-	background-repeat: no-repeat
+	background: url(../img/icons/logo.jpg) 0/100% auto no-repeat
 	background-position: left center
 	+tr(opacity .3s .15s)
+	position: absolute;
+	+rem(left,40px)
+	top: 0;
 	+r(1140)
 		+rem(max-width,260px)
 	&.active 
@@ -360,7 +364,7 @@ a.title
 	top: 0
 	right: 0
 	width: 100%
-	height: 100vh
+	height: 100%
 	background-color: transparent
 	text-align: right
 	z-index: 50
@@ -462,6 +466,8 @@ a.title
 			max-height: 0
 			will-change: max-height
 			transition-duration: .4s
+			+r(1100)
+				+rem(width,525.6px)	
 		&:hover
 			.title
 				color: $brandh
@@ -695,8 +701,10 @@ a.title
 	// contain: paint
 	// backface-visibility: hidden
 	.row 
+		height: 100%
 		// +rem(max-width,1280px)
 		.columns
+			display: flex
 			&:first-child
 				padding-left: 8%
 				.text
@@ -715,7 +723,10 @@ a.title
 					white-space: nowrap
 			&:last-child
 				.block-contact
-					padding-left: 8
+					padding-left: 0
+				+r(1100)
+					.col
+						+rem(margin-right,-25px)
 			&:nth-last-child(2)
 				.text
 					&>a[href^="tel:"]
@@ -748,7 +759,10 @@ a.title
 	display: flex 
 	flex-flow: column nowrap
 	justify-content: space-between
-	height: 100%
+	// height: 100%
+	align-self: stretch	
+	// background-color: red 
+	// display: flex !important
 .footer-nav 
 	+rem(margin-top,-10px)
 	+rem(margin-bottom,-10px)
@@ -1318,8 +1332,9 @@ a.title
 			.block-image-inner
 				height: 100%
 			img 
-				max-height: 100%
-
+				height: 100%
+				max-width: 100%
+				width: auto
 		&:hover
 			img 
 				transform: scale(1.07)
@@ -1924,7 +1939,42 @@ a.title
 	&-content
 		position: relative
 		z-index: 2
-		
+.flexblock	
+	.row 
+		height: 100%
+		&.gray 
+
+			.block-image
+				width: 100%
+				display: flex
+				position: relative
+				z-index: 0
+				height: auto
+				background-color: red
+			.block-image-inner
+				width: 100%
+				display: flex
+				// padding-bottom: 70%
+				+coverdiv
+				+cover
+				// +r(1150)
+				// 	height: 100%
+				// 	padding-bottom: 0
+			.block-text-content
+				+rem(margin-top,150px)
+				+r(1500)
+					+rem(margin-top,120px)
+				+r(1400)
+					+rem(margin-top,50px)
+
+		.columns
+			display: flex 
+			align-items: stretch
+			.block-text
+				display: flex 
+				height: 100%
+				.col 
+					height: 100%
 .prod 
 	&-elem 
 		+rm(1201)
@@ -1990,6 +2040,7 @@ a.title
 				+r(1300)
 					+rem(padding-right,50px)	
 		.columns
+			display: flex
 			&:nth-child(2)
 				padding-right: 0!important
 		&-images
@@ -2015,6 +2066,23 @@ a.title
 				+rem(margin-bottom,60px)
 
 .content 
+	h1,h2,h3
+		text-transform: uppercase;
+		line-height: 0.857;
+		font-family: $t
+		color: $brand
+		+tr(color .3s)
+		font-weight: 900
+		+rem(margin, 30px 0 15px)
+	h1
+		+rem(font-size,50px)
+		+rem(letter-spacing,-1.5px)
+	h2
+		+rem(font-size,42px)
+		font-weight: 700
+	h3
+		+rem(font-size,26px)
+		font-weight: 700
 	p 
 		+rem(font-size,18px)
 		line-height: 1.444;
@@ -2666,6 +2734,9 @@ body
 		.block-text
 			+rem(padding-top,45px)
 			+rem(padding-right,25px)
+			+r(1100)
+				padding-top: 0
+
 	&-text 
 		font-size: 0
 		.link-arr
@@ -2727,6 +2798,7 @@ body
 		height: 100%
 		+rem(padding-bottom,50px)
 .half-title
+	height: 100%
 	+padlr(40px)
 	+r(1200)
 		+padlr(25px)
@@ -2737,8 +2809,16 @@ body
 	.text.primary
 		+rem(margin-top,-13px)
 		+rem(margin-bottom,25px)
+		display: block
+		width: 100%
+	.row
+		height: 100%
+	.columns
+		display: flex
+		flex-flow: row wrap
 	.col
 		position: relative
+		// height: 100%
 		.btn-cont
 			+rem(padding-bottom,30px)
 		.title
