@@ -1273,17 +1273,44 @@ function MapTriggers(){
 		var _ = $(this);
 		var id  = _.data('id');
 		_.on('click', function(){
+			var vs = $(window).scrollTop();
+			var ofss = $('.logistics').offset().top;
+			if(vs > ofss - 100){
+				$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: ofss  - 180}, 650,function(){
+					if(_.hasClass('item-all')){
+							mapsvg.attr('class', '').addClass('move'+id+'');
+							_.addClass('active').siblings('.tabs-item').removeClass('active');
+							mapblocks.removeClass('active').removeClass('hidden');
+							mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');	
+							return
+					}
+						mapsvg.attr('class', '').addClass('move'+id+'')
+						_.addClass('active').siblings('.tabs-item').removeClass('active');
+						mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');	
+				});
+			}else{
+					if(_.hasClass('item-all')){
+							mapsvg.attr('class', '').addClass('move'+id+'');
+							_.addClass('active').siblings('.tabs-item').removeClass('active');
+							mapblocks.removeClass('active').removeClass('hidden');
+							mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');	
+							return
+					}
+					mapsvg.attr('class', '').addClass('move'+id+'')
+					_.addClass('active').siblings('.tabs-item').removeClass('active');
+					mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');	
 
-			mapsvg.attr('class', '').addClass('move'+id+'')
-			_.addClass('active').siblings('.tabs-item').removeClass('active');
-			mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');
-			if(_.hasClass('item-all')){
-				_.addClass('active').siblings('.tabs-item').removeClass('active');
-				mapblocks.removeClass('active').removeClass('hidden');
+
 			}
-			if(!_.hasClass('item-all')){
-				$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: $('.logistics').offset().top  - 180}, 650);
-			}
+
+
+			// if(!_.hasClass('item-all')){
+			// 	$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: ofss  - 180}, 650,function(){
+			// 				mapsvg.attr('class', '').addClass('move'+id+'')
+			// 			_.addClass('active').siblings('.tabs-item').removeClass('active');
+			// 			mapblocks.filter('[data-id="'+id+'"]').addClass('active').removeClass('hidden').siblings('.mapblock').removeClass('active').addClass('hidden');	
+			// 	});
+			// }
 			
 		});
 	});

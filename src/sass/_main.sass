@@ -3354,6 +3354,8 @@ body
 	+rem(margin-top,-60px)
 	+rem(padding-top,60px)
 	overflow: hidden
+	padding-bottom: 200px
+	margin-bottom: -200px
 		
 	&-triggerwrap
 
@@ -3361,6 +3363,7 @@ body
 		display: block
 		width: 45%
 		+rem(margin-left,40px)
+
 		.title 
 			+rem(margin-bottom,150px)
 		.title,.text 
@@ -3375,6 +3378,7 @@ body
 				transform-origin: right center
 				+rem(margin-top,30px)
 				pointer-events: none
+				// overflow-y: visible
 				// +r(1400)
 				// 	transform: scale(1.05) 
 				// +r(1300)
@@ -3482,23 +3486,31 @@ body
 					margin-left: auto
 					pointer-events: all
 					will-change: transform
-					+tr(transform 2s)
+					+tr(transform 1.55s)
 					width: 60%
 					transform-origin: right top
+					// transition-timing-function: cubic-bezier(0.21, 0.95, 1, 1)
+					transition-timing-function: cubic-bezier(0.24, -0.03, 0.23, 0.99)
 					+ie11
 						margin-right: -22%
 					&.move2
-						transform: scale(1.2) translateX(10%)
+						transform: scale(1.3) translateX(10%)
+						transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
 					&.move4
 						transform: scale(1.3) translateX(5%)
+						transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
 					&.move1
 						transform: scale(1.25) translateX(10%)
+						transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
 					&.move5
 						transform: scale(1.4) translateX(5%)
+						transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
 					&.move3
 						transform: scale(1.25) translateY(-12%) translateX(0%)
+						transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
 					&.move6
 						transform: scale(1.25) translateY(5%) translateX(20%)
+						transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
 					path 
 						overflow: visible
 					.block 
