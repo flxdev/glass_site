@@ -1408,7 +1408,9 @@ a.title:hover {
 
 .footer {
   background-color: #1e232a;
-  padding: 5rem 0 5.625rem; }
+  padding: 5rem 0 5.625rem;
+  overflow: hidden;
+  width: 100%; }
   .footer .row {
     height: 100%; }
     .footer .row .columns {
@@ -1432,8 +1434,10 @@ a.title:hover {
         .footer .row .columns:first-child .copywrap {
           margin-top: -0.625rem;
           white-space: nowrap; }
-      .footer .row .columns:last-child .block-contact {
-        padding-left: 0; }
+      .footer .row .columns:last-child {
+        overflow: hidden; }
+        .footer .row .columns:last-child .block-contact {
+          padding-left: 0; }
       .footer .row .columns:nth-last-child(2) .text > a[href^="tel:"]:only-child {
         margin-top: 0.625rem;
         display: block; }
@@ -1477,7 +1481,8 @@ a.title:hover {
   justify-content: space-between;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
-  align-self: stretch; }
+  align-self: stretch;
+  width: 100%; }
 
 .footer-nav {
   margin-top: -0.625rem;
@@ -3081,7 +3086,8 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
-    background-color: red; }
+    background-color: red;
+    width: 100%; }
     .projects-row.row-blue .project-item:hover .project-item-bg-inner:after {
       opacity: 0; }
   .projects-row.row-blue .project-item-arrow {
@@ -3823,6 +3829,8 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
       height: 12.5rem;
       z-index: 1;
       overflow: hidden; }
+      .feedback-inner-bg .slick-track {
+        overflow: hidden; }
       .feedback-inner-bg .slick-list {
         position: relative;
         z-index: -1;
@@ -3961,7 +3969,15 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
 .review {
   margin: 1rem -0.1875rem 2.6875rem -0.1875rem; }
   .review .columns {
-    padding: 0.1875rem; }
+    padding: 0.1875rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch; }
     .review .columns:first-child, .review .columns:last-child {
       padding: 0.1875rem; }
   .review-item {
@@ -3970,7 +3986,10 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: 100%;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    height: auto;
     padding-left: 1.4375rem;
     padding-right: 1.4375rem;
     padding-top: 2.1875rem;
@@ -4415,7 +4434,8 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
         -ms-transform-origin: right top;
         transform-origin: right top;
         -webkit-transition-timing-function: cubic-bezier(0.24, -0.03, 0.23, 0.99);
-        transition-timing-function: cubic-bezier(0.24, -0.03, 0.23, 0.99); }
+        transition-timing-function: cubic-bezier(0.24, -0.03, 0.23, 0.99);
+        margin-right: 0 !important; }
         .logistics-content .tabs-map svg.move2 {
           -webkit-transform: scale(1.3) translateX(10%);
           -ms-transform: scale(1.3) translateX(10%);
@@ -4903,6 +4923,11 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
   html {
     font-size: 15px; }
 
+  .footer .row .columns:last-child .col {
+    -webkit-transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    transform: translateX(60px); }
+
   .block-text {
     padding-left: 1.875rem;
     padding-right: 1.875rem;
@@ -4963,9 +4988,6 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
 
   .nav-item-sublinks {
     width: 32.85rem; }
-
-  .footer .row .columns:last-child .col {
-    margin-right: -1.5625rem; }
 
   .promo-slider-item-content .cont-inner .title {
     font-size: 5.625rem; }
@@ -5664,4 +5686,4 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     transform: none; }
 
   .logistics-content .tabs-map svg {
-    margin-right: -22%; } }
+    margin-top: -5rem; } }

@@ -693,6 +693,8 @@ a.title
 .footer
 	background-color: #1e232a
 	+rem(padding,80px 0 90px)
+	overflow: hidden
+	width: 100%
 	// position: fixed
 	// bottom: 0
 	// left: 0
@@ -722,11 +724,13 @@ a.title
 					+rem(margin-top,-10px)
 					white-space: nowrap
 			&:last-child
+				overflow: hidden
+				
 				.block-contact
 					padding-left: 0
-				+r(1100)
+				+r(1200)
 					.col
-						+rem(margin-right,-25px)
+						transform: translateX(60px)
 			&:nth-last-child(2)
 				.text
 					&>a[href^="tel:"]
@@ -761,6 +765,7 @@ a.title
 	justify-content: space-between
 	// height: 100%
 	align-self: stretch	
+	width: 100%
 	// background-color: red 
 	// display: flex !important
 .footer-nav 
@@ -2352,6 +2357,7 @@ body
 				height: auto !important
 				align-self: stretch
 				background-color: red
+				width: 100%
 				// padding-bottom: 44.5%
 				// +r(1300)
 				// 	padding-bottom: 50%
@@ -2967,6 +2973,7 @@ body
 	&-inner
 		position: relative
 		z-index: 0
+
 		.slider-nav
 			position: absolute
 			width: 100%
@@ -2989,6 +2996,9 @@ body
 			+rem(height,200px)
 			z-index: 1
 			overflow: hidden
+			.slick-track
+				overflow: hidden
+				
 			.slick-list
 				position: relative
 				z-index: -1
@@ -3085,12 +3095,16 @@ body
 	+rem(margin,16px -3px 43px -3px)
 	.columns
 		+rem(padding,3px)
+		display: flex
+		align-items: stretch
 		&:first-child,&:last-child
 			+rem(padding,3px)
 	&-item 
 		border: 1px solid #c9c9c9
 		display: flex 
-		height: 100%
+		align-self: stretch
+		height: auto
+		// height: 100%
 		+padlr(23px)
 		+rem(padding-top,35px)
 		+rem(padding-bottom,30px)
@@ -3497,8 +3511,10 @@ body
 					transform-origin: right top
 					// transition-timing-function: cubic-bezier(0.21, 0.95, 1, 1)
 					transition-timing-function: cubic-bezier(0.24, -0.03, 0.23, 0.99)
+					margin-right: 0!important
 					+ie11
-						margin-right: -22%
+						+rem(margin-top,-80px)
+						// margin-right: -22%
 					&.move2
 						transform: scale(1.3) translateX(10%)
 						transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
