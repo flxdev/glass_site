@@ -2343,10 +2343,15 @@ body
 		+rem(margin,20px -5px 55px)
 	&-row 
 		&.row-blue
+			.columns 
+				display: flex
+				align-items: stretch
 			.project-item
 				padding-bottom: 0
-				height: 100%
-				
+				display: flex !important
+				height: auto !important
+				align-self: stretch
+				background-color: red
 				// padding-bottom: 44.5%
 				// +r(1300)
 				// 	padding-bottom: 50%
