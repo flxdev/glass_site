@@ -583,7 +583,35 @@ function lazyImage(){
 		img.classList.add('fade-in');
 	}	
 }
+function Ytube() {
+	var youtube = document.querySelectorAll( ".youtube-slide" );
+	
+	for (var i = 0; i < youtube.length; i++) {
+		
+		var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/mqdefault.jpg";
+		var parent = $(youtube[i]).parent();
+		var image = new Image();
+				image.src = source;
+				image.addEventListener( "load", function() {
+					youtube[ i ].appendChild( image );
+				}( i ) );
+		
+				youtube[i].addEventListener( "click", function() {
 
+					var iframe = document.createElement( "iframe" );
+
+							iframe.setAttribute( "frameborder", "0" );
+							iframe.setAttribute( "allowfullscreen", "" );
+							// iframe.setAttribute( "wmode", "Opaque" );
+							parent.hasClass('prod-eleminner-images') ? iframe.setAttribute( "src", "https://www.youtube.com/embed/"+ this.dataset.embed +"?wmode=opaque&rel=0&showinfo=0&autoplay=1" ) : iframe.setAttribute( "src", "https://www.youtube.com/embed/"+ this.dataset.embed +"?rel=0&showinfo=0" );;
+							
+
+							this.innerHTML = "";
+							this.appendChild( iframe );
+				} );	
+	};
+	
+}
 function Parallax($parallaxes) {
 	$(window).off('scroll.prl').on('scroll.prl', function(){
 		var scrollTop = $(window).scrollTop(),
@@ -892,9 +920,9 @@ review.prototype = {
 	},
 	closeModal: function(){
 		this.modal.removeClass('active');
-		conf.body.removeClass('menu-open');
 		window.__prevScrollTop && (window.scroll(0, window.__prevScrollTop));
 		window.__prevScrollTop = null;
+		conf.body.removeClass('menu-open');
 	}
 }
 function slided(elem){
@@ -937,6 +965,7 @@ slided.prototype = {
 				.set(active.next().next(), {x: '-5%', scaleX:0.85, scaleY:0.85, transformOrigin:"left 50%"})
 				.set(active.next().next().next(), {x: '-5%', scaleX:0.85, scaleY:0.85,  transformOrigin:"left 50%"})
 		this.initclick(wrap,button);
+
 	},
 	initclick: function(wrap,button){
 		var self = this;
@@ -1440,12 +1469,15 @@ var IndexPage = Barba.BaseView.extend({
 var Production = Barba.BaseView.extend({
 	namespace: "Production",
 	onEnter: function(){
+		
 		var sliders = document.querySelectorAll('.carousel_layout-container');
 		sliders = new slided(sliders);
+		
 	},
 	onEnterCompleted: function(){
-		console.log("onEnterCompleted");
 
+		console.log("onEnterCompleted");
+		Ytube();
 	},
 	onLeaveComplete: function(){
 		console.log("onLeaveComplete");
@@ -1454,7 +1486,7 @@ var Production = Barba.BaseView.extend({
 var ProductionInner = Barba.BaseView.extend({
 	namespace: "Production-inner",
 	onEnter: function(){
-
+		Ytube();
 	},
 	onLeave: function(){
 		var stickEl = $('.js-stick');

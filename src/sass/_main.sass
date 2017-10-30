@@ -50,7 +50,7 @@ input
 	z-index: 50
 	width: 100%
 	.row
-		height: 80px
+		+rem(height,80px)
 		.columns:first-child
 			position: relative;
 			z-index: 0;
@@ -695,13 +695,14 @@ a.title
 	+rem(padding,80px 0 90px)
 	overflow: hidden
 	width: 100%
+
 	// position: fixed
 	// bottom: 0
 	// left: 0
 	// width: 100%
 	// z-index: 0
 	// contain: paint
-	// backface-visibility: hidden
+	backface-visibility: hidden
 	.row 
 		height: 100%
 		// +rem(max-width,1280px)
@@ -709,6 +710,8 @@ a.title
 			display: flex
 			&:first-child
 				padding-left: 8%
+				position: relative
+				contain: layout
 				.text
 					+rem(font-size,12px)
 					.copy
@@ -728,14 +731,17 @@ a.title
 				
 				.block-contact
 					padding-left: 0
-				+r(1200)
+				+r(1380)
 					.col
 						transform: translateX(60px)
+				+r(1024)
+					.col
+						transform: translateX(40px)	
 			&:nth-last-child(2)
 				.text
 					&>a[href^="tel:"]
 						&:only-child
-							+rem(margin-top,10px)
+							+rem(margin-top,11px)
 							display: block
 						
 	.text
@@ -744,6 +750,12 @@ a.title
 			transition: color .3s, opacity .3s
 			cursor: pointer
 			text-transform: uppercase
+			display: inherit
+			white-space: nowrap
+			visibility: visible
+			span 
+				display: block
+				
 			&:hover
 				color: $white
 				opacity: 1
@@ -1027,6 +1039,15 @@ a.title
 		+rem(left,200px)
 		+rem(bottom,61px)
 		z-index: 3
+		span
+			&:before
+				width: auto
+				height: auto
+				left: -1px
+				right: -1px
+				bottom: -1px
+				top: -1px
+
 	.slick-slider .slick-list, .slick-slider .slick-track
 		transform: none !important
 	&-wrap
@@ -1264,14 +1285,14 @@ a.title
 			+rem(margin-bottom,10px)
 
 @keyframes sdb
-    0% 
-        transform: translate(-20px,0);
-        opacity: 0
-    50%
-        opacity: 1
-    100%
-        transform: translate(10px,0px);
-        opacity: 0
+	0% 
+		transform: translate(-20px,0);
+		opacity: 0
+	50%
+		opacity: 1
+	100%
+		transform: translate(10px,0px);
+		opacity: 0
 .margin
 	+rem(margin,60px 0)
 .row 
@@ -2056,7 +2077,7 @@ a.title
 			&:nth-child(2)
 				padding-right: 0!important
 		&-images
-			.video 
+			.youtube-slide
 				width: 100%
 				height: 0
 				padding-bottom: 56.25%
@@ -2182,10 +2203,11 @@ a.title
 			height: 100%;
 			overflow: hidden;
 			perspective-origin: 0 0;
-			will-change: transform
+			// will-change: transform
 			transition-delay: 0s
 			backface-visibility: hidden
-
+			display: block
+			
 			&:first-of-type
 				z-index: 3;
 			&:nth-of-type(2)
@@ -2198,6 +2220,7 @@ a.title
 				position: relative;
 				overflow: hidden;
 				+tr(transform .4s ease)
+				z-index: 1
 				img
 					position: absolute;
 					display: block;
@@ -2676,8 +2699,11 @@ body
 		+rem(margin-bottom,40px)
 	&-slider
 		// +rem(margin, 0 -6px)
-		+rem(margin-left,-5px)
-		+rem(margin-right,-5px)
+		@media screen and (min-width: 40.1em)
+			// +rem(margin-left,-6px)
+			// +rem(margin-right,-6px)
+			margin-left: -.2rem !important
+			margin-right: -.2rem !important
 		.columns
 			+padlr(5px)
 			.slick-track
@@ -3693,12 +3719,12 @@ body
 		transform: translateY(0px)
 @keyframes line
 	0%
-	    stroke-dashoffset: 4000
+		stroke-dashoffset: 4000
 	100%
 		stroke-dashoffset: 2000
 @keyframes line2
 	0%
-	    stroke-dashoffset: 8000
+		stroke-dashoffset: 8000
 	100%
 		stroke-dashoffset: 4000
 .preloader
@@ -3773,7 +3799,40 @@ body
 		+rem(bottom,40px)
 		display: inline-block
 		
+.youtube-slide
+	position: relative;
+	width: 100%
+	height: 100%
+	overflow: hidden
+	
+	// z-index: 50;
+	// contain: paint
+	// z-index: 1
+.youtube-slide iframe,.youtube-slide img
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%
+.youtube-slide iframe
+	// opacity: .99
 
+.youtube-slide .play-button,.youtube-slide .play-button:before,.youtube-slide iframe,.youtube-slide img 
+	position: absolute
 
-
-		// transform: rotate(30deg)
+.youtube-slide img 
+	object-fit: cover;
+	cursor: pointer
+.youtube-slide .play-button
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAA+CAMAAACY5ixBAAAAgVBMVEVHcEz/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzP/MzPWGLOKAAAAKnRSTlMADfe4Be/V4fvxwKfc6ncgAq0qywFQLztGWYPEnGr0j4gZZuVvXxM0tH8ftkDpAAABj0lEQVR4AbXX2W6jQBSE4QK6oc0OtsEsxjtO6v0fcJwZNEmUSAa5z3eNfnFVR40v8rJJe28dJ1pzAa2TeO31702Z4xfj3lvxRStvf8J3VWFohSkqfFIH2mNahYnT0SpvKquQlhUbfHindXs8nFxalzgAWlLml30KCIGMEsyIhiJ2OFJEiogSTI+QIt7gU8QaAUXEWFFEMiPsptXO40KrGeEGD3W4NPz8kxx/7daWwwEmm63P2cyCMJA3MedaFAbUOZAJA+qayIQBJ9UyYWBsB5kwMB5cmTCQ+UJh1FJhJRUuhcKOJxLObwEFwtMc2Q1PAyoQrkORrajeRNatLET2OOsNZ4P7/JD/czoYy1f6jofxOCy80hc+E9fTti9xgc/nBsOlfHQUESKiiAhHimhxo4gbKoq4I9cU4CqgoAAPwJYCzgDUReRh+rCndT0+KJ+WDdk03wPtumKyNbQp2uB/WdvsKnzKQlripht8s+togYky/FC2neErXO96wu+c+nwouljrRXdTB34YHc93hS/+AJXBD+od0exhAAAAAElFTkSuQmCC);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+	width: 5.625rem;
+	height: 3.75rem;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	z-index: 1;
+	cursor: pointer;
+	transition: filter .3s;
