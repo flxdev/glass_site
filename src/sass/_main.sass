@@ -90,7 +90,7 @@ body
 	max-width: 316px
 	width: 100%
 	height: 100%
-	background: url(../img/icons/logo.jpg) 0/100% auto no-repeat
+	background: url(../img/icons/logo.svg) 0/100% auto no-repeat
 	background-position: left center
 	+tr(opacity .3s .15s)
 	position: absolute;
@@ -3383,11 +3383,11 @@ body
 		transform: translate(-50%, -50%)
 		text-align: center
 		.image
-			background-image: url(../img/mobile.png)
+			background-image: url(../img/mobile.svg)
 			+rem(width, 94px)
 			+rem(height, 184px)
 			display: inline-block
-			background-size: cover
+			+contain
 			+rem(margin-bottom, 30px)
 		.link-arr
 			+rem(margin-top, 40px)

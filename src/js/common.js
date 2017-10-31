@@ -172,8 +172,7 @@ function Menu() {
 					conf.body.removeClass(OpenClass2);
 					window.__prevScrollTop && (window.scroll(0, window.__prevScrollTop));
 					window.__prevScrollTop = null;
-					
-
+					$(".js-stick").trigger("sticky_kit:recalc");
 				}
 
 			}else{
@@ -185,6 +184,7 @@ function Menu() {
 				document.body.style.top = -top + "px";
 				window.scroll(0, window.__prevScrollTop);
 				conf.body.addClass(OpenClass2);
+				$(".js-stick").trigger("sticky_kit:recalc");
 			}
 			setTimeout(function() {
 				trigger.removeClass('anim')
@@ -920,9 +920,10 @@ review.prototype = {
 	},
 	closeModal: function(){
 		this.modal.removeClass('active');
+		conf.body.removeClass('menu-open');
 		window.__prevScrollTop && (window.scroll(0, window.__prevScrollTop));
 		window.__prevScrollTop = null;
-		conf.body.removeClass('menu-open');
+
 	}
 }
 function slided(elem){
@@ -1121,9 +1122,10 @@ var sortItem = function(){
 	});
 };
 function returnStickPos(stickEl,stickpos){
-	var ws = $(window).scrollTop();
+	var ws = $(window).scrollTop() || window.__prevScrollTop;
 	var stickPosVal = parseInt(stickpos);
 	var wh = stickEl.height();
+	// alert
 	if(stickEl.css('position') == 'fixed'){
 		stickEl.css('top',ws + stickPosVal - 80)
 	}
