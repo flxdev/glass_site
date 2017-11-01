@@ -910,10 +910,16 @@ review.prototype = {
 		// 		e.stopPropagation();
 		// 	}
 		// });
-		this.modal.find().add(this.modal).off('click').on('click', function(e) {
+		this.modal.off('click').on('click', function(e) {
 			var div = $('.modal-container');
+			var close = $('.closePopup');
+			// if (close.is(e.target) && close.has(e.target).length === 1){
+			// 	alert()
+			// 	e.stopPropagation();
+			// 	self.closeModal();
+			// }
 			if (!div.is(e.target) 
-					&& div.has(e.target).length === 0 || $('.closePopup').is(e.target)) {
+					&& div.has(e.target).length === 0 || close.is(e.target)) {
 				self.closeModal();
 			}
 		});
