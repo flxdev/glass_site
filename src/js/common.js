@@ -1301,7 +1301,7 @@ function loadState(){
 	});
 }
 function MapTriggers(){
-	var maincont = $('.tabs-triggerwrap');
+	var maincont = $('.logistics');
 	var mapsvg = maincont.find('svg');
 	var triggers = maincont.find('.tabs-item');
 	var mapblocks = maincont.find('.mapblock');
@@ -1311,7 +1311,7 @@ function MapTriggers(){
 		var id  = _.data('id');
 		_.on('click', function(){
 			var vs = $(window).scrollTop();
-			var ofss = $('.logistics').offset().top;
+			var ofss = mapsvg.offset().top;
 			if(vs > ofss - 100){
 				$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: ofss  - 180}, 650,function(){
 					if(_.hasClass('item-all')){
