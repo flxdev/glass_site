@@ -1095,7 +1095,7 @@ a.title
 					position: relative
 					z-index: 5
 					+rem(margin-right,30px)
-					animation: sdb 1.5s infinite
+					animation: sdb 1.8s infinite
 					// z-index: 3
 		// .slick-list
 		// 		z-index: 1
@@ -1286,13 +1286,17 @@ a.title
 
 @keyframes sdb
 	0% 
-		transform: translate(-20px,0);
-		opacity: 0
-	50%
-		opacity: 1
-	100%
+		transform: translate(-10px,0);
+		// opacity: 0
+	// 50%
+		// opacity: 1
+	// 25%
+	// 	transform: translate(6px,0px);
+	30%
 		transform: translate(10px,0px);
-		opacity: 0
+		// opacity: 0
+	100% 
+		transform: translate(-10px,0);
 .margin
 	+rem(margin,60px 0)
 .row 
@@ -3421,9 +3425,7 @@ body
 		.text.primary
 			color: $white
 .logistics
-	// overflow: hidden
 	position: relative
-	// &-wrapper
 	+rem(margin-top,-60px)
 	+rem(padding-top,60px)
 	overflow: hidden
@@ -3433,11 +3435,7 @@ body
 		padding-bottom: 350px	
 	.tabs
 		&-map 
-			// +coverdiv
-			// z-index: -1
-			// transform: scale(1.2)
 			transform-origin: right center
-			// +rem(margin-top,30px)
 			margin-top: -45%
 			pointer-events: none
 			width: 100%
@@ -3448,27 +3446,13 @@ body
 				margin-top: -55%
 			+r(1200)
 				margin-top: -65%	
-			// overflow-y: visible
-			// +r(1400)
-			// 	transform: scale(1.05) 
-			// +r(1300)
-			// 	transform: scale(.9)
-			// +r(1200)
-			// 	transform: scale(.8)
-			// +r(1100)
-			// 	transform: scale(.75)
-			// +r(1000)
-			// 	transform: scale(.7)
 			&:not(.animating)
 				.block 
 					&.anim-ready
 						display: none
-				// .block 
-				// 	&.block1,&.block2,&.block3,&.block4,&.block5,&.block6
-				// 		.finish	
-				// 			transition-delay: 0s
 			&.animating
 				pointer-events: none
+				animation: animateMap 1.5s .2s cubic-bezier(0.84, 0.04, 0.66, 0.84) forwards
 				.block
 					&.block1,&.block2,&.block3,&.block4,&.block5,&.block6
 						display: none
@@ -3479,9 +3463,6 @@ body
 							stroke-width: 2
 							stroke: #f4f4f4 !important
 							fill: transparent 
-				// .line2
-				// 	stroke-width: 3
-				// 	stroke: #fff
 				.anim-ready-2
 					.finish
 						fill: transparent
@@ -3549,25 +3530,17 @@ body
 						opacity: 1
 						animation: line 2s 2.5s linear forwards
 			svg
-				// width: 100%
 				max-height: 100%
 				height: auto
 				display: block
 				margin-left: auto
 				pointer-events: all
-				// will-change: transform
 				+tr(transform 1.55s)
 				width: 60%
 				transform-origin: right top
 				// transition-timing-function: cubic-bezier(0.21, 0.95, 1, 1)
 				transition-timing-function: cubic-bezier(0.24, -0.03, 0.23, 0.99)
 				margin-right: 0!important
-				// +r(1500)
-				// 	width: 70%
-
-				// +ie11
-				// 	+rem(margin-top,-80px)
-					// margin-right: -22%
 				&.move2
 					transform: scale(1.4) translateX(10%)
 					transition-timing-function: cubic-bezier(0.84, 0.04, 0.66, 0.84)
@@ -3617,14 +3590,23 @@ body
 				.line2
 					opacity: 0
 					transition-duration: 0s
+				.finish2
+					filter: url(#dropshadow)
+					+tr(opacity)
+					transition-duration: 0s
+					transition-delay: 0s
+					opacity: 0
+					will-change: opacity
+					// fill: transparent !important
 				.finish	
-					transition: opacity .2s, stroke .2s, fill .2s, filter .3s
+					transition: opacity .2s, stroke .2s, fill .2s, filter .5s !important
 					stroke-width: 1
 					stroke: $brand
 					cursor: pointer
-					filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5))
+					filter: none
+					// filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5))
 
-					// filter: url(#dropshadow)
+					
 				// .anim-ready
 				// 	.block
 				// 		transition: all .2s !important
@@ -3633,6 +3615,10 @@ body
 						.finish
 							fill: transparent
 							animation: fadeblk .15s 1.1s linear forwards
+						.finish2
+							opacity: 1
+							transition-delay: 1.55s	
+							transition-duration: .5s
 						.pin 
 							opacity: 0
 							transform: translateY(-30px)
@@ -3645,6 +3631,10 @@ body
 						.finish
 							fill: transparent
 							animation: fadeblk .15s .75s linear forwards
+						.finish2
+							opacity: 1
+							transition-delay: 1.45s
+							transition-duration: .5s	
 						.pin 
 							opacity: 0
 							transform: translateY(-30px)
@@ -3657,6 +3647,10 @@ body
 						.finish
 							fill: transparent
 							animation: fadeblk .15s .7s linear forwards
+						.finish2
+							opacity: 1
+							transition-delay: 1.45s
+							transition-duration: .5s
 						.pin 
 							opacity: 0
 							transform: translateY(-30px)
@@ -3669,6 +3663,10 @@ body
 						.finish
 							fill: transparent
 							animation: fadeblk .15s .75s linear forwards
+						.finish2
+							opacity: 1
+							transition-delay: 1.45s	
+							transition-duration: .5s
 						.pin 
 							opacity: 0
 							transform: translateY(-30px)
@@ -3681,6 +3679,10 @@ body
 						.finish
 							fill: transparent
 							animation: fadeblk .15s 1.2s linear forwards
+						.finish2
+							opacity: 1
+							transition-delay: 1.8s
+							transition-duration: .5s
 						.pin
 							opacity: 0
 							transform: translateY(-30px)
@@ -3693,6 +3695,10 @@ body
 						.finish
 							fill: transparent
 							animation: fadeblk .15s .7s linear forwards
+						.finish2
+							opacity: 1
+							transition-delay: 1.45s
+							transition-duration: .5s
 						.pin 
 							opacity: 0
 							transform: translateY(-30px)
@@ -3751,11 +3757,17 @@ body
 				&:hover
 					.tabs-item-block
 						color: $textblk
+
 @keyframes fadeblk 
 	0%
 		fill: transparent
-	100% 
+	100%
 		fill: $brand
+@keyframes animateMap 
+	0%
+		transform: scale(.2)
+	100% 
+		transform: none
 @keyframes fadepin 
 	0%
 		opacity: 0
