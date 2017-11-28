@@ -56,22 +56,79 @@ block content
 													.promo-slider-item-img
 														.img-wrap
 															img(src="img/promoslider/slide2/item2-1.png", alt="")
-
-
+											.promo-slider-item.item5(data-href='/projects-inner.html')
+												.promo-slider-item-inner(style='background-image: url(img/promoslider/slide5/item-5-bg.jpg)')
+													.promo-slider-item-content
+														.cont-inner.js-parallax(data-direction='2')
+																.cont-left
+																	.text Dubai, United Arab Emirates
+																	.title.h1.white Opera 
+																		br
+																		|
+																		span.trans op
+																		| House
+																.cont-right
+																	.text.primary.white Innovations leader in 
+																		br
+																		| flat glass processing industry
+													.promo-slider-item-img.img-back
+														.img-wrap
+															img(src="img/promoslider/slide5/item-5.png", alt="")
+													.promo-slider-item-img
+														.img-wrap
+															img(src="img/promoslider/slide5/item-5-1.png", alt="")
+											.promo-slider-item.item4(data-href='/projects-inner.html')
+												.promo-slider-item-inner(style='background-image: url(img/promoslider/slide4/item-4-bg.jpg)')
+													//- .promo-slider-item-bg
+													.promo-slider-item-content
+														//- .promo-slider-item-content-inner
+														.cont-inner.js-parallax(data-direction='2')
+																.cont-left
+																	.text Saudi Arabia, Riyadh
+																	.title.h1.white Skywalks
+																		br
+																		|in kafd
+																.cont-right
+																	.text.primary.white Innovations leader in 
+																		br
+																		| flat glass processing industry
+													.promo-slider-item-img.img-back
+														.img-wrap
+															img(src="img/promoslider/slide4/item4.png", alt="")
+													.promo-slider-item-img
+														.img-wrap
+															img(src="img/promoslider/slide4/item-4-1.png", alt="")
+											.promo-slider-item.item3(data-href='/projects-inner.html')
+												.promo-slider-item-inner(style='background-image: url(img/promoslider/slide3/item-3-bg.jpg)')
+													//- .promo-slider-item-bg
+													.promo-slider-item-content
+														//- .promo-slider-item-content-inner
+														.cont-inner.js-parallax(data-direction='2')
+																.cont-left
+																	.text Latvia, Riga
+																	.title.h1.white z-towers
+																.cont-right
+																	.text.primary.white Innovations leader in 
+																		br
+																		| flat glass processing industry
+													.promo-slider-item-img
+														.img-wrap
+															img(src="img/promoslider/slide3/item3.png", alt="")
 									a(href="#").btn.js-promo-link
 										span Show project
 
 						.block.margin.flexblock
 							.row.gray.align-stretch
 								.columns.large-6.medium-6
-									a(href="#").block-image
-										.block-image-inner(style='background-image: url(img/index/index1.jpg)')
-											//- img(src="img/index/index1.jpg", alt="")
-											//.video-container
+									.block-image
+										.block-image-inner
+											//- .block-image-inner(style='background-image: url(img/index/index1.jpg)')
+												//- img(src="img/index/index1.jpg", alt="")
+											.video-container
 												.video-container-inner
-													video.fillWidth(autoplay='', loop='')
-														source(src='img/index/video/clouds.mp4', type='video/mp4')
-														source(src='img/index/video/clouds.webm', type='video/webm')
+													video.fillWidth.js-video-container(autoplay='', loop='',data-src='img/index/video/video.mp4')
+													img(src="img/index/video/video.jpg", alt="")
+														//- source(, type='video/mp4')
 								.columns.large-6.medium-6
 									.block-text
 										.col

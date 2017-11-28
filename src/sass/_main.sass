@@ -708,6 +708,10 @@ a.title
 		// +rem(max-width,1280px)
 		.columns
 			display: flex
+			&.large-6
+				.col
+					+rem(max-width,280px)
+					margin: 0 auto
 			&:first-child
 				padding-left: 8%
 				position: relative
@@ -731,13 +735,7 @@ a.title
 				
 				.block-contact
 					padding-left: 0
-				+r(1380)
-					.col
-						transform: translateX(60px)
-				+r(1024)
-					.col
-						transform: translateX(40px)	
-			&:nth-last-child(2)
+			&:nth-last-child(1)
 				.text
 					&>a[href^="tel:"]
 						&:only-child
@@ -800,233 +798,6 @@ a.title
 		&.gray 
 			+rem(margin-bottom,10px)
 			+rem(max-width,250px)
-
-// .promo-slider
-// 	position: relative
-// 	// padding-bottom: 51%
-// 	height: calc(100vh - 120px)
-// 	z-index: 0
-// 	width: 100%
-// 	+rem(max-height, 820px)
-// 	+rem(min-height, 590px)
-// 	// @media only screen and (max-height: 1050px) and (max-width: 1300px)
-// 	// 	height: 0
-// 	// 	padding-bottom: 55%
-// 	+r(1300)
-// 		+rem(max-height, 620px)
-// 	+r(1025)
-// 		height: 0
-// 		padding-bottom: 54%		
-
-// 	// +r(1300)
-// 	// 	padding-bottom: 53%	
-// 	// contain: paint
-// 	// backface-visibility: hidden
-// 	.btn
-// 		position: absolute
-// 		+rem(left,200px)
-// 		+rem(bottom,61px)
-// 		z-index: 4
-// 		will-change: transform
-// 		+r(1100)
-// 			+rem(left,100px)	
-// 	.slick-slider .slick-list, .slick-slider .slick-track
-// 		transform: none !important
-// 	&-wrap
-// 		+coverdiv
-// 	&-inner
-// 		width: 100%
-// 		height: 100%
-// 		position: relative
-// 		+tr(opacity .2s)
-// 		// transition-delay: .4s
-// 		will-change: transform, opacity
-// 		// opacity: 0
-// 		.slick-arrow
-// 			position: absolute
-// 			width: 50%
-// 			height: 100%
-// 			top: 0
-// 			bottom: 0
-// 			opacity: 0
-// 			z-index: 2
-// 			&.slick-prev
-// 				left: 0
-// 				cursor: url(/img/slidearrw2.svg), auto
-// 				display: none
-// 			&.slick-next
-// 				right: 0
-// 				cursor: url(/img/slidearrw2.svg), auto
-// 				width: 100%
-// 		.slick-list,.slick-track
-// 			width: 100%
-// 			height: 100%
-// 		&:not(.slick-initialized)
-// 			overflow: hidden
-// 			* 
-// 				opacity: 1 !important
-// 				transform: none !important
-// 				transition-delay: 0s !important
-// 			// opacity: 1
-// 			// transition-delay: .3s
-// 		// &.slick-initialized
-// 		.promo-slider-item
-// 			&.slick-current
-// 				transition-delay: .3s!important
-// 				.img-wrap
-// 					opacity: 1
-// 					transform: translate3d(0,0,0)
-// 					transition-delay: 0s
-// 				.cont-right
-// 					opacity: 1
-// 					transform: translateY(0)
-// 					transition-delay: .8s
-// 				.cont-left
-// 					opacity: 1
-// 					transform: translate3d(0,0,0)
-// 					transition-delay: .8s
-// 	&-item
-// 		// &:nth-child(2)
-// 		// 	background-color: green
-// 		height: 100%
-// 		pointer-events: none
-// 		+nosel
-// 		// will-change: opacity
-
-// 		// contain: layout
-// 		&:not(.slick-current)
-// 			transition-delay: .5s!important
-
-// 		&-inner
-// 			width: 100%
-// 			height: 100%
-// 			position: relative
-// 			z-index: 0
-// 			// +vertical
-// 			+cover
-// 			// contain: paint
-// 			*
-// 				// backface-visibility: hidden
-// 			&:after
-// 				content: ''
-// 				display: inline-block
-// 				position: absolute
-// 				display: block
-// 				bottom: 0
-// 				left: 0
-// 				right: 0
-// 				z-index: 1
-// 				height: 40%
-// 				pointer-events: none
-// 				background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0) 100%);
-// 		// &-bg 
-// 		// 	+coverdiv
-// 		// 	z-index: -1
-// 		// 	+cover
-// 		// 	transition: opacity .3s
-// 		// 	contain: paint
-// 		&-content
-// 			padding-left: 14.2%
-// 			padding-right: 13.5%
-// 			display: inline-block
-// 			width: 100%
-// 			height: 100%
-// 			text-align: left
-// 			position: relative
-// 			z-index: 1
-// 			+r(1400)
-// 				padding-right: 12%
-// 				padding-left: 13.2%
-// 			+r(1300)
-// 				padding-left: 10%
-// 				padding-right: 8%
-// 			.cont-inner
-// 				height: 100%
-// 				position: relative
-// 				z-index: 0
-// 				.title
-// 					position: relative
-// 					background: linear-gradient(to top, rgba(175,201,245,1) 0%,rgba(255,255,255,1) 25%,rgba(255,255,255,1) 100%);
-// 					background-size: 100% 150%
-// 					background-position: bottom center
-// 					-webkit-background-clip: text;
-// 					overflow: visible
-// 					-webkit-text-fill-color: transparent;
-// 					-webkit-font-smoothing: subpixel-antialiased
-
-// 					+r(1400)
-// 						+rem(font-size,95px)
-// 					+r(1100)
-// 						+rem(font-size,95px)	
-// 					&:before
-// 						content: ''
-// 						display: inline-block
-// 						position: absolute
-// 						left: 0
-// 						right: 0
-// 						bottom: 0
-// 						+rem(height,50px)
-// 				.text.primary
-// 					+r(1400)
-// 						+rem(font-size,25px)
-
-// 		&-img
-// 			position: absolute
-// 			left: 0
-// 			right: 0
-// 			bottom: 0
-// 			z-index: 2
-// 			.img-wrap
-// 				display: block
-// 				transition: opacity 1s, transform 1s
-// 				transform: translate3d(0,200px,0)
-// 				opacity: 0
-// 				transition-delay: .4s
-// 				// backface-visibility: hidden
-// 					// contain: paint
-// 				img 
-// 					display: block
-// 					max-width: 100%
-// 					// contain: paint
-// .item1
-// 	.promo-slider-item-img
-// 		bottom: -23%
-// 		+r(1400)
-// 			bottom: -30%
-// 		+r(1300)
-// 			bottom: -23%
-// 		// ipad pro
-// 		@media only screen and (max-height: 1050px) and (max-width: 1400px) and (pointer:coarse)
-// 			bottom: -20% !important
-// 	.cont-inner
-// 		margin-top: auto
-// 		padding-bottom: 31.7%
-// 		+r(1400)
-// 			padding-bottom: 27.7%	
-// 			.cont-right
-// 				+rem(top, 30px)
-// 		@media only screen and (max-height: 1050px) and (max-width: 1400px) and (pointer:coarse)
-// 			padding-bottom: 30.7% !important
-		
-// .item2
-// 	.promo-slider-item-img
-// 		bottom: -23%
-// 		+r(1400)
-// 			bottom: -44%
-// 		+r(1300)
-// 			bottom: -29%
-// 		+r(1025)
-// 			bottom: -30%
-// 		// ipad pro
-// 		@media only screen and (max-height: 1050px) and (max-width: 1400px) and (pointer:coarse)
-// 			bottom: -25% !important
-// 	.cont-inner
-// 		margin-top: auto
-// 		padding-bottom: 45.3%
-// 		+r(1400)
-// 			padding-bottom: 32%	
-// 		@media only screen and (max-height: 1050px) and (max-width: 1400px) and (pointer:coarse)
-// 			padding-bottom: 39.3% !important
 .promo-slider
 	position: relative
 	padding-bottom: 51%
@@ -1036,7 +807,8 @@ a.title
 	// backface-visibility: hidden
 	.btn
 		position: absolute
-		+rem(left,200px)
+		// +rem(left,200px)
+		left: 14.2%
 		+rem(bottom,61px)
 		z-index: 3
 		span
@@ -1159,7 +931,7 @@ a.title
 				z-index: 1
 				height: 40%
 				pointer-events: none
-				background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0) 100%);
+				// background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%,rgba(255,255,255,0) 100%);
 		// &-bg 
 		// 	+coverdiv
 		// 	z-index: -1
@@ -1222,6 +994,8 @@ a.title
 			right: 0
 			bottom: 0
 			z-index: 2
+			&.img-back
+				z-index: 0
 			.img-wrap
 				display: block
 				transition: opacity 1s, transform 1s
@@ -1252,6 +1026,59 @@ a.title
 	.cont-inner
 		margin-top: auto
 		padding-bottom: 45.3%
+.item3
+	.promo-slider-item-img
+		bottom: -18%
+		img
+			width: 80%
+			margin: 0 auto
+	.cont-inner
+		margin-top: auto
+		padding-bottom: 39%
+	.cont-left
+		transform: translate3d(0,150%,0)
+	.cont-right
+		+r(1300)
+			+rem(top,30px)
+.item4
+	.promo-slider-item-img
+		bottom: 0
+	.cont-inner
+		margin-top: auto
+		padding-bottom: 36.2%
+		+r(1400)
+			padding-bottom: 35.7%
+		.title 
+			background: 0 0
+			color: $white
+			-webkit-text-fill-color: $white
+		.cont-right
+			+r(1600)
+				+rem(top,25px)
+			+r(1280)
+				display: none
+.item5
+	.promo-slider-item-img
+		bottom: 0
+	.cont-inner
+		margin-top: auto
+		padding-bottom: 37.2%
+		// +r(1400)
+		// 	padding-bottom: 35.7%
+		.title 
+			background: 0 0
+			color: $white
+			-webkit-text-fill-color: $white
+			.trans 
+				opacity: 0
+				pointer-events: none
+				visibility: hidden
+		.cont-right
+			+r(1600)
+				+rem(top,25px)
+			+r(1280)
+				display: none
+
 .cont 
 	&-inner
 		display: flex 
@@ -1368,20 +1195,44 @@ a.title
 		&:hover
 			img 
 				transform: scale(1.07)
+			.video-container-inner
+				img 
+					transform: none
 		.video-container
 			width: 100%
 			position: relative
-			padding-bottom: 82%
+			// padding-bottom: 82%
+			height: 100%
 			overflow: hidden
 			&-inner
 				+coverdiv	
 				video
 					position: absolute
 					z-index: 0
+					top: 0
 					bottom: 0
+					left: 50%
 					contain: paint
+					min-width: 100%
+					min-height: 100%
+					object-fit: cover
+					object-position: center
+					transform: translateX(-50%)
+
 					&.fillWidth
-						width: 100%
+						height: auto
+						+r(1200)
+							max-height: 100%
+					&.loaded
+						& + img
+							opacity: 0 !important
+				& + img
+					width: 100% !important
+					height: 100%
+					+tr(opacity .3s)
+					transform: none !important
+					opacity: 1
+
 		img
 			width: 100%
 			+tr(transform .25s ease-in-out)
@@ -1980,7 +1831,6 @@ a.title
 				position: relative
 				z-index: 0
 				height: auto
-				background-color: red
 			.block-image-inner
 				width: 100%
 				display: flex
@@ -2814,20 +2664,14 @@ body
 				transition: color .3s, opacity .3s
 				&[href^="tel:"]
 					color: $textblk
+					+rem(margin-top,10px)
+					display: block
 					&:hover
 						color: $brand
 				&[href^="mailto:"],&[href^="skype:"]
 					color: $brand
 					&:hover
-						color: $brandh
-			&:nth-child(2)
-				.text
-					&>a[href^="tel:"]
-						&:only-child
-							+rem(margin-top,10px)
-							display: block
-
-						
+						color: $brandh			
 .map 
 	&-container
 		position: relative
@@ -3431,6 +3275,8 @@ body
 	overflow: hidden
 	padding-bottom: 200px
 	margin-bottom: -200px
+	+r(1400)
+		padding-bottom: 300px	
 	+r(1200)
 		padding-bottom: 350px	
 	.tabs
