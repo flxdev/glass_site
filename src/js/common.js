@@ -306,7 +306,7 @@ function SearchForm(el) {
 		if (this_.submit.attr("type") !== "submit") {
 			this_.el.trigger("focus");
 		} else {
-			alert("Send form!")
+			// alert("Send form!")
 		}
 		return false;
 	};
@@ -1384,10 +1384,23 @@ function animateMap(){
 		},5500)
 	}
 }
+var cbk = function(e) {
+ if(e.currentTarget.href === window.location.href) {
+   e.preventDefault();
+   e.stopPropagation();
+ }
+};
+function preventDbClick(){
+	var links = document.querySelectorAll('a[href]');
+
+	for(var i = 0; i < links.length; i++) {
+	  links[i].addEventListener('click', cbk);
+	}
+}
 var BarbaWitget = {
 	init: function(){
 		var scope = this;
-
+		preventDbClick()
 		Barba.Pjax.start();
 		Barba.Prefetch.init();
 		Barba.Pjax.getTransition = function(){
@@ -1407,6 +1420,7 @@ var BarbaWitget = {
 			Array.prototype.forEach.call(navigationLinkIsActive, function (navigationLink) {
 						return navigationLink.classList.add('active');
 			});
+			preventDbClick()
 
 		});        
 

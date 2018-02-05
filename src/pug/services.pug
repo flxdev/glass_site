@@ -58,7 +58,7 @@ block content
 														//- fedropshadow(dx='0', dy='0', stddeviation='10')
 														//- 	fecomponenttransfer
 														//- 		fefunca(type='linear', slope='0.9')
-														fegaussianblur(in='SourceAlpha', result='blur-out', stddeviation='10')
+														fegaussianblur(in='SourceAlpha', result='blur-out', stddeviation='15')
 														feoffset(in='blur-out', result='the-shadow', dx='0', dy='5')
 														fecolormatrix(in='the-shadow', result='color-out', type='matrix', values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .3 0')
 														feblend(in='SourceGraphic', in2='color-out', mode='normal')

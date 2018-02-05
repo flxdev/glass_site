@@ -106,7 +106,7 @@ body
 		display: flex
 		height: 100%
 	.navi__item
-	
+		+nosel
 		&:not(:last-child)
 			margin-right: 7.3%
 		a
@@ -466,15 +466,17 @@ a.title
 			max-height: 0
 			will-change: max-height
 			transition-duration: .4s
+			padding-left: 2px
 			+r(1100)
 				+rem(width,525.6px)	
 		&:hover
 			.title
 				color: $brandh
 			.nav-item-sublinks
-				+rem(max-height,70px)
+				+rem(max-height,122px)
 				transition-delay: .15s
 				transition-duration: .9s
+
 			.nav-sublink
 				opacity: 1
 				transform: none
@@ -488,6 +490,12 @@ a.title
 					transition-delay:  0s, .4s
 				&:nth-child(5)
 					transition-delay:  0s, .5s
+				&:nth-child(6)
+					transition-delay:  0s, .6s
+				&:nth-child(7)
+					transition-delay:  0s, .7s
+				&:nth-child(8)
+					transition-delay:  0s, .8s
 	&-link
 		display: block
 		+nosel
