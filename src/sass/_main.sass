@@ -462,7 +462,7 @@ a.title
 			+rem(width,521.6px)
 			overflow: hidden
 			+tr(max-height)
-			backface-visibility: hidden
+			// backface-visibility: hidden
 			max-height: 0
 			will-change: max-height
 			transition-duration: .4s
@@ -975,8 +975,9 @@ a.title
 						background: 0 0
 					+r(1400)
 						+rem(font-size,105px)
-					+r(1100)
+					+r(1200)
 						+rem(font-size,90px)
+						font-size: 7.5vw
 					&:before
 						content: ''
 						display: inline-block
@@ -988,10 +989,11 @@ a.title
 				.text.primary
 					+r(1380)
 						+rem(font-size,26px)
-					+r(1100)
+					+r(1200)
 						+rem(font-size,24px)
-					+r(1040)
-						display: none !important
+						font-size: 2vw
+					// +r(1040)
+					// 	display: none !important
 						
 
 						
@@ -1063,8 +1065,8 @@ a.title
 		.cont-right
 			+r(1600)
 				+rem(top,25px)
-			+r(1280)
-				display: none
+			// +r(1280)
+			// 	display: none
 .item5
 	.promo-slider-item-img
 		bottom: 0
@@ -1084,8 +1086,8 @@ a.title
 		.cont-right
 			+r(1600)
 				+rem(top,25px)
-			+r(1280)
-				display: none
+			// +r(1280)
+			// 	display: none
 
 .cont 
 	&-inner
@@ -1114,7 +1116,7 @@ a.title
 		+ie11
 			transform: none
 		.text  
-			color: rgba(255, 255, 255, 0.502);
+			color: rgba(255, 255, 255, 0.702);
 			line-height: 1.444;
 			+rem(padding-left,5px)
 			+rem(margin-bottom,10px)
@@ -1224,7 +1226,7 @@ a.title
 					min-width: 100%
 					min-height: 100%
 					object-fit: cover
-					object-position: center
+					object-position: top center
 					transform: translateX(-50%)
 
 					&.fillWidth
@@ -1234,12 +1236,18 @@ a.title
 					&.loaded
 						& + img
 							opacity: 0 !important
-				& + img
-					width: 100% !important
-					height: 100%
-					+tr(opacity .3s)
-					transform: none !important
-					opacity: 1
+
+					& + img
+						min-width: 100%
+						min-height: 100%
+						object-fit: cover
+						height: auto
+						object-position: top center
+						+tr(opacity .3s .1s)
+						transform: none !important
+						opacity: 1
+						position: relative
+						z-index: 2
 
 		img
 			width: 100%
@@ -1600,6 +1608,11 @@ a.title
 		+rem(padding-bottom,50px)
 		background-color: $brand
 		+tr(background-color .3s)
+		+r(1300)
+			+rem(padding-top,70px)
+			+rem(padding-bottom,30px)
+		+r(1100)
+			+rem(padding-bottom,20px)
 		&.inited
 			background-color: transparent
 			transition-delay: .1s
@@ -1667,6 +1680,10 @@ a.title
 		.link-arr
 			+rem(margin-left,35px)
 			+rem(margin-top,55px)
+			+r(1300)
+				+rem(margin-top,35px)
+			+r(1100)
+				+rem(margin-top,25px)
 
 	&-col 
 		width: 50%
@@ -1992,6 +2009,12 @@ a.title
 		line-height: 1.444;
 		color: $textblk
 		+rem(margin,13px 0)
+		a 
+			color: $brand
+			border-bottom: 1px solid currentcolor
+			+tr(border-color .25s)
+			&:hover
+				border-color: transparent
 	.primary
 		+rem(padding-bottom,10px)
 		// border-bottom: 1px solid $grayl
@@ -2033,6 +2056,13 @@ a.title
 				position: absolute
 				+rem(left,2px)
 				+rem(top,7px)
+	li
+		a 
+			color: $brand
+			border-bottom: 1px solid currentcolor
+			+tr(border-color .25s)
+			&:hover
+				border-color: transparent
 
 .carousel_layout-container
 	display: block;
@@ -2220,6 +2250,8 @@ body
 			.project-item-content-text
 				.text
 					+cut(5)
+					overflow: hidden
+					+rem(max-height, 125px)
 				+r(1300)
 					.text 
 						+rem(font-size,14px)
