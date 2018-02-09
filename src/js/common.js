@@ -769,11 +769,12 @@ function scrollAnimations(){
 	inView('.js-video-container')
 		.on('enter', function(el){
 			if(!el.done) {
+				el.src = el.dataset.src;
 				el.load = function(){
 					el.classList.add('loaded');
 					// console.log(el.classList)
 				}
-				el.src = el.dataset.src;
+				
 				el.load();
 
 			}
@@ -1453,7 +1454,8 @@ var BarbaWitget = {
 			return $(this.oldContainer).animate({
 				opacity: 0,
 			}, 1000,function(){
-			}).addClass('moveDown').promise();
+				
+				}).addClass('moveDown').promise();
 
 		},
 		fadeIn: function(){

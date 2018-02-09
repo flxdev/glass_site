@@ -392,6 +392,9 @@ a.title
 			transition-delay: .25s
 		.mob-menu-footer
 			transition-delay: .4s
+	&-nav 
+		// contain: paint
+		will-change: transform
 	&-search
 		position: absolute
 		left: 0
@@ -439,7 +442,7 @@ a.title
 			.mob-menu-nav
 				display: inline-block
 				vertical-align: middle
-				+rem(height,300px)
+				+rem(min-height,310px)
 				transition: transform .5s ease-in-out, opacity .5s
 				opacity: 0
 				transform: translateY(70px)
@@ -464,7 +467,7 @@ a.title
 			+tr(max-height)
 			// backface-visibility: hidden
 			max-height: 0
-			will-change: max-height
+			// will-change: max-height
 			transition-duration: .4s
 			padding-left: 2px
 			+r(1100)
@@ -748,6 +751,7 @@ a.title
 					&>a[href^="tel:"]
 						&:only-child
 							+rem(margin-top,11px)
+							+rem(margin-bottom,8px)
 							display: block
 						
 	.text
@@ -771,6 +775,8 @@ a.title
 			transition: color .3s, opacity .3s
 			&[href^="tel:"]
 				color: $footertext
+				+rem(margin-top,10px)
+				+rem(margin-bottom,7px)
 				&:hover
 					color: $white
 			&[href^="mailto:"],&[href^="skype:"]
@@ -1885,8 +1891,11 @@ a.title
 		+rm(1201)
 			+rem(padding-left,40px)
 		+rem(padding-top,60px)
-		+rem(padding-bottom,55px)
+		+rem(padding-bottom,60px)
 		overflow: hidden
+		+r(1300)
+			+rem(padding-top,45px)
+			+rem(padding-bottom,45px)	
 		&:not(:last-child)
 			border-bottom: 1px solid #cccccc
 		&:not(.hovered)
@@ -1926,7 +1935,9 @@ a.title
 				// +rem(padding-left,90px)
 			&:nth-child(1)
 				+rem(padding-right,50px)
-				+rem(padding-bottom,20px)
+				+rm(1400)
+					+rem(padding-bottom,20px)
+
 	&-image 
 		position: relative
 		height: 0
@@ -1934,7 +1945,8 @@ a.title
 		+rem(margin-left,-15px)
 		display: block
 		overflow: hidden
-		
+		+r(1450)
+			padding-bottom: 60%
 		&-inner
 			+coverdiv
 			height: auto
@@ -2036,6 +2048,7 @@ a.title
 		.type-item
 			+rem(width,42px)
 			+rem(height,42px)
+
 	ul 
 
 		display: block
@@ -2446,6 +2459,7 @@ body
 				.text 
 					opacity: .7
 					+cut(3)
+					+rem(max-height,73px)
 .divider
 	display: block !important
 	width: 100% !important
@@ -2669,11 +2683,12 @@ body
 .type-item
 	display: inline-block
 	vertical-align: top
-	+rem(width,35px)
-	+rem(height,35px)
+	+rem(width,45px)
+	+rem(height,45px)
 	+contain
 	+rem(margin-right,5px)
 	+rem(margin-bottom,5px)
+	// filter: drop-shadow(0px 0px 4px #fff);
 .contact
 	&-cont
 		img 
@@ -2705,6 +2720,7 @@ body
 				&[href^="tel:"]
 					color: $textblk
 					+rem(margin-top,10px)
+					+rem(margin-bottom,7px)
 					display: block
 					&:hover
 						color: $brand
@@ -2721,17 +2737,22 @@ body
 			+coverdiv
 .newscont
 	height: 100%
-	+rem(padding-top,50px)
-	+rem(padding-bottom,70px)
+	// +rem(padding-top,50px)
+	// +rem(padding-bottom,70px)
 	position: relative
 	+rem(padding-right,70px)
 	
 	.link-arr
 		position: absolute
 		left: 0
-		+rem(bottom,12px)
+		// +rem(bottom,12px)
+		bottom: 0
+		margin-bottom: 0 !important
 	.text 
 		+rem(max-width,530px)
+		+rem(max-height,125px)
+		overflow: hidden
+		+cut(5)
 		&.primary
 			+rem(margin-top,5px)
 			+rem(margin-bottom,30px)
@@ -2739,6 +2760,8 @@ body
 		display: block
 		height: 100%
 		+rem(padding-bottom,50px)
+		position: relative
+		
 .half-title
 	height: 100%
 	+padlr(40px)
