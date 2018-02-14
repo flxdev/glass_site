@@ -3504,18 +3504,20 @@ body
 					transition-duration: 0s
 				.finish2
 					filter: url(#dropshadow)
+					// filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5))
 					+tr(opacity)
 					transition-duration: 0s
 					transition-delay: 0s
 					opacity: 0
 					will-change: opacity
+					stroke-width: 0
 					// fill: transparent !important
 				.finish	
 					transition: opacity .2s, stroke .2s, fill .2s, filter .5s !important
 					stroke-width: 1
 					stroke: $brand
 					cursor: pointer
-					filter: none
+					// filter: none
 					// filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5))
 
 					
