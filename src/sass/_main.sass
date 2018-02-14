@@ -514,15 +514,18 @@ a.title
 
 	&-sublink
 		+rem(font-size,18px)
-		line-height: 1.667;
+		// line-height: 1.667;
+		line-height: 1
 		color: $black
 		display: inline-block
 		+rem(padding-right,20px)
 		transition: color .3s, opacity .3s, transform .3s
-		+rem(margin-top,4px)
-		+rem(margin-bottom,7px)
+		+rem(margin-top,5px)
+		+rem(margin-bottom,10px)
 		transform: translateY(-10px)
 		opacity: 0
+		&:last-child
+			+rem(margin-bottom,15px)
 		&:hover
 			color: $brand
 		&.active 
