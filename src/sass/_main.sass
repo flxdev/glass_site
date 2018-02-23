@@ -26,7 +26,7 @@ html
 		font-size: 15px	
 body
 	height: 100%
-	font-family: "Roboto"
+	font-family: $r
 	color: #000
 	width: 100%
 	&.menu-open
@@ -982,11 +982,11 @@ a.title
 					+ie11
 						color: $white 
 						background: 0 0
-					+r(1400)
-						+rem(font-size,105px)
-					+r(1200)
-						+rem(font-size,90px)
-						font-size: 7.5vw
+					// +r(1400)
+					// 	+rem(font-size,105px)
+					+r(1500)
+						// +rem(font-size,90px)
+						font-size: 7.6vw
 					&:before
 						content: ''
 						display: inline-block
@@ -1034,7 +1034,9 @@ a.title
 		bottom: -23%
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 31.7%
+		padding-bottom: 32.2%
+		+r(1380)
+			padding-bottom: 32%
 		.cont-right
 			+r(1400)
 				+rem(top,30px)
@@ -1044,7 +1046,9 @@ a.title
 		bottom: -23%
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 45.3%
+		padding-bottom: 45.9%
+		+r(1380)
+			padding-bottom: 45.4%
 .item3
 	.promo-slider-item-img
 		bottom: -18%
@@ -1053,7 +1057,7 @@ a.title
 			margin: 0 auto
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 39%
+		padding-bottom: 40%
 	.cont-left
 		transform: translate3d(0,150%,0)
 	.cont-right
@@ -1064,9 +1068,9 @@ a.title
 		bottom: 0
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 36.2%
-		+r(1400)
-			padding-bottom: 35.7%
+		padding-bottom: 36.6%
+		// +r(1400)
+		// 	padding-bottom: 35.9%
 		.title 
 			background: 0 0
 			color: $white
@@ -1074,14 +1078,28 @@ a.title
 		.cont-right
 			+r(1600)
 				+rem(top,25px)
-			// +r(1280)
-			// 	display: none
+		.cont-left
+			.text
+				position: relative
+				z-index: 0
+				color: $white
+				// text-shadow: 0 0 1px #000
+				&:after
+					position: absolute
+					+rem(left,-12px)
+					+rem(right,-12px)
+					+rem(top,0px)
+					+rem(bottom,0px)
+					content: ''
+					z-index: -1
+					background: radial-gradient(rgba(0,0,0,.2) 0%, transparent 70%)
+					// background: linear-gradient(to bottom,transparent 0%,transparent 30%,rgba(0,0,0,.25) 40%,rgba(0,0,0,.25) 50%,transparent 55%, transparent 100%)
 .item5
 	.promo-slider-item-img
 		bottom: 0
 	.cont-inner
 		margin-top: auto
-		padding-bottom: 37.2%
+		padding-bottom: 38.2%
 		// +r(1400)
 		// 	padding-bottom: 35.7%
 		.title 
@@ -1097,6 +1115,8 @@ a.title
 				+rem(top,25px)
 			// +r(1280)
 			// 	display: none
+
+
 
 .cont 
 	&-inner
@@ -1120,15 +1140,15 @@ a.title
 		transition: opacity 1s, transform 1s
 		transform: translate3d(0,100%,0)
 		opacity: 0	
-		// backface-visibility: hidden
-		// will-change: transform, opacity
 		+ie11
 			transform: none
 		.text  
-			color: rgba(255, 255, 255, 0.702);
+			color: rgba(255, 255, 255, 0.8);
 			line-height: 1.444;
 			+rem(padding-left,5px)
 			+rem(margin-bottom,10px)
+			display: inline-block
+				
 
 @keyframes sdb
 	0% 
@@ -1988,7 +2008,7 @@ a.title
 					+rem(margin-bottom,45px)
 		&-content
 			+rem(padding-bottom,50px)
-			+rem(padding-top,30px)
+			// +rem(padding-top,30px)
 			+rem(padding-left,40px)
 			+rem(padding-right,30px)
 			// backface-visibility: hidden
@@ -2002,7 +2022,8 @@ a.title
 				+rem(margin-bottom,60px)
 
 .content 
-	h1,h2,h3
+
+	h1,h2,h3,h4,.h1,.h2,.h3,.h4
 		text-transform: uppercase;
 		line-height: 0.857;
 		font-family: $t
@@ -2010,18 +2031,37 @@ a.title
 		+tr(color .3s)
 		font-weight: 900
 		+rem(margin, 30px 0 15px)
-	h1
-		+rem(font-size,50px)
-		+rem(letter-spacing,-1.5px)
-	h2
+		&:first-child
+			margin-top: 0
+	// h1
+	// 	+rem(font-size,50px)
+	// 	+rem(letter-spacing,-1.5px)
+	h1,.h1
 		+rem(font-size,42px)
 		font-weight: 700
-	h3
+	// h2
+	// 	+rem(font-size,42px)
+	// 	font-weight: 700
+	h2,.h2
+		+rem(font-size,30px)
+		font-weight: 700
+	// h3
+	// 	+rem(font-size,26px)
+	// 	font-weight: 700
+	h3,.h3
 		+rem(font-size,26px)
 		font-weight: 700
+	h4,.h4
+		+rem(font-size,24px)
+		font-weight: 700
 	p 
-		+rem(font-size,18px)
-		line-height: 1.444;
+		// +rem(font-size,18px)
+		// line-height: 1.444;
+
+		// font-size: 1.75rem;
+		+rem(font-size,24px)
+		line-height: 1.429;
+		font-variant-ligatures: none
 		color: $textblk
 		+rem(margin,13px 0)
 		a 
@@ -2032,6 +2072,7 @@ a.title
 				border-color: transparent
 	.primary
 		+rem(padding-bottom,10px)
+		+rem(font-size,24px)
 		// border-bottom: 1px solid $grayl
 		// +rem(padding-right,45px)
 		+rem(margin-bottom,40px)
@@ -2044,6 +2085,8 @@ a.title
 		+rem(margin,30px 0 42px)
 	.text.gray 
 		+rem(margin,30px 0 )
+		&:first-child
+			margin-top: 0
 	.link-arr.down
 		+rem(margin-bottom,15px)
 	.type-wrap
@@ -2052,14 +2095,15 @@ a.title
 			+rem(width,42px)
 			+rem(height,42px)
 
-	ul 
+	ul,ol 
 
 		display: block
-		
+		+rem(margin,15px 0)
 		li 
 			display: block
 			position: relative
-			+rem(font-size,18px)
+			// +rem(font-size,18px)
+			+rem(font-size,24px)
 			line-height: 1.444;
 			+rem(margin,13px 0)
 			+rem(padding-left,43px)
@@ -2071,7 +2115,22 @@ a.title
 				+rem(height,9px)
 				position: absolute
 				+rem(left,2px)
-				+rem(top,7px)
+				// +rem(top,7px)
+				+rem(top,10px)
+	ol 
+		counter-reset: ol 
+		li 
+			counter-increment: ol 
+			&:before 
+				background: 0 0
+				width: auto
+				height: auto
+				content: counter(ol)'.'
+				// +rem(font-size,18px)
+				+rem(font-size,24px)
+				line-height: 1.444;
+				top: 0
+				color: $brand
 	li
 		a 
 			color: $brand
@@ -2397,7 +2456,7 @@ body
 					z-index: 1
 					+tr(opacity .5s)
 					opacity: 1
-					background-image: linear-gradient( 0deg, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.2) 15%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 100%);
+					background-image: linear-gradient( 0deg, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.25) 35%,rgba(0,0,0,0) 55%,rgba(0,0,0,0) 100%);
 				&:before
 					content: ''
 					display: block
@@ -2448,7 +2507,7 @@ body
 				transition-timing-function: cubic-bezier(0, 0, 0.1, 0.96);
 				.text
 					&:not(.primary)
-						opacity: .3
+						opacity: .7
 						+rem(margin-bottom,3px)
 			&-text 
 				position: absolute
@@ -2543,6 +2602,9 @@ body
 		
 .filter
 	&-wrapper
+		display: flex
+		flex-flow: column nowrap
+		justify-content: flex-end
 	&-selects
 		font-size: 0
 		text-align: right
@@ -2557,12 +2619,18 @@ body
 		font-size: 0
 		text-align: right
 		+rem(padding-right,20px)
-		white-space: nowrap
-		+r(1300)
+		+rem(margin-top,-26px)
+		// white-space: nowrap
+		+r(1500)
 			padding-right: 0
+			+rem(margin-right,-13px)
+		+rm(1100)
+			margin-left: -10%
+		+r(1000)
+			+rem(margin-top,-64px)
 		+r(1100)
-			text-align: left
-			+rem(padding-left,50px)
+			// text-align: left
+			+rem(padding-left,20px)
 		&-item 
 			display: inline-block
 			vertical-align: bottom
@@ -2570,14 +2638,15 @@ body
 			text-align: center
 			+r(1300)
 				+padlr(8px)
-
+			&:first-child
+				margin-left: 45%
 			&-inner
 				+tr(color .3s)
 				position: relative
-				+rem(padding-top,35px)
-				+rem(padding-bottom,15px)
-				+r(1100)
-					+rem(font-size,15px)
+				+rem(padding-top,10px)
+				+rem(padding-bottom,10px)
+				+r(1500)
+					+rem(font-size,16px)
 				&:before
 					content: ''
 					display: inline-block
@@ -2586,7 +2655,7 @@ body
 					right: 0
 					background-color: $brand
 					position: absolute
-					+rem(bottom,-8px)
+					+rem(bottom,2px)
 					transform-origin: left center
 					+tr(transform .4s ease-in)
 					transform: scaleX(0)
@@ -2692,6 +2761,26 @@ body
 	+rem(margin-right,5px)
 	+rem(margin-bottom,5px)
 	// filter: drop-shadow(0px 0px 4px #fff);
+.type-card
+	display: flex 
+	flex-flow: row wrap
+	+rem(margin-bottom,32px)
+	.text.gray
+		width: 100%
+		margin-top: 0
+		+rem(margin-bottom,10px)
+	// 	color: #c7c7c7
+	.type-text
+		+rem(padding-top,4px)
+		+rem(padding-left,15px)
+		width: calc(100% - 2.625rem - .3125rem)
+		&:nth-child(2)
+			padding-left: 0
+		.text.primary
+			margin-bottom: 0
+			padding-bottom: 0
+	.type-wrap
+		margin-bottom: 0
 .contact
 	&-cont
 		img 
