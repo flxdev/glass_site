@@ -1068,26 +1068,51 @@ function stickinit() {
 		});
 	}, 1)
 }
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function urldecode(url) {
+  return decodeURIComponent(url.replace(/\+/g, ' '));
+}
+function getString(string) {
+  return decodeURIComponent(string.replace(/\+/g, ' '));
+}
+
 function ProdinnerHead(){
 
 	var target = $('.js-prod-head');
-	var targetNext = target.find('.columns:first-child').find('.prod-nav-link');
+	var targetNext = target.find('.columns:last-child').find('.prod-nav-link');
 	var targetNextText = targetNext.find('.prod-nav-link-text');
-	var targetPrev = target.find('.columns:last-child').find('.prod-nav-link');
+	var targetPrev = target.find('.columns:first-child').find('.prod-nav-link');
 	var targetPrevText = targetPrev.find('.prod-nav-link-text');
 	var targetCur = target.find('.columns:nth-child(2)').find('.text');
 	var vh = $('.page-head').height();
 	var cont = $('.barba-container').last();
-	var nextL = cont.data('next-link');
-	var nextText = cont.data('next-text');
-	var prevL = cont.data('prev-link');
-	var prevText = cont.data('prev-text');
+	var nextL = getCookie('BITRIX_SM_DATA_NEXT_LINK');
+	var nextText = getCookie('BITRIX_SM_DATA_NEXT_TEXT');
+	var prevL = getCookie('BITRIX_SM_DATA_PREV_LINK');
+	var prevText = getCookie('BITRIX_SM_DATA_PREV_TEXT');
 	var curText = cont.data('cur-text');
-
-	targetNext.attr('href',nextL);
-	targetPrev.attr('href',prevL);
-	targetNextText.text(nextText);
-	targetPrevText.text(prevText);
+	console.log(nextL,nextText,prevL,prevText)
+	if(nextL !== null){
+		targetNext.attr('href',urldecode(nextL));
+		targetNextText.text(getString(nextText));
+	}else{
+		targetNext.attr('href','#');
+	}
+	if(prevL !== null){
+		targetPrev.attr('href',urldecode(prevL));
+		targetPrevText.text(getString(prevText));
+	}else{
+		targetPrev.attr('href','#');
+	}
 	targetCur.text(curText);
 	target.addClass('active');
 }
@@ -1403,7 +1428,8 @@ var BarbaWitget = {
 		var scope = this;
 		preventDbClick()
 		Barba.Pjax.start();
-		Barba.Prefetch.init();
+		// Barba.Prefetch.init();
+		Barba.Pjax.cacheEnabled = false;
 		Barba.Pjax.getTransition = function(){
 			return scope.MovePage;
 		};

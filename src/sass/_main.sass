@@ -902,7 +902,12 @@ a.title
 			// z-index: 0 !important	
 			&.slick-current
 				transition-delay: .3s!important
-				// z-index: 	1 !important	
+				+ie11 
+					transition-duration: 0s !important
+					transition-delay: 0s !important
+					* 
+						transition-duration: 0s !important
+						transition-delay: 0s !important
 				.img-wrap
 					opacity: 1
 					transform: translate3d(0,0,0)
@@ -1234,6 +1239,8 @@ a.title
 		&:hover
 			img 
 				transform: scale(1.07)
+				+ie11
+					transform: none !important	
 			.video-container-inner
 				img 
 					transform: none
@@ -1848,6 +1855,7 @@ a.title
 			
 		.block-bg
 			background-color: $gray
+			pointer-events: none
 		.bread-item
 			color: $brand
 			&:after
@@ -1878,7 +1886,6 @@ a.title
 	.row 
 		height: 100%
 		&.gray 
-
 			.block-image
 				width: 100%
 				display: flex
@@ -1991,6 +1998,7 @@ a.title
 			&:nth-child(2)
 				padding-right: 0!important
 		&-images
+			width: 100%	
 			.youtube-slide
 				width: 100%
 				height: 0
@@ -2285,6 +2293,9 @@ body
 		flex-flow: row nowrap
 		align-items: center
 		+rem(height,60px)
+		&[href^="#"]
+			opacity: 0
+			pointer-events: none
 		.icon 
 			+rem(width,12px)
 			+rem(height,21px)
@@ -2996,9 +3007,6 @@ body
 			margin: 0 auto
 .feedback
 	overflow: hidden
-	
-
-
 	&-inner
 		position: relative
 		z-index: 0
@@ -3043,12 +3051,16 @@ body
 				height: 100%
 			&-item 
 				transition-delay: .3s !important
+				+ie11 
+					transition-duration: 0s !important	
 				&.slick-active
 					transition-delay: 0s !important
 					&>div
 						transform: none
 						opacity: 1
 						transition-delay: 0s !important
+						+ie11 
+							transition-duration: 0s !important	
 				&-inner 
 					transition: transform .7s,opacity .7s !important
 					+cover
@@ -3057,6 +3069,8 @@ body
 					opacity: 0
 					height: 300%
 					margin-top: -8%
+					+ie11 
+						transition-duration: 0s
 		&-slider 
 			position: relative
 			z-index: 2
@@ -3441,6 +3455,8 @@ body
 			pointer-events: none
 			width: 100%
 			height: 100%
+			+ie11 
+				height: 70vh	
 			+r(1500)
 				margin-top: -50%
 			+r(1400)
