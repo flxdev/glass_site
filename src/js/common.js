@@ -1068,6 +1068,7 @@ function stickinit() {
 		});
 	}, 1)
 }
+
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -1078,6 +1079,7 @@ function getCookie(name) {
     }
     return null;
 }
+
 function urldecode(url) {
   return decodeURIComponent(url.replace(/\+/g, ' '));
 }
@@ -1095,11 +1097,14 @@ function ProdinnerHead(){
 	var targetCur = target.find('.columns:nth-child(2)').find('.text');
 	var vh = $('.page-head').height();
 	var cont = $('.barba-container').last();
-	var nextL = getCookie('BITRIX_SM_DATA_NEXT_LINK');
-	var nextText = getCookie('BITRIX_SM_DATA_NEXT_TEXT');
-	var prevL = getCookie('BITRIX_SM_DATA_PREV_LINK');
-	var prevText = getCookie('BITRIX_SM_DATA_PREV_TEXT');
+	var pathType = getCookie('BITRIX_SM_MAIN_CUR_DIR').toUpperCase();
+
+	var nextL = getCookie('BITRIX_SM_'+pathType+'_NEXT_LINK');
+	var nextText = getCookie('BITRIX_SM_'+pathType+'_NEXT_TEXT');
+	var prevL = getCookie('BITRIX_SM_'+pathType+'_PREV_LINK');
+	var prevText = getCookie('BITRIX_SM_'+pathType+'_PREV_TEXT');
 	var curText = cont.data('cur-text');
+
 	console.log(nextL,nextText,prevL,prevText)
 	if(nextL !== null){
 		targetNext.attr('href',urldecode(nextL));
@@ -1563,7 +1568,10 @@ var ProductionInner = Barba.BaseView.extend({
 
 		stickinit();
 		moreslider();
-		ProdinnerHead();
+		setTimeout(function(){
+			ProdinnerHead();	
+		},120)
+		
 	},
 	onLeaveComplete: function(){
 	}
