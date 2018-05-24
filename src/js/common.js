@@ -1,6 +1,11 @@
 $(window).on('load',function(){
 	lazyImage();
 	loadState();
+	// try to fix safari iframe
+	setTimeout(function(){
+		$(window).trigger('resize');
+	},300)
+	
 });
 function MainPageLoader2(){
 	this.init();
@@ -389,56 +394,56 @@ if (!Array.prototype.forEach) {
 
   Array.prototype.forEach = function (callback, thisArg) {
 
-    var T, k;
+	var T, k;
 
-    if (this == null) {
-      throw new TypeError(' this is null or not defined');
-    }
+	if (this == null) {
+	  throw new TypeError(' this is null or not defined');
+	}
 
-    // 1. Положим O равным результату вызова ToObject passing the |this| value as the argument.
-    var O = Object(this);
+	// 1. Положим O равным результату вызова ToObject passing the |this| value as the argument.
+	var O = Object(this);
 
-    // 2. Положим lenValue равным результату вызова внутреннего метода Get объекта O с аргументом "length".
-    // 3. Положим len равным ToUint32(lenValue).
-    var len = O.length >>> 0;
+	// 2. Положим lenValue равным результату вызова внутреннего метода Get объекта O с аргументом "length".
+	// 3. Положим len равным ToUint32(lenValue).
+	var len = O.length >>> 0;
 
-    // 4. Если IsCallable(callback) равен false, выкинем исключение TypeError.
-    // Смотрите: http://es5.github.com/#x9.11
-    if (typeof callback !== 'function') {
-        throw new TypeError(callback + ' is not a function');
-    }
+	// 4. Если IsCallable(callback) равен false, выкинем исключение TypeError.
+	// Смотрите: http://es5.github.com/#x9.11
+	if (typeof callback !== 'function') {
+		throw new TypeError(callback + ' is not a function');
+	}
 
-    // 5. Если thisArg присутствует, положим T равным thisArg; иначе положим T равным undefined.
-    if (arguments.length > 1) {
-      T = thisArg;
-    }
+	// 5. Если thisArg присутствует, положим T равным thisArg; иначе положим T равным undefined.
+	if (arguments.length > 1) {
+	  T = thisArg;
+	}
 
-    // 6. Положим k равным 0
-    k = 0;
+	// 6. Положим k равным 0
+	k = 0;
 
-    // 7. Пока k < len, будем повторять
-    while (k < len) {
+	// 7. Пока k < len, будем повторять
+	while (k < len) {
 
-      var kValue;
+	  var kValue;
 
-      // a. Положим Pk равным ToString(k).
-      //   Это неявное преобразование для левостороннего операнда в операторе in
-      // b. Положим kPresent равным результату вызова внутреннего метода HasProperty объекта O с аргументом Pk.
-      //   Этот шаг может быть объединён с шагом c
-      // c. Если kPresent равен true, то
-      if (k in O) {
+	  // a. Положим Pk равным ToString(k).
+	  //   Это неявное преобразование для левостороннего операнда в операторе in
+	  // b. Положим kPresent равным результату вызова внутреннего метода HasProperty объекта O с аргументом Pk.
+	  //   Этот шаг может быть объединён с шагом c
+	  // c. Если kPresent равен true, то
+	  if (k in O) {
 
-        // i. Положим kValue равным результату вызова внутреннего метода Get объекта O с аргументом Pk.
-        kValue = O[k];
+		// i. Положим kValue равным результату вызова внутреннего метода Get объекта O с аргументом Pk.
+		kValue = O[k];
 
-        // ii. Вызовем внутренний метод Call функции callback с объектом T в качестве значения this и
-        // списком аргументов, содержащим kValue, k и O.
-        callback.call(T, kValue, k, O);
-      }
-      // d. Увеличим k на 1.
-      k++;
-    }
-    // 8. Вернём undefined.
+		// ii. Вызовем внутренний метод Call функции callback с объектом T в качестве значения this и
+		// списком аргументов, содержащим kValue, k и O.
+		callback.call(T, kValue, k, O);
+	  }
+	  // d. Увеличим k на 1.
+	  k++;
+	}
+	// 8. Вернём undefined.
   };
 }
 function lazyImage(){
@@ -1070,14 +1075,14 @@ function stickinit() {
 }
 
 function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
 }
 
 function urldecode(url) {
@@ -1313,12 +1318,23 @@ function googleMaps(){
 	}
 };
 function scrollToEl(){
+	var pad = 80;
+	var scrollItem = window.location.hash.toString().replace('#','');
+	var element = $('[data-id="'+ scrollItem +'"]');
+
+	if(element.length) {
+		window.scrollTo(0,0);
+		setTimeout(function(){
+			var destination = element.offset().top;
+			$('html, body:not(:animated), .out:not(:animated)').animate({scrollTop: destination - pad}, 600);
+		}, 600);
+	}
 	$(".js-scroll-to").on('click', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
 		var elementClick = $(this).data("href");
 		var target = $('body').find('[data-id="' + elementClick + '"]');
-		var pad = 80;
+
 		var destination;
 		if( $(this).hasClass('to-top')){
 			destination = 0;
@@ -1328,7 +1344,6 @@ function scrollToEl(){
 			destination = $(target).offset().top,
 			$("html, body:not(:animated), .out:not(:animated)").animate({scrollTop: destination - pad}, 600);
 		}
-
 	});
 }
 function loadState(){
@@ -1435,6 +1450,13 @@ var BarbaWitget = {
 		Barba.Pjax.start();
 		// Barba.Prefetch.init();
 		Barba.Pjax.cacheEnabled = false;
+		Barba.Pjax.originalPreventCheck = Barba.Pjax.preventCheck;
+		Barba.Pjax.preventCheck = function(evt, element){
+		  if ($(element).attr('href') && $(element).attr('href').indexOf('#') > -1)
+			return true;
+		  else
+			return Barba.Pjax.originalPreventCheck(evt, element);
+		};
 		Barba.Pjax.getTransition = function(){
 			return scope.MovePage;
 		};

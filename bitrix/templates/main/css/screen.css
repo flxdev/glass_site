@@ -5123,16 +5123,18 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     -webkit-flex: 1 1 0px;
     flex: 1 1 0px; } }
 
+@media only screen and (max-width: 1700px) {
+
+  .feat-wrap {
+    margin: 0 -2.1875rem; } }
+
 @media only screen and (max-width: 1600px) {
 
   .item4 .cont-inner .cont-right {
     top: 1.5625rem; }
 
   .item5 .cont-inner .cont-right {
-    top: 1.5625rem; }
-
-  .feat-wrap {
-    margin: 0 -2.5rem; } }
+    top: 1.5625rem; } }
 
 @media not all and (-moz-touch-enabled: 1), not all and (pointer: coarse), not all and (-ms-high-contrast: none) and (max-width: 600px) {
 
@@ -5221,6 +5223,11 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
   .prod-image {
     padding-bottom: 60%; } }
 
+@media only screen and (min-width: 1400px) {
+
+  .prod-elem .columns:nth-child(1) {
+    padding-bottom: 1.25rem; } }
+
 @media only screen and (max-width: 1400px) {
 
   .promo-slider-item-content {
@@ -5240,11 +5247,6 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
 
   .logistics .tabs-map {
     margin-top: -55%; } }
-
-@media only screen and (min-width: 1400px) {
-
-  .prod-elem .columns:nth-child(1) {
-    padding-bottom: 1.25rem; } }
 
 @media only screen and (max-width: 1385px) {
 
@@ -5394,6 +5396,11 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
   .logo {
     max-width: 16.25rem; } }
 
+@media only screen and (min-width: 1100px) {
+
+  .filter-tabs {
+    margin-left: -10%; } }
+
 @media only screen and (max-width: 1100px) {
 
   .nav-item-sublinks {
@@ -5416,11 +5423,6 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
 
   .partners-wrap .quality-item-outer {
     padding-bottom: 85%; } }
-
-@media only screen and (min-width: 1100px) {
-
-  .filter-tabs {
-    margin-left: -10%; } }
 
 @media only screen and (max-width: 1040px) {
 
