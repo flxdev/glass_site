@@ -3286,7 +3286,8 @@ body:not(.loading) .prod-nav.active .prod-nav-inner {
     justify-content: flex-end;
     min-height: 18.125rem; }
     .projects-row.row-blue .project-item-content-text .text {
-      display: inherit; }
+      display: inherit;
+      max-height: 100%; }
 
 .project-item {
   display: block;
