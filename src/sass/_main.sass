@@ -910,15 +910,15 @@ a.title
 						transition-delay: 0s !important
 				.img-wrap
 					opacity: 1
-					transform: translate3d(0,0,0)
+					transform: none
 					transition-delay: 0s
 				.cont-right
 					opacity: 1
-					transform: translateY(0)
+					transform: none
 					transition-delay: .8s
 				.cont-left
 					opacity: 1
-					transform: translate3d(0,0,0)
+					transform: none
 					transition-delay: .8s
 	&-item
 		// &:nth-child(2)
@@ -940,8 +940,6 @@ a.title
 			// +vertical
 			+cover
 			// contain: paint
-			*
-				backface-visibility: hidden
 			&:after
 				content: ''
 				display: inline-block
@@ -1026,7 +1024,6 @@ a.title
 				transform: translate3d(0,200px,0)
 				opacity: 0
 				transition-delay: .4s
-				backface-visibility: hidden
 				+ie11
 					transform: none
 					// contain: paint
@@ -1674,12 +1671,13 @@ a.title
 
 	&-bgitem
 		+coverdiv
-		transition: transform .7s, opacity .7s
+		transition: transform .7s, opacity .7s, visibility .7s
 		opacity: 0
 		transform: scale(1.1)
 		margin-top: -5%
 		z-index: 0
 		transition-delay: .55s
+		visibility: hidden
 		// backface-visibility: hidden
 		+r(1200)
 			margin-top: -4%
@@ -1690,6 +1688,7 @@ a.title
 			opacity: 1
 			transform: none
 			z-index: 1
+			visibility: visible
 			transition-delay: 0s
 
 	&-content

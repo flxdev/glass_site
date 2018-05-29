@@ -1626,21 +1626,23 @@ a.title:hover {
       transition-delay: 0.3s !important; }
       .promo-slider-inner .promo-slider-item.slick-current .img-wrap {
         opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
         -webkit-transition-delay: 0s;
         transition-delay: 0s; }
       .promo-slider-inner .promo-slider-item.slick-current .cont-right {
         opacity: 1;
-        -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-        transform: translateY(0);
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
         -webkit-transition-delay: .8s;
         transition-delay: .8s; }
       .promo-slider-inner .promo-slider-item.slick-current .cont-left {
         opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
         -webkit-transition-delay: .8s;
         transition-delay: .8s; }
   .promo-slider-item {
@@ -1662,9 +1664,6 @@ a.title:hover {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 50% 50%; }
-      .promo-slider-item-inner * {
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden; }
       .promo-slider-item-inner:after {
         content: '';
         display: inline-block;
@@ -1726,9 +1725,7 @@ a.title:hover {
         transform: translate3d(0, 200px, 0);
         opacity: 0;
         -webkit-transition-delay: .4s;
-        transition-delay: .4s;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden; }
+        transition-delay: .4s; }
         .promo-slider-item-img .img-wrap img {
           display: block;
           max-width: 100%;
@@ -2498,10 +2495,10 @@ a.title:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-transition: opacity .7s, -webkit-transform .7s;
-  transition: opacity .7s, -webkit-transform .7s;
-  transition: transform .7s, opacity .7s;
-  transition: transform .7s, opacity .7s, -webkit-transform .7s;
+  -webkit-transition: opacity .7s, visibility .7s, -webkit-transform .7s;
+  transition: opacity .7s, visibility .7s, -webkit-transform .7s;
+  transition: transform .7s, opacity .7s, visibility .7s;
+  transition: transform .7s, opacity .7s, visibility .7s, -webkit-transform .7s;
   opacity: 0;
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
@@ -2509,7 +2506,8 @@ a.title:hover {
   margin-top: -5%;
   z-index: 0;
   -webkit-transition-delay: .55s;
-  transition-delay: .55s; }
+  transition-delay: .55s;
+  visibility: hidden; }
   .projects-bgitem img {
     width: 100%;
     contain: paint; }
@@ -2519,6 +2517,7 @@ a.title:hover {
     -ms-transform: none;
     transform: none;
     z-index: 1;
+    visibility: visible;
     -webkit-transition-delay: 0s;
     transition-delay: 0s; }
 
