@@ -1323,12 +1323,16 @@ function scrollToEl(){
 	var element = $('[data-id="'+ scrollItem +'"]');
 
 	if(element.length) {
-		window.scrollTo(0,0);
-		setTimeout(function(){
-			var destination = element.offset().top;
-			$('html, body:not(:animated), .out:not(:animated)').animate({scrollTop: destination - pad}, 600);
-		}, 600);
+		var destination = element.offset().top;
+		// window.scrollTo(0,destination - pad);
+
+		$('html, body:not(:animated), .out:not(:animated)').animate({scrollTop: destination - pad},0);
+
+		// setTimeout(function(){
+		// 	$('html, body:not(:animated), .out:not(:animated)').animate({scrollTop: destination - pad}, 600);
+		// }, 600);
 	}
+
 	$(".js-scroll-to").on('click', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -1474,8 +1478,8 @@ var BarbaWitget = {
 			Array.prototype.forEach.call(navigationLinkIsActive, function (navigationLink) {
 						return navigationLink.classList.add('active');
 			});
-			preventDbClick()
-
+			preventDbClick();
+			
 		});        
 
 		Barba.Dispatcher.on('transitionCompleted', function(currentStatus, prevStatus) {
@@ -1486,7 +1490,8 @@ var BarbaWitget = {
 			// scaleVideo();
 			scrollAnimations();
 			lazyImage();
-			scrollToEl();
+			
+			
 		});
 	},
 	MovePage: Barba.BaseTransition.extend({
@@ -1507,7 +1512,7 @@ var BarbaWitget = {
 			return $(this.oldContainer).animate({
 				opacity: 0,
 			}, 1000,function(){
-				
+				$(window).scrollTop(0,0);
 				}).addClass('moveDown').promise();
 
 		},
@@ -1516,13 +1521,14 @@ var BarbaWitget = {
 			var $el = $(this.newContainer);
 			if ($el.find(".js-promoslider").length) promoslider();
 			$(this.oldContainer).hide();
-
+			scrollToEl();
 			$el.addClass('moveUp');
 			TweenMax.set($el, {
 				force3D:true,
 				y: 200,
 				onComplete: function () {
-					$(window).scrollTop(0,0);
+					// $(window).scrollTop(0,0);
+					// scrollToEl();
 					TweenMax.to($el, .5, {
 						y: 0,
 						force3D:true,
